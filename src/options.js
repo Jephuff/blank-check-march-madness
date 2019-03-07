@@ -9,8 +9,8 @@ export const options = [
   { name: 'Cronenberg', imdb: 'nm0000343', winner: [false] },
   { name: 'Sam Raimi', imdb: 'nm0000600', winner: [true] },
   { name: 'Elaine May', imdb: 'nm0561938', winner: [false] },
-  { name: 'Michael Bay', imdb: 'nm0000881', winner: [] },
-  { name: 'F. Gary Gray', imdb: 'nm0336620', winner: [] },
+  { name: 'Michael Bay', imdb: 'nm0000881', winner: [true] },
+  { name: 'F. Gary Gray', imdb: 'nm0336620', winner: [false] },
   { name: 'Francis F. Coppola', imdb: 'nm0000338', winner: [] },
   { name: 'Alex Proyas', imdb: 'nm0001639', winner: [] },
   { name: '70S Altman', imdb: 'nm0000265', winner: [] },
@@ -67,3 +67,5 @@ setPoll({ range: [6, 8], poll: '1102617025573203968' });
 setPoll({ range: [8, 10], poll: '1102983806594764800' });
 
 setPoll({ range: [10, 12], poll: '1103341673927659520' });
+
+setPoll({ range: [12, 14], poll: '1103704623427260416' });
