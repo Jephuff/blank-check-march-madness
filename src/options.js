@@ -11,8 +11,8 @@ export const options = [
   { name: 'Elaine May', imdb: 'nm0561938', winner: [false] },
   { name: 'Michael Bay', imdb: 'nm0000881', winner: [true] },
   { name: 'F. Gary Gray', imdb: 'nm0336620', winner: [false] },
-  { name: 'Francis F. Coppola', imdb: 'nm0000338', winner: [] },
-  { name: 'Alex Proyas', imdb: 'nm0001639', winner: [] },
+  { name: 'Francis F. Coppola', imdb: 'nm0000338', winner: [true] },
+  { name: 'Alex Proyas', imdb: 'nm0001639', winner: [false] },
   { name: '70S Altman', imdb: 'nm0000265', winner: [] },
   { name: 'Mel Brooks', imdb: 'nm0000316', winner: [] },
   { name: 'Peter Jackson', imdb: 'nm0001392', winner: [] },
@@ -56,16 +56,23 @@ function setPoll({ range, poll }) {
       .join()
   ].poll = `https://twitter.com/blankcheckpod/status/${poll}`;
 }
-setPoll({ range: [0, 2], poll: '1101529711556128770' });
 
-setPoll({ range: [2, 4], poll: '1101891004192514048' });
-
-setPoll({ range: [4, 6], poll: '1102254593642299394' });
-
-setPoll({ range: [6, 8], poll: '1102617025573203968' });
-
-setPoll({ range: [8, 10], poll: '1102983806594764800' });
-
-setPoll({ range: [10, 12], poll: '1103341673927659520' });
-
-setPoll({ range: [12, 14], poll: '1103704623427260416' });
+let rangeStart = 0;
+let range = 2;
+[
+  '1101529711556128770',
+  '1101891004192514048',
+  '1102254593642299394',
+  '1102617025573203968',
+  '1102983806594764800',
+  '1103341673927659520',
+  '1103704623427260416',
+  '1104068984331268096',
+].forEach(poll => {
+  if (rangeStart >= options.length) {
+    range *= 2;
+    rangeStart = 0;
+  }
+  setPoll({ range: [rangeStart, rangeStart + range], poll });
+  rangeStart += range;
+});
