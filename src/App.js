@@ -1,14 +1,19 @@
 import React from 'react';
 import ForkWrapper from './ForkWrapper';
 import useLocalStorage, { useLocalStorageVersion } from './useLocalStorage';
-import { options, winnerLookup } from './options';
+import { winnerLookup } from './options';
+import directors from './directors.json';
 import _ from 'lodash';
 import ForkItem from './ForkItem';
 import { useIsSmall, useSegmentWidth } from './useScreenSize';
 
 export default () => {
   const [{ version, versions }, setVersion] = useLocalStorageVersion();
-  const [selected, setSelected] = useLocalStorage('all', []);
+  const [selected, setSelected] = useLocalStorage(
+    directors.map(o => o.name).join(),
+    []
+  );
+
   const [winner, setWinner] = useLocalStorage('all-winner', '');
   const isSmall = useIsSmall();
   const segmentWidth = useSegmentWidth();
@@ -52,7 +57,7 @@ export default () => {
           <option>new</option>
         </select>
       </div>
-      <ForkWrapper onSelect={setWinner} options={options} />
+      <ForkWrapper onSelect={setWinner} options={directors} />
       <div
         style={{
           width: segmentWidth,
@@ -61,7 +66,7 @@ export default () => {
       >
         <ForkItem
           picked={winner}
-          correctValue={winnerLookup[options.map(o => o.name).join()]}
+          correctValue={winnerLookup[directors.map(o => o.name).join()]}
         />
       </div>
     </div>
@@ -76,7 +81,7 @@ export default () => {
     >
       <ForkWrapper
         onSelect={value => setSelected([value, selected[1]])}
-        options={options.slice(0, options.length / 2)}
+        options={directors.slice(0, directors.length / 2)}
       />
       <div
         style={{
@@ -115,29 +120,32 @@ export default () => {
           <div
             style={{
               width: segmentWidth,
-              borderBottom: '2px solid white',
               position: 'relative',
             }}
           >
-            <ForkItem
-              onSelect={setWinner}
-              picked={selected[0]}
+            <div
               style={{
                 position: 'absolute',
                 bottom: 0,
                 textAlign: 'center',
                 left: 0,
                 right: 2,
+                borderBottom: '2px solid white',
               }}
-              correctValue={
-                winnerLookup[
-                  options
-                    .slice(0, options.length / 2)
-                    .map(o => o.name)
-                    .join()
-                ]
-              }
-            />
+            >
+              <ForkItem
+                onSelect={setWinner}
+                picked={selected[0]}
+                correctValue={
+                  winnerLookup[
+                    directors
+                      .slice(0, directors.length / 2)
+                      .map(o => o.name)
+                      .join()
+                  ]
+                }
+              />
+            </div>
           </div>
           <div
             style={{
@@ -145,10 +153,7 @@ export default () => {
               position: 'relative',
             }}
           >
-            <ForkItem
-              right
-              onSelect={setWinner}
-              picked={selected[1]}
+            <div
               style={{
                 position: 'absolute',
                 bottom: 0,
@@ -157,15 +162,21 @@ export default () => {
                 right: 0,
                 borderBottom: '2px solid white',
               }}
-              correctValue={
-                winnerLookup[
-                  options
-                    .slice(-options.length / 2)
-                    .map(o => o.name)
-                    .join()
-                ]
-              }
-            />
+            >
+              <ForkItem
+                right
+                onSelect={setWinner}
+                picked={selected[1]}
+                correctValue={
+                  winnerLookup[
+                    directors
+                      .slice(-directors.length / 2)
+                      .map(o => o.name)
+                      .join()
+                  ]
+                }
+              />
+            </div>
           </div>
         </div>
         <div
@@ -176,14 +187,14 @@ export default () => {
         >
           <ForkItem
             picked={winner}
-            correctValue={winnerLookup[options.map(o => o.name).join()]}
+            correctValue={winnerLookup[directors.map(o => o.name).join()]}
           />
         </div>
       </div>
       <ForkWrapper
         onSelect={value => setSelected([selected[0], value])}
         right
-        options={options.slice(-options.length / 2)}
+        options={directors.slice(-directors.length / 2)}
       />
     </div>
   );
