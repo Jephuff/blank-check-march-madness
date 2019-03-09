@@ -6,15 +6,11 @@ body, html, #root {
     overflow: hidden;
     background: black;
     color: white;
-    font-size: 13px;
 }
 * {
     box-sizing: border-box;
 }
 #root {
-    /* overflow: scroll;
-    justify-content: center;
-    display: flex; */
     overflow: scroll;
     text-align: center;
 }

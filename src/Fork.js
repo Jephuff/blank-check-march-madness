@@ -1,13 +1,14 @@
 import React from 'react';
 import ForkItem from './ForkItem';
+import { useSegmentWidth } from './useScreenSize';
 
 export default ({ picks, style, right, onSelect, correct, poll }) => {
+  const segmentWidth = useSegmentWidth();
   return (
     <div
       style={{
-        width: 170,
+        width: segmentWidth,
         textAlign: 'center',
-        textTransform: 'uppercase',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',

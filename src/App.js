@@ -4,18 +4,74 @@ import useLocalStorage, { useLocalStorageVersion } from './useLocalStorage';
 import { options, winnerLookup } from './options';
 import _ from 'lodash';
 import ForkItem from './ForkItem';
+import { useIsSmall, useSegmentWidth } from './useScreenSize';
 
 export default () => {
   const [{ version, versions }, setVersion] = useLocalStorageVersion();
   const [selected, setSelected] = useLocalStorage('all', []);
   const [winner, setWinner] = useLocalStorage('all-winner', '');
+  const isSmall = useIsSmall();
+  const segmentWidth = useSegmentWidth();
 
-  return (
+  console.log(isSmall);
+
+  return isSmall ? (
     <div
       style={{
         display: 'inline-flex',
         maxWidth: '100%',
         verticalAlign: 'middle',
+        alignItems: 'center',
+        fontSize: '1.1vw',
+      }}
+    >
+      <div
+        style={{
+          textAlign: 'center',
+          position: 'absolute',
+          top: 10,
+          right: 10,
+        }}
+      >
+        <label htmlFor="version">version</label>
+        <select
+          id="version"
+          onChange={event => {
+            const value = event.target.value;
+            if (value === 'new') {
+              setVersion({ versions: versions + 1, version: versions + 1 });
+            } else {
+              setVersion({ versions, version: Number(event.target.value) });
+            }
+          }}
+          value={version}
+        >
+          {_.range(1, versions + 1).map(k => (
+            <option key={k}>{k}</option>
+          ))}
+          <option>new</option>
+        </select>
+      </div>
+      <ForkWrapper onSelect={setWinner} options={options} />
+      <div
+        style={{
+          width: segmentWidth,
+          borderBottom: '2px solid white',
+        }}
+      >
+        <ForkItem
+          picked={winner}
+          correctValue={winnerLookup[options.map(o => o.name).join()]}
+        />
+      </div>
+    </div>
+  ) : (
+    <div
+      style={{
+        display: 'inline-flex',
+        maxWidth: '100%',
+        verticalAlign: 'middle',
+        fontSize: '0.7vw',
       }}
     >
       <ForkWrapper
@@ -58,9 +114,8 @@ export default () => {
         <div style={{ display: 'flex' }}>
           <div
             style={{
-              width: 150,
+              width: segmentWidth,
               borderBottom: '2px solid white',
-              marginRight: 2,
               position: 'relative',
             }}
           >
@@ -72,7 +127,7 @@ export default () => {
                 bottom: 0,
                 textAlign: 'center',
                 left: 0,
-                right: 0,
+                right: 2,
               }}
               correctValue={
                 winnerLookup[
@@ -86,9 +141,7 @@ export default () => {
           </div>
           <div
             style={{
-              width: 150,
-              marginLeft: 2,
-              borderBottom: '2px solid white',
+              width: segmentWidth,
               position: 'relative',
             }}
           >
@@ -100,8 +153,9 @@ export default () => {
                 position: 'absolute',
                 bottom: 0,
                 textAlign: 'center',
-                left: 0,
+                left: 2,
                 right: 0,
+                borderBottom: '2px solid white',
               }}
               correctValue={
                 winnerLookup[
@@ -116,7 +170,7 @@ export default () => {
         </div>
         <div
           style={{
-            width: 150,
+            width: segmentWidth,
             borderBottom: '2px solid white',
           }}
         >
