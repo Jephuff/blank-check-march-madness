@@ -13,8 +13,8 @@ export const options = [
   { name: 'F. Gary Gray', imdb: 'nm0336620', winner: [false] },
   { name: 'Francis F. Coppola', imdb: 'nm0000338', winner: [true] },
   { name: 'Alex Proyas', imdb: 'nm0001639', winner: [false] },
-  { name: '70S Altman', imdb: 'nm0000265', winner: [] },
-  { name: 'Mel Brooks', imdb: 'nm0000316', winner: [] },
+  { name: '70S Altman', imdb: 'nm0000265', winner: [false] },
+  { name: 'Mel Brooks', imdb: 'nm0000316', winner: [true] },
   { name: 'Peter Jackson', imdb: 'nm0001392', winner: [] },
   { name: 'Martin Brest', imdb: 'nm0000976', winner: [] },
   { name: 'John McTiernan', imdb: 'nm0001532', winner: [] },
@@ -68,6 +68,7 @@ let range = 2;
   '1103341673927659520',
   '1103704623427260416',
   '1104068984331268096',
+  '1104432075069931521',
 ].forEach(poll => {
   if (rangeStart >= options.length) {
     range *= 2;
