@@ -114,12 +114,16 @@
   {
     "name": "Peter Jackson",
     "imdb": "nm0001392",
-    "winner": []
+    "winner": [
+      true
+    ]
   },
   {
     "name": "Martin Brest",
     "imdb": "nm0000976",
-    "winner": []
+    "winner": [
+      false
+    ]
   },
   {
     "name": "John McTiernan",
