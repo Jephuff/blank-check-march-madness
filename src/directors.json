@@ -128,12 +128,16 @@
   {
     "name": "John McTiernan",
     "imdb": "nm0001532",
-    "winner": []
+    "winner": [
+      true
+    ]
   },
   {
     "name": "Buster Keaton",
     "imdb": "nm0000036",
-    "winner": []
+    "winner": [
+      false
+    ]
   },
   {
     "name": "John Carpenter",
