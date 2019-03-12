@@ -7,7 +7,7 @@ import {
   FiArrowRight,
   FiArrowLeft,
 } from 'react-icons/fi';
-
+import twitter from './twitter.png';
 function StatusIcon({ correctValue, picked }) {
   if (correctValue) {
     if (correctValue.name === picked.name) {
@@ -35,11 +35,7 @@ function PollLink({ correctValue }) {
         href={correctValue.poll}
         style={{ padding: 1 }}
       >
-        <img
-          src="https://www.samaritans.org/sites/default/files/branch/twitter_logo_bird_transparent_png.png"
-          style={{ width: '0.7vw' }}
-          alt="twitter poll"
-        />
+        <img src={twitter} style={{ width: '1em' }} alt="twitter poll" />
       </a>
     )) ||
     null
