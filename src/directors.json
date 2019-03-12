@@ -142,12 +142,16 @@
   {
     "name": "John Carpenter",
     "imdb": "nm0000118",
-    "winner": []
+    "winner": [
+      true
+    ]
   },
   {
     "name": "Peter Weir",
     "imdb": "nm0001837",
-    "winner": []
+    "winner": [
+      false
+    ]
   },
   {
     "name": "Nora Ephron",
