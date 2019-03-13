@@ -156,12 +156,16 @@
   {
     "name": "Nora Ephron",
     "imdb": "nm0001188",
-    "winner": []
+    "winner": [
+      false
+    ]
   },
   {
     "name": "Penny Marshall",
     "imdb": "nm0001508",
-    "winner": []
+    "winner": [
+      true
+    ]
   },
   {
     "name": "Guillermo Del Toro",
