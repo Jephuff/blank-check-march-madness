@@ -170,12 +170,16 @@
   {
     "name": "Guillermo Del Toro",
     "imdb": "nm0868219",
-    "winner": []
+    "winner": [
+      true
+    ]
   },
   {
     "name": "Chris Columbus",
     "imdb": "nm0001060",
-    "winner": []
+    "winner": [
+      false
+    ]
   },
   {
     "name": "Terrence Malick",
