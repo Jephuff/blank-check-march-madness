@@ -184,12 +184,16 @@
   {
     "name": "Terrence Malick",
     "imdb": "nm0000517",
-    "winner": []
+    "winner": [
+      false
+    ]
   },
   {
     "name": "William Friedkin",
     "imdb": "nm0001243",
-    "winner": []
+    "winner": [
+      true
+    ]
   },
   {
     "name": "George Miller",
