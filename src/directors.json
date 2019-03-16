@@ -198,12 +198,16 @@
   {
     "name": "George Miller",
     "imdb": "nm0004306",
-    "winner": []
+    "winner": [
+      true
+    ]
   },
   {
     "name": "Tony Scott",
     "imdb": "nm0001716",
-    "winner": []
+    "winner": [
+      false
+    ]
   },
   {
     "name": "Joe Dante",
