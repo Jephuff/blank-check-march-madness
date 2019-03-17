@@ -212,11 +212,15 @@
   {
     "name": "Joe Dante",
     "imdb": "nm0001102",
-    "winner": []
+    "winner": [
+      true
+    ]
   },
   {
     "name": "Preston Sturges",
     "imdb": "nm0002545",
-    "winner": []
+    "winner": [
+      false
+    ]
   }
 ]
