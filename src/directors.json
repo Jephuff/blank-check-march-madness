@@ -3,6 +3,7 @@
     "name": "P.T. Anderson",
     "imdb": "nm0000759",
     "winner": [
+      true,
       true
     ]
   },
@@ -17,7 +18,8 @@
     "name": "Amy Heckerling",
     "imdb": "nm0002132",
     "winner": [
-      true
+      true,
+      false
     ]
   },
   {
