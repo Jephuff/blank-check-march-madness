@@ -33,7 +33,8 @@
     "name": "Gore Verbinski",
     "imdb": "nm0893659",
     "winner": [
-      true
+      true,
+      false
     ]
   },
   {
@@ -47,6 +48,7 @@
     "name": "Jonathan Demme",
     "imdb": "nm0001129",
     "winner": [
+      true,
       true
     ]
   },
