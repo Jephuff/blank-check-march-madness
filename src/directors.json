@@ -63,6 +63,7 @@
     "name": "Sam Raimi",
     "imdb": "nm0000600",
     "winner": [
+      true,
       true
     ]
   },
@@ -77,7 +78,8 @@
     "name": "Michael Bay",
     "imdb": "nm0000881",
     "winner": [
-      true
+      true,
+      false
     ]
   },
   {
