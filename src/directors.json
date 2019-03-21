@@ -93,6 +93,7 @@
     "name": "Francis F. Coppola",
     "imdb": "nm0000338",
     "winner": [
+      true,
       true
     ]
   },
@@ -114,7 +115,8 @@
     "name": "Mel Brooks",
     "imdb": "nm0000316",
     "winner": [
-      true
+      true,
+      false
     ]
   },
   {
