@@ -123,6 +123,7 @@
     "name": "Peter Jackson",
     "imdb": "nm0001392",
     "winner": [
+      true,
       true
     ]
   },
@@ -137,7 +138,8 @@
     "name": "John McTiernan",
     "imdb": "nm0001532",
     "winner": [
-      true
+      true,
+      false
     ]
   },
   {
