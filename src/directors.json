@@ -183,6 +183,7 @@
     "name": "Guillermo Del Toro",
     "imdb": "nm0868219",
     "winner": [
+      true,
       true
     ]
   },
@@ -204,7 +205,8 @@
     "name": "William Friedkin",
     "imdb": "nm0001243",
     "winner": [
-      true
+      true,
+      false
     ]
   },
   {
