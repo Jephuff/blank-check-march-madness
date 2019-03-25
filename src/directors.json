@@ -213,6 +213,7 @@
     "name": "George Miller",
     "imdb": "nm0004306",
     "winner": [
+      true,
       true
     ]
   },
@@ -227,7 +228,8 @@
     "name": "Joe Dante",
     "imdb": "nm0001102",
     "winner": [
-      true
+      true,
+      false
     ]
   },
   {
