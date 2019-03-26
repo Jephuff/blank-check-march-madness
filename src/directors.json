@@ -4,7 +4,8 @@
     "imdb": "nm0000759",
     "winner": [
       true,
-      true
+      true,
+      false
     ]
   },
   {
@@ -48,6 +49,7 @@
     "name": "Jonathan Demme",
     "imdb": "nm0001129",
     "winner": [
+      true,
       true,
       true
     ]
