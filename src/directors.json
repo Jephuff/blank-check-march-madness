@@ -66,6 +66,7 @@
     "imdb": "nm0000600",
     "winner": [
       true,
+      true,
       true
     ]
   },
@@ -96,7 +97,8 @@
     "imdb": "nm0000338",
     "winner": [
       true,
-      true
+      true,
+      false
     ]
   },
   {
