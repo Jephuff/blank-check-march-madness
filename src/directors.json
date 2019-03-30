@@ -51,6 +51,7 @@
     "winner": [
       true,
       true,
+      true,
       true
     ]
   },
@@ -67,7 +68,8 @@
     "winner": [
       true,
       true,
-      true
+      true,
+      false
     ]
   },
   {
