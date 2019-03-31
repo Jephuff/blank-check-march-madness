@@ -162,7 +162,8 @@
     "winner": [
       true,
       true,
-      true
+      true,
+      false
     ]
   },
   {
@@ -222,6 +223,7 @@
     "name": "George Miller",
     "imdb": "nm0004306",
     "winner": [
+      true,
       true,
       true,
       true
