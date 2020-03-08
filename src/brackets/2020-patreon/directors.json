@@ -1,0 +1,256 @@
+[
+  {
+    "name": "P.T. Anderson",
+    "imdb": "nm0000759",
+    "winner": [
+      true,
+      true,
+      false
+    ]
+  },
+  {
+    "name": "P.W.S. Anderson",
+    "imdb": "nm0027271",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "Amy Heckerling",
+    "imdb": "nm0002132",
+    "winner": [
+      true,
+      false
+    ]
+  },
+  {
+    "name": "Warren Beatty",
+    "imdb": "nm0000886",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "Gore Verbinski",
+    "imdb": "nm0893659",
+    "winner": [
+      true,
+      false
+    ]
+  },
+  {
+    "name": "John Singleton",
+    "imdb": "nm0005436",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "Jonathan Demme",
+    "imdb": "nm0001129",
+    "winner": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "name": "Cronenberg",
+    "imdb": "nm0000343",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "Sam Raimi",
+    "imdb": "nm0000600",
+    "winner": [
+      true,
+      true,
+      true,
+      false
+    ]
+  },
+  {
+    "name": "Elaine May",
+    "imdb": "nm0561938",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "Michael Bay",
+    "imdb": "nm0000881",
+    "winner": [
+      true,
+      false
+    ]
+  },
+  {
+    "name": "F. Gary Gray",
+    "imdb": "nm0336620",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "Francis F. Coppola",
+    "imdb": "nm0000338",
+    "winner": [
+      true,
+      true,
+      false
+    ]
+  },
+  {
+    "name": "Alex Proyas",
+    "imdb": "nm0001639",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "70S Altman",
+    "imdb": "nm0000265",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "Mel Brooks",
+    "imdb": "nm0000316",
+    "winner": [
+      true,
+      false
+    ]
+  },
+  {
+    "name": "Peter Jackson",
+    "imdb": "nm0001392",
+    "winner": [
+      true,
+      true,
+      false
+    ]
+  },
+  {
+    "name": "Martin Brest",
+    "imdb": "nm0000976",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "John McTiernan",
+    "imdb": "nm0001532",
+    "winner": [
+      true,
+      false
+    ]
+  },
+  {
+    "name": "Buster Keaton",
+    "imdb": "nm0000036",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "John Carpenter",
+    "imdb": "nm0000118",
+    "winner": [
+      true,
+      true,
+      true,
+      false
+    ]
+  },
+  {
+    "name": "Peter Weir",
+    "imdb": "nm0001837",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "Nora Ephron",
+    "imdb": "nm0001188",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "Penny Marshall",
+    "imdb": "nm0001508",
+    "winner": [
+      true,
+      false
+    ]
+  },
+  {
+    "name": "Guillermo Del Toro",
+    "imdb": "nm0868219",
+    "winner": [
+      true,
+      true,
+      false
+    ]
+  },
+  {
+    "name": "Chris Columbus",
+    "imdb": "nm0001060",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "Terrence Malick",
+    "imdb": "nm0000517",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "William Friedkin",
+    "imdb": "nm0001243",
+    "winner": [
+      true,
+      false
+    ]
+  },
+  {
+    "name": "George Miller",
+    "imdb": "nm0004306",
+    "winner": [
+      true,
+      true,
+      true,
+      true,
+      false
+    ]
+  },
+  {
+    "name": "Tony Scott",
+    "imdb": "nm0001716",
+    "winner": [
+      false
+    ]
+  },
+  {
+    "name": "Joe Dante",
+    "imdb": "nm0001102",
+    "winner": [
+      true,
+      false
+    ]
+  },
+  {
+    "name": "Preston Sturges",
+    "imdb": "nm0002545",
+    "winner": [
+      false
+    ]
+  }
+]

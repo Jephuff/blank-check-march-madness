@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "skipLibCheck": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "noEmit": true,
+    "lib": ["dom", "es2015", "es2016", "es2017", "es2019"],
+    "allowJs": true,
+    "module": "esnext",
+    "isolatedModules": true,
+    "rootDir": "./src",
+    "baseUrl": "src"
+  },
+  "include": ["src"]
+}

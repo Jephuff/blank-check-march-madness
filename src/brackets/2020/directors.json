@@ -1,0 +1,162 @@
+[
+  {
+    "name": "Coen Brothers",
+    "imdb": "nm0001054",
+    "winner": [true]
+  },
+  {
+    "name": "Martin Scorsese",
+    "imdb": "nm0000217",
+    "winner": [false]
+  },
+  {
+    "name": "Mike Nichols",
+    "imdb": "nm0001566",
+    "winner": [true]
+  },
+  {
+    "name": "Warren Beatty",
+    "imdb": "nm0000886",
+    "winner": [false]
+  },
+  {
+    "name": "Peter Jackson",
+    "imdb": "nm0001392",
+    "winner": [false]
+  },
+  {
+    "name": "Robert Zemeckis",
+    "imdb": "nm0000709",
+    "winner": [true]
+  },
+  {
+    "name": "Alfonso Cuaron",
+    "imdb": "nm0190859",
+    "winner": []
+  },
+  {
+    "name": "David Lean",
+    "imdb": "nm0000180",
+    "winner": []
+  },
+  {
+    "name": "Danny Boyle",
+    "imdb": "nm0000965",
+    "winner": []
+  },
+  {
+    "name": "Anthony Minghella",
+    "imdb": "nm0005237",
+    "winner": []
+  },
+  {
+    "name": "Milos Forman",
+    "imdb": "nm0001232",
+    "winner": []
+  },
+  {
+    "name": "Bong Joon-Ho",
+    "imdb": "nm0094435",
+    "winner": []
+  },
+  {
+    "name": "Guillermo Del Toro",
+    "imdb": "nm0868219",
+    "winner": []
+  },
+  {
+    "name": "William Friedkin",
+    "imdb": "nm0001243",
+    "winner": []
+  },
+  {
+    "name": "Francis F. Coppola",
+    "imdb": "nm0000338",
+    "winner": []
+  },
+  {
+    "name": "Bob Fosse",
+    "imdb": "nm0002080",
+    "winner": []
+  },
+  {
+    "name": "Michael Bay",
+    "imdb": "nm0000881",
+    "winner": [true]
+  },
+  {
+    "name": "Tom Green",
+    "imdb": "nm0338381",
+    "winner": [false]
+  },
+  {
+    "name": "Michael Cimino",
+    "imdb": "nm0001047",
+    "winner": [true]
+  },
+  {
+    "name": "Sylvester Stallone",
+    "imdb": "nm0000230",
+    "winner": [false]
+  },
+  {
+    "name": "Kevin Costner",
+    "imdb": "nm0000126",
+    "winner": [false]
+  },
+  {
+    "name": "Tom Hooper",
+    "imdb": "nm0393799",
+    "winner": [true]
+  },
+  {
+    "name": "Guy Ritche",
+    "imdb": "nm0005363",
+    "winner": []
+  },
+  {
+    "name": "Prince",
+    "imdb": "nm0002239",
+    "winner": []
+  },
+  {
+    "name": "Martin Brest",
+    "imdb": "nm0000976",
+    "winner": []
+  },
+  {
+    "name": "Dennis Dugan",
+    "imdb": "nm0240797",
+    "winner": []
+  },
+  {
+    "name": "Bill Condon",
+    "imdb": "nm0174374",
+    "winner": []
+  },
+  {
+    "name": "Peter Farrelly",
+    "imdb": "nm0268380",
+    "winner": []
+  },
+  {
+    "name": "Gus Van Sant",
+    "imdb": "nm0001814",
+    "winner": []
+  },
+  {
+    "name": "Barry Sonnenfeld",
+    "imdb": "nm0001756",
+    "winner": []
+  },
+  {
+    "name": "Elaine May",
+    "imdb": "nm0561938",
+    "winner": []
+  },
+  {
+    "name": "Blake Edwards",
+    "imdb": "nm0001175",
+    "winner": []
+  }
+]
