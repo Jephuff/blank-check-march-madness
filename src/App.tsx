@@ -15,7 +15,7 @@ export default () => {
     initialSelected
   );
 
-  const [winner, setWinner] = useLocalStorage('all-winner', '');
+  const [winner, setWinner] = useLocalStorage(`${bracket.key}-all-winner`, '');
   const isSmall = useIsSmall();
   const segmentWidth = useSegmentWidth();
 
