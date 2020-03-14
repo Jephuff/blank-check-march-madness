@@ -32,42 +32,42 @@
   {
     "name": "Alfonso Cuaron",
     "imdb": "nm0190859",
-    "winner": []
+    "winner": [true]
   },
   {
     "name": "David Lean",
     "imdb": "nm0000180",
-    "winner": []
+    "winner": [false]
   },
   {
     "name": "Danny Boyle",
     "imdb": "nm0000965",
-    "winner": []
+    "winner": [true]
   },
   {
     "name": "Anthony Minghella",
     "imdb": "nm0005237",
-    "winner": []
+    "winner": [false]
   },
   {
     "name": "Milos Forman",
     "imdb": "nm0001232",
-    "winner": []
+    "winner": [false]
   },
   {
     "name": "Bong Joon-Ho",
     "imdb": "nm0094435",
-    "winner": []
+    "winner": [true]
   },
   {
     "name": "Guillermo Del Toro",
     "imdb": "nm0868219",
-    "winner": []
+    "winner": [true]
   },
   {
     "name": "William Friedkin",
     "imdb": "nm0001243",
-    "winner": []
+    "winner": [false]
   },
   {
     "name": "Francis F. Coppola",
@@ -112,32 +112,32 @@
   {
     "name": "Guy Ritche",
     "imdb": "nm0005363",
-    "winner": []
+    "winner": [false]
   },
   {
     "name": "Prince",
     "imdb": "nm0002239",
-    "winner": []
+    "winner": [true]
   },
   {
     "name": "Martin Brest",
     "imdb": "nm0000976",
-    "winner": []
+    "winner": [true]
   },
   {
     "name": "Dennis Dugan",
     "imdb": "nm0240797",
-    "winner": []
+    "winner": [false]
   },
   {
     "name": "Bill Condon",
     "imdb": "nm0174374",
-    "winner": []
+    "winner": [true]
   },
   {
     "name": "Peter Farrelly",
     "imdb": "nm0268380",
-    "winner": []
+    "winner": [false]
   },
   {
     "name": "Gus Van Sant",
