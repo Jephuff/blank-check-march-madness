@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useBracket } from 'brackets';
+import EventEmitter3 from 'eventemitter3';
 
 type StorableValue = { [key: string]: unknown } | string | Array<unknown>;
 interface Versions {
@@ -27,6 +28,8 @@ function parseValue<Value>(
   }
 }
 
+const emitter = new EventEmitter3();
+
 const useLocalStorage = <Value extends StorableValue>(
   k: string,
   initialValue: Value,
@@ -34,29 +37,41 @@ const useLocalStorage = <Value extends StorableValue>(
 ) => {
   const version = versionData?.version;
   const key = versionData ? `${k}-${version}` : k;
-  const [state, setState] = useState(() =>
-    parseValue(k, initialValue, versionData?.version)
+  const getCurrentState = useCallback(
+    () => parseValue(k, initialValue, version),
+    [k, initialValue, version]
   );
+  const [state, setState] = useState(getCurrentState);
 
   useEffect(() => {
-    setState(parseValue(k, initialValue, version));
-  }, [k, version, initialValue]);
+    setState(getCurrentState());
+  }, [getCurrentState]);
 
-  return [
-    state,
+  useEffect(() => {
+    const onUpdate = () => setState(getCurrentState());
+    emitter.on(key, onUpdate);
+    return () => {
+      emitter.off(key, onUpdate);
+    };
+  }, [key, getCurrentState]);
+
+  const setValue = useCallback(
     (data: Value | ((data: Value) => Value)) => {
       if (typeof data === 'function') {
         setState(s => {
           const newState = data(s);
           window.localStorage.setItem(key, JSON.stringify(newState));
+          emitter.emit(key);
           return newState;
         });
       } else {
         window.localStorage.setItem(key, JSON.stringify(data));
-        setState(data);
+        emitter.emit(key);
       }
     },
-  ] as const;
+    [key]
+  );
+  return [state, setValue] as const;
 };
 
 const defaultVersion = { version: 1, versions: 1 };

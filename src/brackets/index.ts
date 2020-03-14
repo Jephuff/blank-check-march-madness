@@ -1,5 +1,3 @@
-import EventEmitter from 'eventemitter3';
-
 import directors2019 from './2019/directors.json';
 import polls2019 from './2019/polls.json';
 
@@ -9,6 +7,7 @@ import polls2020 from './2020/polls.json';
 import directors2020Patreon from './2020-patreon/directors.json';
 import polls2020Patreon from './2020-patreon/polls.json';
 import { useEffect, useState } from 'react';
+import useLocalStorage from 'useLocalStorage';
 
 interface Director {
   name: string;
@@ -87,33 +86,23 @@ const brackets: Array<Bracket> = [
   return { ...bracket, winnerLookup };
 });
 
-let currentBracket: typeof brackets[0]['key'] = 'Bracket 2020';
-
-const emitter = new EventEmitter();
 export const useBracket = (): [
   typeof brackets[0],
-  (key: typeof currentBracket) => void
+  (key: typeof brackets[0]['key']) => void
 ] => {
-  const [bracket, setBracket] = useState(
-    () =>
-      brackets.find(bracket => bracket.key === currentBracket) || brackets[0]
-  );
-  useEffect(() => {
-    const onUpdate = () =>
-      setBracket(
-        brackets.find(bracket => bracket.key === currentBracket) || brackets[0]
-      );
-    emitter.on('update', onUpdate);
-    return () => {
-      emitter.off('update', onUpdate);
-    };
-  }, []);
+  const [bracketKey, setBracketKey] = useLocalStorage<
+    typeof brackets[0]['key']
+  >('bracket-key', 'Bracket 2020');
 
-  return [
-    bracket,
-    key => {
-      currentBracket = key;
-      emitter.emit('update');
-    },
-  ];
+  const [bracket, setBracket] = useState(
+    () => brackets.find(bracket => bracket.key === bracketKey) || brackets[0]
+  );
+
+  useEffect(() => {
+    setBracket(
+      brackets.find(bracket => bracket.key === bracketKey) || brackets[0]
+    );
+  }, [bracketKey]);
+
+  return [bracket, setBracketKey];
 };
