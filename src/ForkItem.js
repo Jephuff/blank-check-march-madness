@@ -84,7 +84,11 @@ export default ({ onSelect, picked, correctValue, style, right }) => {
         <a
           target="_BLANK"
           rel="noopener noreferrer"
-          href={`https://www.imdb.com/name/${picked.imdb}`}
+          href={
+            picked.imdb.match(/^http/)
+              ? picked.imdb
+              : `https://www.imdb.com/name/${picked.imdb}`
+          }
           style={{
             color: 'white',
             textDecoration: 'none',

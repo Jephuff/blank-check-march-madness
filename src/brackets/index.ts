@@ -6,20 +6,20 @@ import polls2019 from './2019/polls.json';
 import directors2020 from './2020/directors.json';
 import polls2020 from './2020/polls.json';
 
-// import directors2020Patreon from './2020-patreon/directors.json';
-// import polls2020Patreon from './2020-patreon/polls.json';
+import directors2020Patreon from './2020-patreon/directors.json';
+import polls2020Patreon from './2020-patreon/polls.json';
 import { useEffect, useState } from 'react';
 
 interface Director {
   name: string;
-  imdb: string;
+  imdb?: string;
   winner: boolean[];
 }
 
 export const bracketKeys = [
   'Bracket 2019',
   'Bracket 2020',
-  // 'Bracket 2020 Patreon',
+  'Bracket 2020 Patreon',
 ] as const;
 
 interface Bracket {
@@ -45,12 +45,12 @@ const brackets: Array<Bracket> = [
     winnerLookup: {},
     key: 'Bracket 2020' as const,
   },
-  // {
-  //   directors: directors2020Patreon,
-  //   polls: polls2020Patreon,
-  //   key: 'Bracket 2020 Patreon' as const,
-  //   winnerLookup: {},
-  // },
+  {
+    directors: directors2020Patreon,
+    polls: polls2020Patreon,
+    key: 'Bracket 2020 Patreon' as const,
+    winnerLookup: {},
+  },
 ].map(bracket => {
   const winnerLookup: Bracket['winnerLookup'] = bracket.winnerLookup;
   function setWinners(opts: Array<Director>, winnerIndex = 4) {
