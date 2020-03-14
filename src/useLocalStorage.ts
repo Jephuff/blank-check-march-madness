@@ -35,12 +35,12 @@ const useLocalStorage = <Value extends StorableValue>(
   const version = versionData?.version;
   const key = versionData ? `${k}-${version}` : k;
   const [state, setState] = useState(() =>
-    parseValue(key, initialValue, versionData?.version)
+    parseValue(k, initialValue, versionData?.version)
   );
 
   useEffect(() => {
-    setState(parseValue(key, initialValue, version));
-  }, [key, version, initialValue]);
+    setState(parseValue(k, initialValue, version));
+  }, [k, version, initialValue]);
 
   return [
     state,

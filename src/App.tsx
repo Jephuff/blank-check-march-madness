@@ -19,6 +19,39 @@ export default () => {
   const isSmall = useIsSmall();
   const segmentWidth = useSegmentWidth();
 
+  const controls = (
+    <div>
+      <label htmlFor="version">version</label>
+      <select
+        id="version"
+        onChange={event => {
+          const value = event.target.value;
+          if (value === 'new') {
+            setVersion({ versions: versions + 1, version: versions + 1 });
+          } else {
+            setVersion({ versions, version: Number(event.target.value) });
+          }
+        }}
+        value={version}
+      >
+        {_.range(1, versions + 1).map(k => (
+          <option key={k}>{k}</option>
+        ))}
+        <option>new</option>
+      </select>
+
+      <label htmlFor="bracket">bracket</label>
+      <select
+        id="bracket"
+        onChange={event => setBracket(event.target.value as any)}
+        value={bracket.key}
+      >
+        {bracketKeys.map(key => (
+          <option key={key}>{key}</option>
+        ))}
+      </select>
+    </div>
+  );
   return isSmall ? (
     <div
       style={{
@@ -37,35 +70,7 @@ export default () => {
           right: 10,
         }}
       >
-        <label htmlFor="version">version</label>
-        <select
-          id="version"
-          onChange={event => {
-            const value = event.target.value;
-            if (value === 'new') {
-              setVersion({ versions: versions + 1, version: versions + 1 });
-            } else {
-              setVersion({ versions, version: Number(event.target.value) });
-            }
-          }}
-          value={version}
-        >
-          {_.range(1, versions + 1).map(k => (
-            <option key={k}>{k}</option>
-          ))}
-          <option>new</option>
-        </select>
-
-        <label htmlFor="bracket">bracket</label>
-        <select
-          id="bracket"
-          onChange={event => setBracket(event.target.value as any)}
-          value={bracket.key}
-        >
-          {bracketKeys.map(key => (
-            <option key={key}>{key}</option>
-          ))}
-        </select>
+        {controls}
       </div>
       <ForkWrapper
         onSelect={setWinner}
@@ -112,41 +117,7 @@ export default () => {
           justifyContent: 'space-around',
         }}
       >
-        <div
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          <label htmlFor="version">version</label>
-          <select
-            id="version"
-            onChange={event => {
-              const value = event.target.value;
-              if (value === 'new') {
-                setVersion({ versions: versions + 1, version: versions + 1 });
-              } else {
-                setVersion({ versions, version: Number(event.target.value) });
-              }
-            }}
-            value={version}
-          >
-            {_.range(1, versions + 1).map(k => (
-              <option key={k}>{k}</option>
-            ))}
-            <option>new</option>
-          </select>
-          <br />
-          <label htmlFor="bracket">bracket</label>
-          <select
-            id="bracket"
-            onChange={event => setBracket(event.target.value as any)}
-            value={bracket.key}
-          >
-            {bracketKeys.map(key => (
-              <option key={key}>{key}</option>
-            ))}
-          </select>
-        </div>
+        {controls}
         <div style={{ display: 'flex' }}>
           <div
             style={{
