@@ -2,7 +2,7 @@ import React from 'react';
 import ForkItem from './ForkItem';
 import { useSegmentWidth } from './useScreenSize';
 
-export default ({ picks, style, right, onSelect, correct, poll }) => {
+export default ({ picks, style, right, onSelect, correct }) => {
   const segmentWidth = useSegmentWidth();
   return (
     <div

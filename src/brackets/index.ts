@@ -69,7 +69,9 @@ const brackets: Array<Bracket> = [
         .slice(...range)
         .map(o => o.name)
         .join()
-    ].poll = `https://twitter.com/blankcheckpod/status/${poll}`;
+    ].poll = poll.match(/^http/)
+      ? poll
+      : `https://twitter.com/blankcheckpod/status/${poll}`;
   }
   let rangeStart = 0;
   let range = 2;

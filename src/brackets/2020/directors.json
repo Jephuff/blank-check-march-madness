@@ -142,12 +142,12 @@
   {
     "name": "Gus Van Sant",
     "imdb": "nm0001814",
-    "winner": []
+    "winner": [false]
   },
   {
     "name": "Barry Sonnenfeld",
     "imdb": "nm0001756",
-    "winner": []
+    "winner": [true]
   },
   {
     "name": "Elaine May",
