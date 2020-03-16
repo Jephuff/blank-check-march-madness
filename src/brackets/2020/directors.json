@@ -72,12 +72,12 @@
   {
     "name": "Francis F. Coppola",
     "imdb": "nm0000338",
-    "winner": []
+    "winner": [true]
   },
   {
     "name": "Bob Fosse",
     "imdb": "nm0002080",
-    "winner": []
+    "winner": [false]
   },
   {
     "name": "Michael Bay",

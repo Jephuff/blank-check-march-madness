@@ -71,12 +71,12 @@
   },
   {
     "name": "The Exorcist",
-    "winner": [],
+    "winner": [false],
     "imdb": ""
   },
   {
     "name": "Living Dead",
-    "winner": [],
+    "winner": [true],
     "imdb": ""
   },
   {
