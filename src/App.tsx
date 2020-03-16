@@ -19,9 +19,32 @@ export default () => {
   const isSmall = useIsSmall();
   const segmentWidth = useSegmentWidth();
 
+  const bracketSelector = (
+    <div style={{ display: 'flex' }}>
+      <div style={{ padding: 5 }}>bracket:</div>
+      {bracketKeys.map(key => (
+        <div
+          style={{
+            padding: 5,
+            cursor: 'pointer',
+            borderRadius: 2,
+            ...(key === bracket.key
+              ? { background: 'white', color: 'black' }
+              : {}),
+          }}
+          key={key}
+          onClick={() => setBracket(key)}
+        >
+          {key}
+        </div>
+      ))}
+    </div>
+  );
   const controls = (
-    <div>
-      <label htmlFor="version">version</label>
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <label htmlFor="version" style={{ padding: 5 }}>
+        version
+      </label>
       <select
         id="version"
         onChange={event => {
@@ -39,17 +62,6 @@ export default () => {
         ))}
         <option>new</option>
       </select>
-
-      <label htmlFor="bracket">bracket</label>
-      <select
-        id="bracket"
-        onChange={event => setBracket(event.target.value as any)}
-        value={bracket.key}
-      >
-        {bracketKeys.map(key => (
-          <option key={key}>{key}</option>
-        ))}
-      </select>
     </div>
   );
   return isSmall ? (
@@ -60,6 +72,8 @@ export default () => {
         verticalAlign: 'middle',
         alignItems: 'center',
         fontSize: '1.1vw',
+        paddingTop: 20,
+        paddingBottom: 20,
       }}
     >
       <div
@@ -68,8 +82,11 @@ export default () => {
           position: 'absolute',
           top: 10,
           right: 10,
+          display: 'flex',
+          alignItems: 'center',
         }}
       >
+        {bracketSelector}
         {controls}
       </div>
       <ForkWrapper
@@ -103,6 +120,19 @@ export default () => {
         fontSize: '0.7vw',
       }}
     >
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          left: 0,
+          display: 'flex',
+          justifyContent: 'center',
+          paddingTop: 5,
+        }}
+      >
+        {bracketSelector}
+      </div>
       <ForkWrapper
         right={undefined}
         onSelect={(value: any) => setSelected([value, selected[1]])}
