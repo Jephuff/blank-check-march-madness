@@ -151,12 +151,12 @@
   },
   {
     "name": "The Apu Trilogy",
-    "winner": [],
+    "winner": [true],
     "imdb": "https://en.wikipedia.org/wiki/The_Apu_Trilogy"
   },
   {
     "name": "Anotoine Doniel",
-    "winner": [],
+    "winner": [false],
     "imdb": "https://en.wikipedia.org/wiki/Antoine_Doinel"
   }
 ]

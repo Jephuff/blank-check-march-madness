@@ -152,11 +152,11 @@
   {
     "name": "Elaine May",
     "imdb": "nm0561938",
-    "winner": []
+    "winner": [true]
   },
   {
     "name": "Blake Edwards",
     "imdb": "nm0001175",
-    "winner": []
+    "winner": [false]
   }
 ]
