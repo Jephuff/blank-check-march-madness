@@ -62,19 +62,11 @@ const useLocalStorage = <Value extends StorableValue>(
 
   const setValue = useCallback(
     (data: Value | ((data: Value) => Value)) => {
-      if (typeof data === 'function') {
-        setState(s => {
-          const newState = data(s);
-          window.localStorage.setItem(key, JSON.stringify(newState));
-          emitter.emit(key);
-          return newState;
-        });
-      } else {
-        window.localStorage.setItem(key, JSON.stringify(data));
-        emitter.emit(key);
-      }
+      const newState = typeof data === 'function' ? data(state) : data;
+      window.localStorage.setItem(key, JSON.stringify(newState));
+      emitter.emit(key);
     },
-    [key]
+    [key, state]
   );
   return [state, setValue] as const;
 };
