@@ -2,7 +2,11 @@ import { useState, useEffect, useCallback } from 'react';
 import { useBracket } from 'brackets';
 import EventEmitter3 from 'eventemitter3';
 
-type StorableValue = { [key: string]: unknown } | string | Array<unknown>;
+type StorableValue =
+  | { [key: string]: unknown }
+  | undefined
+  | string
+  | Array<unknown>;
 interface Versions {
   version: number;
   versions: number;
