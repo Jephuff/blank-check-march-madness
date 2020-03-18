@@ -1,10 +1,14 @@
 import React from 'react';
-import Fork from './Fork';
+import { Fork } from './Fork';
 import useLocalStorage from './useLocalStorage';
-import { useBracket } from 'brackets';
+import { useBracket, Director } from 'brackets';
 
-const initialSelected = [];
-const ForkWrapper = ({ options, right, onSelect }) => {
+const initialSelected: Array<Director> = [];
+const ForkWrapper: React.FC<{
+  right?: boolean;
+  onSelect: (value: Director) => void;
+  options: Array<Director>;
+}> = ({ options, right, onSelect }) => {
   const [bracket] = useBracket();
   const [selected, setSelected] = useLocalStorage(
     options.map(o => o.name).join(),
@@ -18,7 +22,6 @@ const ForkWrapper = ({ options, right, onSelect }) => {
         style={{ paddingTop: 20, paddingBottom: 20 }}
         onSelect={onSelect}
         correct={[]}
-        poll={bracket.winnerLookup[options.map(o => o.name).join()]}
       />
     );
   }
@@ -49,7 +52,6 @@ const ForkWrapper = ({ options, right, onSelect }) => {
           style={{ height: '50%' }}
           right={right}
           onSelect={onSelect}
-          poll={bracket.winnerLookup[options.map(o => o.name).join()]}
           correct={[
             bracket.winnerLookup[
               options

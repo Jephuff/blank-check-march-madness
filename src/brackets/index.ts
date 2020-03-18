@@ -9,7 +9,7 @@ import polls2020Patreon from './2020-patreon/polls.json';
 import { useEffect, useState } from 'react';
 import useLocalStorage from 'useLocalStorage';
 
-interface Director {
+export interface Director {
   name: string;
   imdb?: string;
   winner: boolean[];

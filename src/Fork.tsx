@@ -1,8 +1,15 @@
-import React from 'react';
-import ForkItem from './ForkItem';
+import React, { CSSProperties } from 'react';
+import { ForkItem } from './ForkItem';
 import { useSegmentWidth } from './useScreenSize';
+import { Director } from 'brackets';
 
-export default ({ picks, style, right, onSelect, correct }) => {
+export const Fork: React.FC<{
+  picks: Array<Director>;
+  style?: CSSProperties;
+  right?: boolean;
+  onSelect: (v: Director) => void;
+  correct: Array<Director | { possible: Array<Director> }>;
+}> = ({ picks, style, right, onSelect, correct }) => {
   const segmentWidth = useSegmentWidth();
   return (
     <div

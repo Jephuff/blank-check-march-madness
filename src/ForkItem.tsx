@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import {
   FiCheckCircle,
   FiXCircle,
@@ -8,13 +8,32 @@ import {
   FiArrowLeft,
 } from 'react-icons/fi';
 import twitter from './twitter.png';
-function StatusIcon({ correctValue, picked }) {
+import { Director } from 'brackets';
+
+type CorrectValue =
+  | {
+      possible?: undefined;
+      name: string;
+      poll?: string;
+    }
+  | {
+      name?: undefined;
+      possible: Array<Director>;
+      poll?: string;
+    };
+
+type OnSelect = (v: Director) => void;
+
+const StatusIcon: React.FC<{
+  correctValue?: CorrectValue;
+  picked: Director;
+}> = ({ correctValue, picked }) => {
   if (correctValue) {
     if (correctValue.name === picked.name) {
       return <FiCheckCircle color="green" style={{ margin: 1 }} />;
     } else if (
       correctValue.name ||
-      correctValue.possible.every(p => p.name !== picked.name)
+      correctValue.possible?.every(p => p.name !== picked.name)
     ) {
       return <FiXCircle color="red" style={{ margin: 1 }} />;
     } else if (correctValue.poll) {
@@ -24,9 +43,11 @@ function StatusIcon({ correctValue, picked }) {
     }
   }
   return null;
-}
+};
 
-function PollLink({ correctValue }) {
+const PollLink: React.FC<{ correctValue?: CorrectValue }> = ({
+  correctValue,
+}) => {
   return (
     (correctValue && correctValue.poll && (
       <a
@@ -40,9 +61,13 @@ function PollLink({ correctValue }) {
     )) ||
     null
   );
-}
+};
 
-function Select({ picked, right, onSelect }) {
+const Select: React.FC<{
+  picked: Director;
+  right?: boolean;
+  onSelect?: OnSelect;
+}> = ({ picked, right, onSelect }) => {
   if (!onSelect) {
     return null;
   } else if (right) {
@@ -60,9 +85,15 @@ function Select({ picked, right, onSelect }) {
       />
     );
   }
-}
+};
 
-export default ({ onSelect, picked, correctValue, style, right }) => {
+export const ForkItem: React.FC<{
+  onSelect?: OnSelect;
+  picked?: Director;
+  correctValue?: CorrectValue;
+  right?: boolean;
+  style?: CSSProperties;
+}> = ({ onSelect, picked, correctValue, style, right }) => {
   if (!picked) return null;
   const icons = [
     <StatusIcon key="1" correctValue={correctValue} picked={picked} />,

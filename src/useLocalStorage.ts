@@ -3,10 +3,11 @@ import { useBracket } from 'brackets';
 import EventEmitter3 from 'eventemitter3';
 
 type StorableValue =
-  | { [key: string]: unknown }
+  | { [key: string]: any }
   | undefined
   | string
   | Array<unknown>;
+
 interface Versions {
   version: number;
   versions: number;
