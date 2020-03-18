@@ -1,44 +1,59 @@
 import React from 'react';
 import { Fork } from './Fork';
-import useLocalStorage from './useLocalStorage';
-import { useBracket, Director } from 'brackets';
+import { Data, useBracketSelection } from 'brackets';
 
-const initialSelected: Array<Director> = [];
-const ForkWrapper: React.FC<{
+function isLeafOptions(
+  options: [Data | string, Data | string]
+): options is [string, string] {
+  return options.every(o => typeof o === 'string');
+}
+
+function isBracketOptions(
+  options: [Data | string, Data | string]
+): options is [Data, Data] {
+  return options.every(o => typeof o !== 'string');
+}
+
+const ForkWrapper = function({
+  data,
+  right,
+  selectionKey,
+}: {
   right?: boolean;
-  onSelect: (value: Director) => void;
-  options: Array<Director>;
-}> = ({ options, right, onSelect }) => {
-  const [bracket] = useBracket();
-  const [selected, setSelected] = useLocalStorage(
-    options.map(o => o.name).join(),
-    initialSelected
-  );
-  if (options.length <= 2) {
+  data: Data;
+  selectionKey: string;
+}) {
+  const [selected1] = useBracketSelection(`${selectionKey}-0`);
+  const [selected2] = useBracketSelection(`${selectionKey}-1`);
+  let forks;
+  if (isLeafOptions(data.options)) {
     return (
       <Fork
-        picks={options}
+        selectionKey={selectionKey}
+        picks={data.options}
         right={right}
         style={{ paddingTop: 20, paddingBottom: 20 }}
-        onSelect={onSelect}
-        correct={[]}
       />
     );
+  } else if (isBracketOptions(data.options)) {
+    forks = (
+      <>
+        <ForkWrapper
+          data={data.options[0]}
+          right={right}
+          selectionKey={`${selectionKey}-0`}
+        />
+        <ForkWrapper
+          data={data.options[1]}
+          right={right}
+          selectionKey={`${selectionKey}-1`}
+        />
+      </>
+    );
+  } else {
+    throw new Error('what?');
   }
-  const forks = (
-    <React.Fragment>
-      <ForkWrapper
-        options={options.slice(0, options.length / 2)}
-        right={right}
-        onSelect={value => setSelected([value, selected[1]])}
-      />
-      <ForkWrapper
-        options={options.slice(-options.length / 2)}
-        right={right}
-        onSelect={value => setSelected([selected[0], value])}
-      />
-    </React.Fragment>
-  );
+
   return (
     <div
       style={{
@@ -48,24 +63,11 @@ const ForkWrapper: React.FC<{
       {!right && <div>{forks}</div>}
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <Fork
-          picks={selected}
+          selectionKey={selectionKey}
+          picks={[selected1, selected2]}
           style={{ height: '50%' }}
           right={right}
-          onSelect={onSelect}
-          correct={[
-            bracket.winnerLookup[
-              options
-                .slice(0, options.length / 2)
-                .map(o => o.name)
-                .join()
-            ],
-            bracket.winnerLookup[
-              options
-                .slice(-options.length / 2)
-                .map(o => o.name)
-                .join()
-            ],
-          ]}
+          options={[data.options[0], data.options[1]]}
         />
       </div>
       {right && <div>{forks}</div>}

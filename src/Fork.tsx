@@ -1,15 +1,17 @@
 import React, { CSSProperties } from 'react';
 import { ForkItem } from './ForkItem';
 import { useSegmentWidth } from './useScreenSize';
-import { Director } from 'brackets';
+import { useBracketSelection, Data } from 'brackets';
+import { Options } from 'allOptions';
 
 export const Fork: React.FC<{
-  picks: Array<Director>;
+  picks?: [Options | undefined, Options | undefined];
+  options?: [Data, Data];
   style?: CSSProperties;
   right?: boolean;
-  onSelect: (v: Director) => void;
-  correct: Array<Director | { possible: Array<Director> }>;
-}> = ({ picks, style, right, onSelect, correct }) => {
+  selectionKey: string;
+}> = ({ picks, style, right, selectionKey, options }) => {
+  const [, setSelected] = useBracketSelection(selectionKey);
   const segmentWidth = useSegmentWidth();
   return (
     <div
@@ -38,9 +40,9 @@ export const Fork: React.FC<{
       >
         <ForkItem
           right={right}
-          onSelect={onSelect}
-          picked={picks[0]}
-          correctValue={correct[0]}
+          onSelect={setSelected}
+          picked={picks?.[0]}
+          data={options?.[0]}
           style={{
             position: 'absolute',
             top: 0,
@@ -49,9 +51,9 @@ export const Fork: React.FC<{
         />
         <ForkItem
           right={right}
-          onSelect={onSelect}
-          picked={picks[1]}
-          correctValue={correct[1]}
+          onSelect={setSelected}
+          picked={picks?.[1]}
+          data={options?.[1]}
         />
       </div>
     </div>

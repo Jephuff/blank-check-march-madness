@@ -1,24 +1,21 @@
 import React from 'react';
 import ForkWrapper from './ForkWrapper';
-import useLocalStorage, { useLocalStorageVersion } from './useLocalStorage';
+import { useLocalStorageVersion } from './useLocalStorage';
 import _ from 'lodash';
 import { ForkItem } from './ForkItem';
 import { useIsSmall, useSegmentWidth } from './useScreenSize';
-import { useBracket, bracketKeys, Director } from 'brackets';
+import { useBracket, bracketKeys, useBracketSelection } from 'brackets';
 
-const initialSelected: Array<Director> = [];
+const baseKey = '0';
+
 export default () => {
   const [bracket, setBracket] = useBracket();
   const [{ version, versions }, setVersion] = useLocalStorageVersion();
-  const [selected, setSelected] = useLocalStorage<Array<Director>>(
-    bracket.directors.map(o => o.name).join(),
-    initialSelected
-  );
 
-  const [winner, setWinner] = useLocalStorage<Director | undefined>(
-    `${bracket.key}-all-winner`,
-    undefined
-  );
+  const [winnerSelection, setWinnerSelection] = useBracketSelection(baseKey);
+  const [selected1] = useBracketSelection(`${baseKey}-0`);
+  const [selected2] = useBracketSelection(`${baseKey}-1`);
+
   const isSmall = useIsSmall();
   const segmentWidth = useSegmentWidth();
 
@@ -92,19 +89,14 @@ export default () => {
         {bracketSelector}
         {controls}
       </div>
-      <ForkWrapper onSelect={setWinner} options={bracket.directors} />
+      <ForkWrapper data={bracket.data} selectionKey={baseKey} />
       <div
         style={{
           width: segmentWidth,
           borderBottom: '2px solid white',
         }}
       >
-        <ForkItem
-          picked={winner}
-          correctValue={
-            bracket.winnerLookup[bracket.directors.map(o => o.name).join()]
-          }
-        />
+        <ForkItem data={bracket.data} picked={winnerSelection} />
       </div>
     </div>
   ) : (
@@ -130,8 +122,8 @@ export default () => {
         {bracketSelector}
       </div>
       <ForkWrapper
-        onSelect={(value: any) => setSelected([value, selected[1]])}
-        options={bracket.directors.slice(0, bracket.directors.length / 2)}
+        data={bracket.data.options[0]}
+        selectionKey={`${baseKey}-0`}
       />
       <div
         style={{
@@ -161,16 +153,9 @@ export default () => {
               }}
             >
               <ForkItem
-                onSelect={setWinner}
-                picked={selected[0]}
-                correctValue={
-                  bracket.winnerLookup[
-                    bracket.directors
-                      .slice(0, bracket.directors.length / 2)
-                      .map(o => o.name)
-                      .join()
-                  ]
-                }
+                onSelect={setWinnerSelection}
+                picked={selected1}
+                data={bracket.data.options[0]}
               />
             </div>
           </div>
@@ -192,16 +177,9 @@ export default () => {
             >
               <ForkItem
                 right
-                onSelect={setWinner}
-                picked={selected[1]}
-                correctValue={
-                  bracket.winnerLookup[
-                    bracket.directors
-                      .slice(-bracket.directors.length / 2)
-                      .map(o => o.name)
-                      .join()
-                  ]
-                }
+                onSelect={setWinnerSelection}
+                picked={selected2}
+                data={bracket.data.options[1]}
               />
             </div>
           </div>
@@ -212,18 +190,13 @@ export default () => {
             borderBottom: '2px solid white',
           }}
         >
-          <ForkItem
-            picked={winner}
-            correctValue={
-              bracket.winnerLookup[bracket.directors.map(o => o.name).join()]
-            }
-          />
+          <ForkItem picked={winnerSelection} data={bracket.data} />
         </div>
       </div>
       <ForkWrapper
-        onSelect={(value: any) => setSelected([selected[0], value])}
         right
-        options={bracket.directors.slice(-bracket.directors.length / 2)}
+        data={bracket.data.options[1]}
+        selectionKey={`${baseKey}-1`}
       />
     </div>
   );

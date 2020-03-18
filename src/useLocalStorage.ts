@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useBracket } from 'brackets';
 import EventEmitter3 from 'eventemitter3';
-
+import _ from 'lodash';
 type StorableValue =
   | { [key: string]: any }
   | undefined
@@ -37,9 +37,16 @@ const emitter = new EventEmitter3();
 
 const useLocalStorage = <Value extends StorableValue>(
   k: string,
-  initialValue: Value,
+  initialValueInput: Value,
   versionData?: Versions
 ) => {
+  const [initialValue, setInitialValueCached] = useState(initialValueInput);
+  useEffect(() => {
+    setInitialValueCached(value =>
+      _.isEqual(value, initialValueInput) ? value : initialValueInput
+    );
+  }, [initialValueInput]);
+
   const version = versionData?.version;
   const key = versionData ? `${k}-${version}` : k;
   const getCurrentState = useCallback(

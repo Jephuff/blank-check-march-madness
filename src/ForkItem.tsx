@@ -8,52 +8,56 @@ import {
   FiArrowLeft,
 } from 'react-icons/fi';
 import twitter from './twitter.png';
-import { Director } from 'brackets';
+import { Data } from 'brackets';
+import { Options, allOptions } from 'allOptions';
 
-type CorrectValue =
-  | {
-      possible?: undefined;
-      name: string;
-      poll?: string;
-    }
-  | {
-      name?: undefined;
-      possible: Array<Director>;
-      poll?: string;
-    };
+type OnSelect = (v: Options) => void;
 
-type OnSelect = (v: Director) => void;
+function isStillPossible(picked: string, data?: Data): boolean {
+  const option1 = data?.options[0];
+  const option2 = data?.options[1];
+  if (data?.winner) {
+    return data?.winner === picked;
+  } else {
+    return (
+      (typeof option1 !== 'string' && option1
+        ? isStillPossible(picked, option1)
+        : option1 === picked) ||
+      (typeof option2 !== 'string' && option2
+        ? isStillPossible(picked, option2)
+        : option2 === picked)
+    );
+  }
+}
 
 const StatusIcon: React.FC<{
-  correctValue?: CorrectValue;
-  picked: Director;
-}> = ({ correctValue, picked }) => {
-  if (correctValue) {
-    if (correctValue.name === picked.name) {
-      return <FiCheckCircle color="green" style={{ margin: 1 }} />;
-    } else if (
-      correctValue.name ||
-      correctValue.possible?.every(p => p.name !== picked.name)
-    ) {
-      return <FiXCircle color="red" style={{ margin: 1 }} />;
-    } else if (correctValue.poll) {
-      return <FiClock color="yellow" style={{ margin: 1 }} />;
-    } else {
-      return <FiPauseCircle color="white" style={{ margin: 1 }} />;
-    }
+  picked: string;
+  data?: Data;
+}> = ({ picked, data }) => {
+  if (!data) return null;
+
+  if (data.winner === picked) {
+    return <FiCheckCircle color="green" style={{ margin: 1 }} />;
+  } else if (!isStillPossible(picked, data)) {
+    return <FiXCircle color="red" style={{ margin: 1 }} />;
+  } else if (data.poll) {
+    return <FiClock color="yellow" style={{ margin: 1 }} />;
+  } else {
+    return <FiPauseCircle color="white" style={{ margin: 1 }} />;
   }
-  return null;
 };
 
-const PollLink: React.FC<{ correctValue?: CorrectValue }> = ({
-  correctValue,
-}) => {
+const PollLink: React.FC<{ data?: Data }> = ({ data }) => {
   return (
-    (correctValue && correctValue.poll && (
+    (data?.poll && (
       <a
         target="_BLANK"
         rel="noopener noreferrer"
-        href={correctValue.poll}
+        href={
+          data.poll.match(/^http/)
+            ? data.poll
+            : `https://twitter.com/blankcheckpod/status/${data.poll}`
+        }
         style={{ padding: 1 }}
       >
         <img src={twitter} style={{ width: '1em' }} alt="twitter poll" />
@@ -64,7 +68,7 @@ const PollLink: React.FC<{ correctValue?: CorrectValue }> = ({
 };
 
 const Select: React.FC<{
-  picked: Director;
+  picked: Options;
   right?: boolean;
   onSelect?: OnSelect;
 }> = ({ picked, right, onSelect }) => {
@@ -89,17 +93,18 @@ const Select: React.FC<{
 
 export const ForkItem: React.FC<{
   onSelect?: OnSelect;
-  picked?: Director;
-  correctValue?: CorrectValue;
+  picked?: Options;
   right?: boolean;
   style?: CSSProperties;
-}> = ({ onSelect, picked, correctValue, style, right }) => {
+  data?: Data;
+}> = ({ onSelect, picked, style, right, data }) => {
   if (!picked) return null;
   const icons = [
-    <StatusIcon key="1" correctValue={correctValue} picked={picked} />,
-    <PollLink key="2" correctValue={correctValue} />,
+    <StatusIcon data={data} key="1" picked={picked} />,
+    <PollLink key="2" data={data} />,
     <Select key="3" right={right} onSelect={onSelect} picked={picked} />,
   ];
+  const directorData = allOptions[picked];
   return (
     <div
       style={{
@@ -111,14 +116,14 @@ export const ForkItem: React.FC<{
       }}
     >
       {right && icons.reverse()}
-      {picked.imdb ? (
+      {directorData?.imdb ? (
         <a
           target="_BLANK"
           rel="noopener noreferrer"
           href={
-            picked.imdb.match(/^http/)
-              ? picked.imdb
-              : `https://www.imdb.com/name/${picked.imdb}`
+            directorData.imdb.match(/^http/)
+              ? directorData.imdb
+              : `https://www.imdb.com/name/${directorData.imdb}`
           }
           style={{
             color: 'white',
@@ -127,10 +132,10 @@ export const ForkItem: React.FC<{
             textTransform: 'uppercase',
           }}
         >
-          {picked.name}
+          {picked}
         </a>
       ) : (
-        picked.name
+        picked
       )}
       {!right && icons}
     </div>
