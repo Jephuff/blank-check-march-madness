@@ -2,7 +2,7 @@
   {
     "name": "Coen Brothers",
     "imdb": "nm0001054",
-    "winner": [true]
+    "winner": [true, true]
   },
   {
     "name": "Martin Scorsese",
@@ -12,7 +12,7 @@
   {
     "name": "Mike Nichols",
     "imdb": "nm0001566",
-    "winner": [true]
+    "winner": [true, false]
   },
   {
     "name": "Warren Beatty",
