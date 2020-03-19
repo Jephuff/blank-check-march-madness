@@ -35,7 +35,7 @@ function parseValue<Value>(
 
 const emitter = new EventEmitter3();
 
-const useLocalStorage = <Value extends StorableValue>(
+export const useLocalStorage = <Value extends StorableValue>(
   k: string,
   initialValueInput: Value,
   versionData?: Versions
@@ -91,7 +91,7 @@ export const useLocalStorageVersion = () => {
   return [v, setVersion] as const;
 };
 
-export default <Value extends StorableValue>(
+export const useLocalStorageVersioned = <Value extends StorableValue>(
   key: string,
   initialValue: Value
 ) => useLocalStorage(key, initialValue, version);

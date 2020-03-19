@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import useLocalStorage from 'useLocalStorage';
+import { useLocalStorage, useLocalStorageVersioned } from 'useLocalStorage';
 import { Data } from 'brackets/types';
 
 import data2019 from './data/2019';
@@ -45,7 +45,7 @@ export const useBracket = (): [
 
 export const useBracketSelection = (key: string) => {
   const [bracket] = useBracket();
-  return useLocalStorage<Options | undefined>(
+  return useLocalStorageVersioned<Options | undefined>(
     `bracket-selection-${bracket.key}-key-${key}`,
     undefined
   );
