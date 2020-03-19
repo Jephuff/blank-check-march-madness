@@ -82,10 +82,10 @@ const defaultVersion = { version: 1, versions: 1 };
 let version = defaultVersion;
 export const useLocalStorageVersion = () => {
   const [legacyVersion] = useLocalStorage('version', defaultVersion);
-  const [bracket] = useBracket();
+  const [, bracketKey] = useBracket();
   const [v, setVersion] = useLocalStorage(
-    `version-${bracket.key}`,
-    bracket.key === 'Bracket 2019' ? legacyVersion : defaultVersion
+    `version-${bracketKey}`,
+    bracketKey === 'Bracket 2019' ? legacyVersion : defaultVersion
   );
   version = v;
   return [v, setVersion] as const;

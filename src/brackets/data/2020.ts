@@ -23,6 +23,7 @@ const data: Data<0> = {
               ],
             },
             {
+              poll: '1240669632123604992',
               options: [
                 {
                   winner: 'Robert Zemeckis',
@@ -77,6 +78,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              winner: 'Michael Bay',
               poll: '1240307686656311296',
               options: [
                 {

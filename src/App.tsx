@@ -9,7 +9,7 @@ import { useBracket, bracketKeys, useBracketSelection } from 'brackets';
 const baseKey = '0';
 
 export default () => {
-  const [bracket, setBracket] = useBracket();
+  const [bracket, bracketKey, setBracket] = useBracket();
   const [{ version, versions }, setVersion] = useLocalStorageVersion();
 
   const [winnerSelection, setWinnerSelection] = useBracketSelection(baseKey);
@@ -28,7 +28,7 @@ export default () => {
             padding: 5,
             cursor: 'pointer',
             borderRadius: 2,
-            ...(key === bracket.key
+            ...(key === bracketKey
               ? { background: 'white', color: 'black' }
               : {}),
           }}
@@ -89,14 +89,14 @@ export default () => {
         {bracketSelector}
         {controls}
       </div>
-      <ForkWrapper data={bracket.data} selectionKey={baseKey} />
+      <ForkWrapper data={bracket} selectionKey={baseKey} />
       <div
         style={{
           width: segmentWidth,
           borderBottom: '2px solid white',
         }}
       >
-        <ForkItem data={bracket.data} picked={winnerSelection} />
+        <ForkItem data={bracket} picked={winnerSelection} />
       </div>
     </div>
   ) : (
@@ -108,10 +108,7 @@ export default () => {
         fontSize: '0.7vw',
       }}
     >
-      <ForkWrapper
-        data={bracket.data.options[0]}
-        selectionKey={`${baseKey}-0`}
-      />
+      <ForkWrapper data={bracket.options[0]} selectionKey={`${baseKey}-0`} />
       <div
         style={{
           display: 'flex',
@@ -143,7 +140,7 @@ export default () => {
               <ForkItem
                 onSelect={setWinnerSelection}
                 picked={selected1}
-                data={bracket.data.options[0]}
+                data={bracket.options[0]}
               />
             </div>
           </div>
@@ -167,7 +164,7 @@ export default () => {
                 right
                 onSelect={setWinnerSelection}
                 picked={selected2}
-                data={bracket.data.options[1]}
+                data={bracket.options[1]}
               />
             </div>
           </div>
@@ -178,14 +175,14 @@ export default () => {
             borderBottom: '2px solid white',
           }}
         >
-          <ForkItem picked={winnerSelection} data={bracket.data} />
+          <ForkItem picked={winnerSelection} data={bracket} />
         </div>
         {/* Spacer to balance bracket selector */}
         <div />
       </div>
       <ForkWrapper
         right
-        data={bracket.data.options[1]}
+        data={bracket.options[1]}
         selectionKey={`${baseKey}-1`}
       />
     </div>

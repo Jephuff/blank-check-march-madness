@@ -76,7 +76,7 @@ const allSeries = {
   'Nightmare on Elm St': { imdb: '' },
   'Planet of the Apes: Originals': { imdb: '' },
   'Police Story': { imdb: '' },
-  'Qatsi Trilogy': { imdb: '' },
+  'Qatsi Trilogy': { imdb: 'https://en.wikipedia.org/wiki/Qatsi_trilogy' },
   'Resident Evil': { imdb: '' },
   Robocop: { imdb: '' },
   Shrek: { imdb: '' },
@@ -87,7 +87,9 @@ const allSeries = {
   'The Exorcist': { imdb: '' },
   'The Matrix': { imdb: '' },
   'The Muppets': { imdb: '' },
-  'Three Colours': { imdb: '' },
+  'Three Colours': {
+    imdb: 'https://en.wikipedia.org/wiki/Three_Colours_trilogy',
+  },
   Twilight: { imdb: '' },
   Wolverine: { imdb: '' },
 };

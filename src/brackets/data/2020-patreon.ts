@@ -24,6 +24,7 @@ const data: Data<0> = {
               ],
             },
             {
+              poll: 'https://www.patreon.com/posts/sweet-16-live-35044474',
               options: [
                 {
                   winner: 'Austin Powers',
@@ -83,6 +84,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              winner: 'Mission: Impossible',
               poll: 'https://www.patreon.com/posts/sweet-16-battle-35008476',
               options: [
                 {
