@@ -108,19 +108,6 @@ export default () => {
         fontSize: '0.7vw',
       }}
     >
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          left: 0,
-          display: 'flex',
-          justifyContent: 'center',
-          paddingTop: 5,
-        }}
-      >
-        {bracketSelector}
-      </div>
       <ForkWrapper
         data={bracket.data.options[0]}
         selectionKey={`${baseKey}-0`}
@@ -134,6 +121,7 @@ export default () => {
           justifyContent: 'space-around',
         }}
       >
+        {bracketSelector}
         {controls}
         <div style={{ display: 'flex' }}>
           <div
@@ -192,6 +180,8 @@ export default () => {
         >
           <ForkItem picked={winnerSelection} data={bracket.data} />
         </div>
+        {/* Spacer to balance bracket selector */}
+        <div />
       </div>
       <ForkWrapper
         right
