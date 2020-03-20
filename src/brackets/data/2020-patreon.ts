@@ -24,6 +24,7 @@ const data: Data<0> = {
               ],
             },
             {
+              winner: 'Star Trek: TOS',
               poll: 'https://www.patreon.com/posts/sweet-16-live-35044474',
               options: [
                 {
@@ -101,6 +102,7 @@ const data: Data<0> = {
               ],
             },
             {
+              poll: 'https://www.patreon.com/posts/sweet-16-snape-35052057',
               options: [
                 {
                   winner: 'The Muppets',
