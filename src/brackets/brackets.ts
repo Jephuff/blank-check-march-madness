@@ -5,38 +5,48 @@ import { useLocalStorage, useLocalStorageVersioned } from 'useLocalStorage';
 import { Data } from 'brackets/types';
 import { Options } from 'allOptions';
 
-export const bracketKeys = [
+export enum Bracket {
   'Bracket 2019',
   'Bracket 2020',
   'Bracket 2020 Patreon',
-] as const;
+}
 
 const useBracketData = createUseAsync(
-  ({
-    bracketKey,
-  }: {
-    bracketKey: 'Bracket 2019' | 'Bracket 2020' | 'Bracket 2020 Patreon';
-  }) => {
+  ({ bracketKey }: { bracketKey: Bracket }) => {
     switch (bracketKey) {
-      case 'Bracket 2019':
+      case Bracket['Bracket 2019']:
         return import('./data/2019').then(r => r.default);
-      case 'Bracket 2020':
+      case Bracket['Bracket 2020']:
         return import('./data/2020').then(r => r.default);
-      case 'Bracket 2020 Patreon':
+      case Bracket['Bracket 2020 Patreon']:
         return import('./data/2020-patreon').then(r => r.default);
       default:
         throw new Unreachable(bracketKey);
     }
   }
 );
-export const useBracket = (): [
-  Data<0>,
-  'Bracket 2019' | 'Bracket 2020' | 'Bracket 2020 Patreon',
-  (key: 'Bracket 2019' | 'Bracket 2020' | 'Bracket 2020 Patreon') => void
-] => {
-  const [bracketKey, setBracketKey] = useLocalStorage<
-    'Bracket 2019' | 'Bracket 2020' | 'Bracket 2020 Patreon'
-  >('bracket-key', 'Bracket 2020');
+const bracketKeyMigration = (value: unknown): Bracket => {
+  switch (typeof value) {
+    case 'number':
+      if (Bracket[value]) return value;
+      break;
+    case 'string':
+      if (typeof Bracket[value as any] === 'number') {
+        return (Bracket[value as any] as unknown) as any;
+      }
+      break;
+  }
+
+  return Bracket['Bracket 2020'];
+};
+
+export const useBracket = (): [Data<0>, Bracket, (key: Bracket) => void] => {
+  const [bracketKey, setBracketKey] = useLocalStorage<Bracket>(
+    'bracket-key',
+    Bracket['Bracket 2020'],
+    undefined,
+    bracketKeyMigration
+  );
 
   return [useBracketData({ bracketKey }), bracketKey, setBracketKey];
 };

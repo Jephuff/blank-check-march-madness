@@ -2,11 +2,13 @@ import { useState, useEffect, useCallback } from 'react';
 import { useBracket } from 'brackets';
 import EventEmitter3 from 'eventemitter3';
 import _ from 'lodash';
+import { Bracket } from 'brackets/brackets';
 type StorableValue =
   | { [key: string]: any }
   | undefined
   | string
-  | Array<unknown>;
+  | Array<unknown>
+  | number;
 
 interface Versions {
   version: number;
@@ -15,7 +17,8 @@ interface Versions {
 function parseValue<Value>(
   k: string,
   initialValue: Value,
-  version?: number
+  version?: number,
+  migration?: (value: unknown) => Value
 ): Value {
   let data = null;
   let cur = version ?? 1;
@@ -27,7 +30,8 @@ function parseValue<Value>(
   }
 
   if (data) {
-    return JSON.parse(data);
+    const value = JSON.parse(data);
+    return migration ? migration(value) : value;
   } else {
     return initialValue;
   }
@@ -38,7 +42,8 @@ const emitter = new EventEmitter3();
 export const useLocalStorage = <Value extends StorableValue>(
   k: string,
   initialValueInput: Value,
-  versionData?: Versions
+  versionData?: Versions,
+  migration?: (value: unknown) => Value
 ) => {
   const [initialValue, setInitialValueCached] = useState(initialValueInput);
   useEffect(() => {
@@ -50,8 +55,8 @@ export const useLocalStorage = <Value extends StorableValue>(
   const version = versionData?.version;
   const key = versionData ? `${k}-${version}` : k;
   const getCurrentState = useCallback(
-    () => parseValue(k, initialValue, version),
-    [k, initialValue, version]
+    () => parseValue(k, initialValue, version, migration),
+    [k, initialValue, version, migration]
   );
   const [state, setState] = useState(getCurrentState);
 
@@ -85,7 +90,7 @@ export const useLocalStorageVersion = () => {
   const [, bracketKey] = useBracket();
   const [v, setVersion] = useLocalStorage(
     `version-${bracketKey}`,
-    bracketKey === 'Bracket 2019' ? legacyVersion : defaultVersion
+    bracketKey === Bracket['Bracket 2019'] ? legacyVersion : defaultVersion
   );
   version = v;
   return [v, setVersion] as const;

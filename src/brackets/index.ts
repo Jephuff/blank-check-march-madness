@@ -1,4 +1,4 @@
 import { Data as DataImport } from './types';
 
 export type Data = DataImport;
-export { useBracket, bracketKeys, useBracketSelection } from './brackets';
+export { useBracket, Bracket, useBracketSelection } from './brackets';

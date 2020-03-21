@@ -4,7 +4,7 @@ import { useLocalStorageVersion } from './useLocalStorage';
 import _ from 'lodash';
 import { ForkItem } from './ForkItem';
 import { useIsSmall, useSegmentWidth } from './useScreenSize';
-import { useBracket, bracketKeys, useBracketSelection } from 'brackets';
+import { useBracket, Bracket, useBracketSelection } from 'brackets';
 
 const baseKey = '0';
 
@@ -22,22 +22,25 @@ export default () => {
   const bracketSelector = (
     <div style={{ display: 'flex' }}>
       <div style={{ padding: 5 }}>bracket:</div>
-      {bracketKeys.map(key => (
-        <div
-          style={{
-            padding: 5,
-            cursor: 'pointer',
-            borderRadius: 2,
-            ...(key === bracketKey
-              ? { background: 'white', color: 'black' }
-              : {}),
-          }}
-          key={key}
-          onClick={() => setBracket(key)}
-        >
-          {key}
-        </div>
-      ))}
+      {Object.values(Bracket).map(key => {
+        if (typeof key !== 'number') return null;
+        return (
+          <div
+            style={{
+              padding: 5,
+              cursor: 'pointer',
+              borderRadius: 2,
+              ...(key === bracketKey
+                ? { background: 'white', color: 'black' }
+                : {}),
+            }}
+            key={key}
+            onClick={() => setBracket(key)}
+          >
+            {Bracket[key]}
+          </div>
+        );
+      })}
     </div>
   );
   const controls = (
