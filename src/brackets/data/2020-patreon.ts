@@ -103,6 +103,7 @@ const data: Data<0> = {
               ],
             },
             {
+              winner: 'The Muppets',
               poll: 'https://www.patreon.com/posts/sweet-16-snape-35052057',
               options: [
                 {
