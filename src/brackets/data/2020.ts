@@ -43,6 +43,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              poll: '1241394192565391360',
               options: [
                 {
                   winner: 'Danny Boyle',
@@ -95,6 +96,7 @@ const data: Data<0> = {
               ],
             },
             {
+              winner: 'Prince',
               poll: '1241036282052083713',
               options: [
                 {

@@ -45,6 +45,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              poll: 'https://www.patreon.com/posts/sweet-16-only-10-35114021',
               options: [
                 {
                   winner: 'Resident Evil',
