@@ -2,7 +2,6 @@ import { createUseAsync } from 'react-create-use-async';
 import { Unreachable } from 'react-create-use-async/dist/UnreachableError';
 
 import { useLocalStorage, useLocalStorageVersioned } from 'useLocalStorage';
-import { Data } from 'brackets/types';
 import { Options } from 'allOptions';
 
 export enum Bracket {
@@ -11,7 +10,7 @@ export enum Bracket {
   'Bracket 2020 Patreon',
 }
 
-const useBracketData = createUseAsync(
+export const useBracketData = createUseAsync(
   ({ bracketKey }: { bracketKey: Bracket }) => {
     switch (bracketKey) {
       case Bracket['Bracket 2019']:
@@ -25,6 +24,7 @@ const useBracketData = createUseAsync(
     }
   }
 );
+
 const bracketKeyMigration = (value: unknown): Bracket => {
   switch (typeof value) {
     case 'number':
@@ -40,7 +40,7 @@ const bracketKeyMigration = (value: unknown): Bracket => {
   return Bracket['Bracket 2020'];
 };
 
-export const useBracket = (): [Data<0>, Bracket, (key: Bracket) => void] => {
+export const useBracketKey = (): [Bracket, (key: Bracket) => void] => {
   const [bracketKey, setBracketKey] = useLocalStorage<Bracket>(
     'bracket-key',
     Bracket['Bracket 2020'],
@@ -48,11 +48,11 @@ export const useBracket = (): [Data<0>, Bracket, (key: Bracket) => void] => {
     bracketKeyMigration
   );
 
-  return [useBracketData({ bracketKey }), bracketKey, setBracketKey];
+  return [bracketKey, setBracketKey];
 };
 
 export const useBracketSelection = (key: string) => {
-  const [, bracketKey] = useBracket();
+  const [bracketKey] = useBracketKey();
   return useLocalStorageVersioned<Options | undefined>(
     `bracket-selection-${bracketKey}-key-${key}`,
     undefined

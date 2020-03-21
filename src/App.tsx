@@ -4,12 +4,18 @@ import { useLocalStorageVersion } from './useLocalStorage';
 import _ from 'lodash';
 import { ForkItem } from './ForkItem';
 import { useIsSmall, useSegmentWidth } from './useScreenSize';
-import { useBracket, Bracket, useBracketSelection } from 'brackets';
+import {
+  useBracketKey,
+  Bracket,
+  useBracketSelection,
+  useBracketData,
+} from 'brackets';
 
 const baseKey = '0';
 
 export default () => {
-  const [bracket, bracketKey, setBracket] = useBracket();
+  const [bracketKey, setBracket] = useBracketKey();
+  const bracket = useBracketData({ bracketKey });
   const [{ version, versions }, setVersion] = useLocalStorageVersion();
 
   const [winnerSelection, setWinnerSelection] = useBracketSelection(baseKey);

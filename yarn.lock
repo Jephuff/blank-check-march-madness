@@ -4224,6 +4224,11 @@ eslint-plugin-flowtype@4.6.0:
   dependencies:
     lodash "^4.17.15"
 
+eslint-plugin-function-return-assigned-name@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-function-return-assigned-name/-/eslint-plugin-function-return-assigned-name-0.0.0.tgz#3244efd7060c495c32798ee28bbb903e7f20c632"
+  integrity sha512-+2FOpcX7ZgFMmrzkjNZDuirQ1mQbqL0CeLRtiD0O/m4PG30r/6CPLN9FxbJTji0CoXwzb7Q74Qyp9I66perHsw==
+
 eslint-plugin-import@2.20.0:
   version "2.20.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.20.0.tgz#d749a7263fb6c29980def8e960d380a6aa6aecaa"

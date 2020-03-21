@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useBracket } from 'brackets';
 import EventEmitter3 from 'eventemitter3';
 import _ from 'lodash';
-import { Bracket } from 'brackets/brackets';
+import { Bracket, useBracketKey } from 'brackets';
+
 type StorableValue =
   | { [key: string]: any }
   | undefined
@@ -87,7 +87,7 @@ const defaultVersion = { version: 1, versions: 1 };
 let version = defaultVersion;
 export const useLocalStorageVersion = () => {
   const [legacyVersion] = useLocalStorage('version', defaultVersion);
-  const [, bracketKey] = useBracket();
+  const [bracketKey] = useBracketKey();
   const [v, setVersion] = useLocalStorage(
     `version-${bracketKey}`,
     bracketKey === Bracket['Bracket 2019'] ? legacyVersion : defaultVersion
