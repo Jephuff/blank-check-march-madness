@@ -9,13 +9,8 @@
     "@types/lodash": "^4.14.149",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
-    "eslint-config-prettier": "6.10.0",
-    "eslint-plugin-prettier": "3.1.2",
-    "eslint-plugin-react-hooks": "2.5.1",
     "lodash": "4.17.15",
-    "prettier": "2.0.1",
     "react": "^16.8.3",
-    "react-bracket": "0.0.4",
     "react-create-use-async": "^1.0.1",
     "react-dom": "^16.8.3",
     "react-icons": "3.9.0",
@@ -35,6 +30,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "prettier": "2.0.1",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-react-hooks": "2.5.1",
     "eslint-plugin-function-return-assigned-name": "^0.0.0"
   }
 }
