@@ -2,6 +2,9 @@
   "name": "blank-check-march-madness",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=10.13.0"
+  },
   "dependencies": {
     "@types/lodash": "^4.14.149",
     "@types/react": "^16.9.23",
