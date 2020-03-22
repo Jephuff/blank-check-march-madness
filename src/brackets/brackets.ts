@@ -14,11 +14,11 @@ export const useBracketData = createUseAsync(
   ({ bracketKey }: { bracketKey: Bracket }) => {
     switch (bracketKey) {
       case Bracket['Bracket 2019']:
-        return import('./data/2019').then(r => r.default);
+        return import('./data/2019').then((r) => r.default);
       case Bracket['Bracket 2020']:
-        return import('./data/2020').then(r => r.default);
+        return import('./data/2020').then((r) => r.default);
       case Bracket['Bracket 2020 Patreon']:
-        return import('./data/2020-patreon').then(r => r.default);
+        return import('./data/2020-patreon').then((r) => r.default);
       default:
         throw new Unreachable(bracketKey);
     }

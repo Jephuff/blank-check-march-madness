@@ -28,7 +28,7 @@ export default () => {
   const bracketSelector = (
     <div style={{ display: 'flex' }}>
       <div style={{ padding: 5 }}>bracket:</div>
-      {Object.values(Bracket).map(key => {
+      {Object.values(Bracket).map((key) => {
         if (typeof key !== 'number') return null;
         return (
           <div
@@ -56,7 +56,7 @@ export default () => {
       </label>
       <select
         id="version"
-        onChange={event => {
+        onChange={(event) => {
           const value = event.target.value;
           if (value === 'new') {
             setVersion({ versions: versions + 1, version: versions + 1 });
@@ -66,7 +66,7 @@ export default () => {
         }}
         value={version}
       >
-        {_.range(1, versions + 1).map(k => (
+        {_.range(1, versions + 1).map((k) => (
           <option key={k}>{k}</option>
         ))}
         <option>new</option>

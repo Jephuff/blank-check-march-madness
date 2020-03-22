@@ -5,16 +5,16 @@ import { Data, useBracketSelection } from 'brackets';
 function isLeafOptions(
   options: [Data | string, Data | string]
 ): options is [string, string] {
-  return options.every(o => typeof o === 'string');
+  return options.every((o) => typeof o === 'string');
 }
 
 function isBracketOptions(
   options: [Data | string, Data | string]
 ): options is [Data, Data] {
-  return options.every(o => typeof o !== 'string');
+  return options.every((o) => typeof o !== 'string');
 }
 
-const ForkWrapper = function({
+const ForkWrapper = function ({
   data,
   right,
   selectionKey,

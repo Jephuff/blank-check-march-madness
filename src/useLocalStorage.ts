@@ -47,7 +47,7 @@ export const useLocalStorage = <Value extends StorableValue>(
 ) => {
   const [initialValue, setInitialValueCached] = useState(initialValueInput);
   useEffect(() => {
-    setInitialValueCached(value =>
+    setInitialValueCached((value) =>
       _.isEqual(value, initialValueInput) ? value : initialValueInput
     );
   }, [initialValueInput]);
