@@ -63,6 +63,7 @@ const data: Data<0> = {
               ],
             },
             {
+              poll: 'https://www.patreon.com/posts/sweet-16-theyre-35181430',
               options: [
                 {
                   winner: 'Nightmare on Elm St',
@@ -124,6 +125,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              winner: 'John wick',
               poll: 'https://www.patreon.com/posts/sweet-16-two-35145981',
               options: [
                 {
