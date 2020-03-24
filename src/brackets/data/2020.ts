@@ -59,6 +59,7 @@ const data: Data<0> = {
               ],
             },
             {
+              winner: 'Guillermo Del Toro',
               poll: '1242121426221621249',
               options: [
                 {
@@ -134,6 +135,7 @@ const data: Data<0> = {
               ],
             },
             {
+              poll: '1242478407524507648',
               options: [
                 {
                   winner: 'Barry Sonnenfeld',

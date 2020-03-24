@@ -63,6 +63,7 @@ const data: Data<0> = {
               ],
             },
             {
+              winner: 'Nightmare on Elm St',
               poll: 'https://www.patreon.com/posts/sweet-16-theyre-35181430',
               options: [
                 {
@@ -142,6 +143,7 @@ const data: Data<0> = {
               ],
             },
             {
+              poll: 'https://www.patreon.com/posts/sweet-16-were-35215118',
               options: [
                 {
                   winner: 'Three Colours',
