@@ -5,6 +5,7 @@ const data: Data<0> = {
     {
       options: [
         {
+          poll: 'https://www.patreon.com/posts/elite-8-trouble-35255376',
           options: [
             {
               winner: 'Alien',
@@ -143,6 +144,7 @@ const data: Data<0> = {
               ],
             },
             {
+              winner: 'Three Colours',
               poll: 'https://www.patreon.com/posts/sweet-16-were-35215118',
               options: [
                 {

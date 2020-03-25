@@ -5,6 +5,7 @@ const data: Data<0> = {
     {
       options: [
         {
+          poll: '1242843806652870659',
           options: [
             {
               winner: 'Coen Brothers',
@@ -135,6 +136,7 @@ const data: Data<0> = {
               ],
             },
             {
+              winner: 'Barry Sonnenfeld',
               poll: '1242478407524507648',
               options: [
                 {
