@@ -30,10 +30,11 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "prettier": "2.0.1",
+    "@types/jest": "^25.1.4",
     "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-function-return-assigned-name": "^0.0.0",
     "eslint-plugin-prettier": "3.1.2",
     "eslint-plugin-react-hooks": "2.5.1",
-    "eslint-plugin-function-return-assigned-name": "^0.0.0"
+    "prettier": "2.0.1"
   }
 }
