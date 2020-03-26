@@ -5,6 +5,7 @@ const data: Data<0> = {
     {
       options: [
         {
+          winner: 'Robert Zemeckis',
           poll: '1242843806652870659',
           options: [
             {
@@ -82,6 +83,7 @@ const data: Data<0> = {
     {
       options: [
         {
+          poll: '1243204989717303297',
           options: [
             {
               winner: 'Michael Bay',
