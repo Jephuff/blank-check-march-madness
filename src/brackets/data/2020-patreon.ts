@@ -45,6 +45,7 @@ const data: Data<0> = {
           ],
         },
         {
+          poll: 'https://www.patreon.com/posts/elite-8-some-ben-35327013',
           options: [
             {
               winner: 'Resident Evil',
@@ -89,6 +90,7 @@ const data: Data<0> = {
     {
       options: [
         {
+          winner: 'Mission: Impossible',
           poll: 'https://www.patreon.com/posts/elite-8-this-is-35291058',
           options: [
             {
