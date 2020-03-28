@@ -43,6 +43,7 @@ const data: Data<0> = {
           ],
         },
         {
+          winner: 'Bong Joon-Ho',
           poll: '1243568523198246912',
           options: [
             {
@@ -122,6 +123,7 @@ const data: Data<0> = {
           ],
         },
         {
+          poll: '1243929452859580416',
           options: [
             {
               winner: 'Martin Brest',

@@ -45,6 +45,7 @@ const data: Data<0> = {
           ],
         },
         {
+          winner: 'Resident Evil',
           poll: 'https://www.patreon.com/posts/elite-8-some-ben-35327013',
           options: [
             {
@@ -129,6 +130,7 @@ const data: Data<0> = {
           ],
         },
         {
+          poll: 'https://www.patreon.com/posts/elite-8-who-will-35360170',
           options: [
             {
               winner: 'John wick',
