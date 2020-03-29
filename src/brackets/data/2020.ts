@@ -3,6 +3,7 @@ import { Data } from 'brackets/types';
 const data: Data<0> = {
   options: [
     {
+      poll: '1244296929007321090',
       options: [
         {
           winner: 'Robert Zemeckis',
@@ -123,6 +124,7 @@ const data: Data<0> = {
           ],
         },
         {
+          winner: 'Barry Sonnenfeld',
           poll: '1243929452859580416',
           options: [
             {
