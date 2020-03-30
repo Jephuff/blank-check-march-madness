@@ -3,6 +3,7 @@ import { Data } from 'brackets/types';
 const data: Data<0> = {
   options: [
     {
+      winner: 'Alien',
       poll: 'https://www.patreon.com/posts/final-4-ellen-vs-35395193',
       options: [
         {
@@ -90,6 +91,7 @@ const data: Data<0> = {
       ],
     },
     {
+      poll: 'https://www.patreon.com/posts/final-4-two-its-35432616',
       options: [
         {
           winner: 'Mission: Impossible',
