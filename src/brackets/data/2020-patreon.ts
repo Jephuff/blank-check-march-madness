@@ -1,6 +1,7 @@
 import { Data } from 'brackets/types';
 
 const data: Data<0> = {
+  winner: 'Mission: Impossible',
   poll: 'https://www.patreon.com/posts/patreon-march-35473621',
   options: [
     {
