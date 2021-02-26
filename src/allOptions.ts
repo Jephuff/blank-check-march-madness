@@ -55,6 +55,27 @@ const allDirectors = {
   'Tony Scott': { imdb: 'nm0001716' },
   'Warren Beatty': { imdb: 'nm0000886' },
   'William Friedkin': { imdb: 'nm0001243' },
+  'John Cassavettes': { imdb: undefined, },
+  'Lynne Ramsay': { imdb: undefined, },
+  'David S. Ward': { imdb: undefined, },
+  'Mike Judge': { imdb: undefined, },
+  'Danny Devito': { imdb: undefined, },
+  'Harmony Korine': { imdb: undefined, },
+  'Ernest Dickerson': { imdb: undefined, },
+  'Spike Jonze': { imdb: undefined, },
+  'Penelope Spheeris': { imdb: undefined, },
+  'Karyn Kusama': { imdb: undefined, },
+  'Jane Campion': { imdb: undefined, },
+  'The Archers': { imdb: undefined, },
+  'Wong Kar Wai': { imdb: undefined, },
+  'Steve McQueen': { imdb: undefined, },
+  'Mike Leigh': { imdb: undefined, },
+  'Joe Johnston': { imdb: undefined, },
+  'Jacques Tati': { imdb: undefined, },
+  'Wolfgang Petersen': { imdb: undefined, },
+  'Oliver Stone': { imdb: undefined, },
+  'Jackie Chan': { imdb: undefined, },
+  'Kelly Reichardt': { imdb: undefined, },
 };
 
 const allSeries = {
@@ -92,6 +113,38 @@ const allSeries = {
   },
   Twilight: { imdb: '' },
   Wolverine: { imdb: '' },
+
+
+  TMNT: { imdb: '' },
+  'Hunger Games': { imdb: '' },
+  'Freddy/Elm St.': { imdb: '' },
+  'Final Destination': { imdb: '' },
+  'Analyze This': { imdb: '' },
+  'Vacation': { imdb: '' },
+  'H.S. Musical': { imdb: '' },
+  'Rugrats': { imdb: '' },
+  'Men in Black': { imdb: '' },
+  'Toxic Avengers': { imdb: '' },
+  'Chucky': { imdb: '' },
+  'Lego': { imdb: '' },
+  'The Mummy': { imdb: '' },
+  'Bill & Ted': { imdb: '' },
+  'Barbershop': { imdb: '' },
+  
+  'Bourne': { imdb: '' },
+  'Monty Python': { imdb: '' },
+  'Cheech & Chong': { imdb: '' },
+
+  'Riddick': { imdb: '' },
+  'The Mighty Ducks': { imdb: '' },
+  'The Karate Kid': { imdb: '' },
+  'Rocky': { imdb: '' },
+  'Dirty Harry': { imdb: '' },
+
+
+  'Saw': { imdb: '' },
+  'Blair Witch': { imdb: '' },
+
 };
 
 export const allOptions = {
