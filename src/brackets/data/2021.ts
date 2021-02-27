@@ -35,12 +35,12 @@ const data: Data<0> = {
                 {
                   winner: undefined,
                   poll: undefined,
-                  options: ['70S Altman', 'John Cassavettes'],
+                  options: ['70S Altman', 'John Cassavetes'],
                 },
                 {
                   winner: undefined,
                   poll: undefined,
-                  options: ['Joe Dante', "Preston Sturges"],
+                  options: ['Joe Dante', 'Preston Sturges'],
                 },
               ],
             },
@@ -160,7 +160,7 @@ const data: Data<0> = {
                 {
                   winner: undefined,
                   poll: undefined,
-                  options: ['Alfonso Cuaron', "Kelly Reichardt"],
+                  options: ['Alfonso Cuaron', 'Kelly Reichardt'],
                 },
               ],
             },

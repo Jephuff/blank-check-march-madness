@@ -24,7 +24,7 @@ const data: Data<0> = {
                 {
                   winner: undefined,
                   poll: undefined,
-                  options: ['Hunger Games', "Twilight"],
+                  options: ['Hunger Games', 'Twilight'],
                 },
               ],
             },
@@ -87,7 +87,7 @@ const data: Data<0> = {
       ],
     },
     {
-        winner: undefined,
+      winner: undefined,
       poll: undefined,
       options: [
         {
@@ -139,7 +139,7 @@ const data: Data<0> = {
                 {
                   winner: undefined,
                   poll: undefined,
-                  options: ['Resident Evil', "Riddick"],
+                  options: ['Resident Evil', 'Riddick'],
                 },
                 {
                   winner: undefined,
