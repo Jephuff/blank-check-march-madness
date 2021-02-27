@@ -13,7 +13,7 @@ import {
 
 const baseKey = '0';
 
-export default () => {
+export const App = () => {
   const [bracketKey, setBracket] = useBracketKey();
   const bracket = useBracketData({ bracketKey });
   const [{ version, versions }, setVersion] = useLocalStorageVersion();
