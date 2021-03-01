@@ -18,7 +18,8 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-1-48183389',
                   options: ['The Muppets', 'TMNT'],
                 },
                 {
