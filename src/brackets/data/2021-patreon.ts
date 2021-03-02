@@ -24,7 +24,8 @@ const data: Data<0> = {
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-2-48204836',
                   options: ['Hunger Games', 'Twilight'],
                 },
               ],
