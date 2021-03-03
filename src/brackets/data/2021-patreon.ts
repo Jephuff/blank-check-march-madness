@@ -36,7 +36,8 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-3-48282213',
                   options: ['Freddy/Elm St.', 'Final Destination'],
                 },
                 {

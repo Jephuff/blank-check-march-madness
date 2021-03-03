@@ -56,7 +56,7 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: '1367128193161973762',
                   options: ['John Carpenter', 'David S. Ward'],
                 },
                 {
@@ -99,7 +99,7 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Karyn Kusama',
                   poll: '1366765825273790469',
                   options: ['Peter Weir', 'Karyn Kusama'],
                 },
