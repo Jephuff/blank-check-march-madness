@@ -17,13 +17,13 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'The Muppets',
                   poll:
                     'https://www.patreon.com/posts/march-madness-1-48183389',
                   options: ['The Muppets', 'TMNT'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Twilight',
                   poll:
                     'https://www.patreon.com/posts/march-madness-2-48204836',
                   options: ['Hunger Games', 'Twilight'],
@@ -35,14 +35,15 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Final Destination',
                   poll:
                     'https://www.patreon.com/posts/march-madness-3-48282213',
                   options: ['Freddy/Elm St.', 'Final Destination'],
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-4-48335349',
                   options: ['Analyze This', 'Vacation'],
                 },
               ],
