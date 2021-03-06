@@ -41,7 +41,7 @@ const data: Data<0> = {
                   options: ['Freddy/Elm St.', 'Final Destination'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Analyze This',
                   poll:
                     'https://www.patreon.com/posts/march-madness-4-48335349',
                   options: ['Analyze This', 'Vacation'],
@@ -60,7 +60,8 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-5-48375810',
                   options: ['H.S. Musical', 'Rugrats'],
                 },
                 {
