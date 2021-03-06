@@ -22,7 +22,7 @@ const data: Data<0> = {
                   options: ['Martin Brest', 'Lynne Ramsay'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Terrence Malick',
                   poll: '1367853019044446218',
                   options: ['Buster Keaton', 'Terrence Malick'],
                 },
@@ -105,7 +105,7 @@ const data: Data<0> = {
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: '1368215340740730887',
                   options: ['Jane Campion', 'The Archers'],
                 },
               ],

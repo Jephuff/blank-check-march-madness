@@ -59,14 +59,15 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Rugrats',
                   poll:
                     'https://www.patreon.com/posts/march-madness-5-48375810',
                   options: ['H.S. Musical', 'Rugrats'],
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-6-48411726',
                   options: ['Robocop', 'Men in Black'],
                 },
               ],
