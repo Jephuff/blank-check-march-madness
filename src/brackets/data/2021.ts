@@ -61,7 +61,7 @@ const data: Data<0> = {
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: '1368577492659953666',
                   options: ['Mike Judge', 'Danny Devito'],
                 },
               ],
@@ -104,7 +104,7 @@ const data: Data<0> = {
                   options: ['Peter Weir', 'Karyn Kusama'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Jane Campion',
                   poll: '1368215340740730887',
                   options: ['Jane Campion', 'The Archers'],
                 },
