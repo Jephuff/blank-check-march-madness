@@ -60,7 +60,7 @@ const data: Data<0> = {
                   options: ['John Carpenter', 'David S. Ward'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Danny Devito',
                   poll: '1368577492659953666',
                   options: ['Mike Judge', 'Danny Devito'],
                 },
@@ -143,7 +143,7 @@ const data: Data<0> = {
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: '1368940129281339394',
                   options: ['Jacques Tati', 'Wolfgang Petersen'],
                 },
               ],
