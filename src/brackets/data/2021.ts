@@ -34,7 +34,7 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: '1369302630955155457',
                   options: ['70S Altman', 'John Cassavetes'],
                 },
                 {
@@ -142,7 +142,7 @@ const data: Data<0> = {
                   options: ['Gore Verbinski', 'Joe Johnston'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Wolfgang Petersen',
                   poll: '1368940129281339394',
                   options: ['Jacques Tati', 'Wolfgang Petersen'],
                 },

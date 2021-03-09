@@ -83,7 +83,7 @@ const data: Data<0> = {
                   options: ['Toxic Avengers', 'Superman'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Lego',
                   poll:
                     'https://www.patreon.com/posts/march-madness-8-48498169',
                   options: ['Chucky', 'Lego'],
@@ -108,7 +108,8 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-9-48546121',
                   options: ['Planet of the Apes: Originals', 'The Mummy'],
                 },
                 {
