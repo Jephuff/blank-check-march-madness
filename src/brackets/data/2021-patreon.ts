@@ -107,14 +107,15 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'The Mummy',
                   poll:
                     'https://www.patreon.com/posts/march-madness-9-48546121',
                   options: ['Planet of the Apes: Originals', 'The Mummy'],
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-10-48583274',
                   options: ['Bill & Ted', 'Barbershop'],
                 },
               ],
