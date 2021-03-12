@@ -72,7 +72,7 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: '1370027307327385603',
                   options: ['Harmony Korine', 'Ernest Dickerson'],
                 },
                 {
@@ -115,7 +115,7 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Wong Kar Wai',
                   poll: '1369664878907187203',
                   options: ['Wong Kar Wai', 'Steve McQueen'],
                 },

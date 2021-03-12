@@ -113,7 +113,7 @@ const data: Data<0> = {
                   options: ['Planet of the Apes: Originals', 'The Mummy'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Bill & Ted',
                   poll:
                     'https://www.patreon.com/posts/march-madness-10-48583274',
                   options: ['Bill & Ted', 'Barbershop'],
@@ -126,7 +126,8 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-11-48629535',
                   options: ['Bourne', 'Austin Powers'],
                 },
                 {
