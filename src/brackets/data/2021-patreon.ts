@@ -131,7 +131,7 @@ const data: Data<0> = {
                   options: ['Bourne', 'Austin Powers'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Monty Python',
                   poll:
                     'https://www.patreon.com/posts/march-madness-12-48675661',
                   options: ['Monty Python', 'Cheech & Chong'],
