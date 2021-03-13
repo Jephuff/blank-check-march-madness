@@ -150,7 +150,8 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-13-48707149',
                   options: ['Resident Evil', 'Riddick'],
                 },
                 {
