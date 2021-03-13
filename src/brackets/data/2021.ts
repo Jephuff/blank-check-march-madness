@@ -71,7 +71,7 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Ernest Dickerson',
                   poll: '1370027307327385603',
                   options: ['Harmony Korine', 'Ernest Dickerson'],
                 },
@@ -154,7 +154,7 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: '1370389660749467649',
                   options: ['Oliver Stone', 'Jackie Chan'],
                 },
                 {
