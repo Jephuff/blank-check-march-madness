@@ -121,7 +121,7 @@ const data: Data<0> = {
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: '1371099351012028419',
                   options: ['Danny Boyle', 'Mike Leigh'],
                 },
               ],
