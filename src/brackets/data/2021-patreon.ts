@@ -149,14 +149,15 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Resident Evil',
                   poll:
                     'https://www.patreon.com/posts/march-madness-13-48707149',
                   options: ['Resident Evil', 'Riddick'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'The Mighty Ducks',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-14-48738945',
                   options: ['The Mighty Ducks', 'The Karate Kid'],
                 },
               ],
@@ -167,7 +168,8 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-15-48780588',
                   options: ['Rocky', 'Dirty Harry'],
                 },
                 {

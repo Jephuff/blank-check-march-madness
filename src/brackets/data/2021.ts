@@ -38,7 +38,7 @@ const data: Data<0> = {
                   options: ['70S Altman', 'John Cassavetes'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Joe Dante',
                   poll: '1370752626241982468',
                   options: ['Joe Dante', 'Preston Sturges'],
                 },
@@ -77,7 +77,7 @@ const data: Data<0> = {
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: '1371461773593870343',
                   options: ['Spike Jonze', 'Penelope Spheeris'],
                 },
               ],
@@ -120,7 +120,7 @@ const data: Data<0> = {
                   options: ['Wong Kar Wai', 'Steve McQueen'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Danny Boyle',
                   poll: '1371099351012028419',
                   options: ['Danny Boyle', 'Mike Leigh'],
                 },
