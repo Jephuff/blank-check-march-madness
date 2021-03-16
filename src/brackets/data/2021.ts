@@ -76,7 +76,7 @@ const data: Data<0> = {
                   options: ['Harmony Korine', 'Ernest Dickerson'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Spike Jonze',
                   poll: '1371461773593870343',
                   options: ['Spike Jonze', 'Penelope Spheeris'],
                 },
@@ -159,7 +159,7 @@ const data: Data<0> = {
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: '1371823769061363714',
                   options: ['Alfonso Cuaron', 'Kelly Reichardt'],
                 },
               ],
