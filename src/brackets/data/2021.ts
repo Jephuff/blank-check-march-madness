@@ -14,7 +14,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: '1372186522405994499',
               options: [
                 {
                   winner: 'Martin Brest',
@@ -158,7 +158,7 @@ const data: Data<0> = {
                   options: ['Oliver Stone', 'Jackie Chan'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Alfonso Cuaron',
                   poll: '1371823769061363714',
                   options: ['Alfonso Cuaron', 'Kelly Reichardt'],
                 },
