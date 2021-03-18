@@ -13,7 +13,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'Terrence Malick',
               poll: '1372186522405994499',
               options: [
                 {
@@ -96,7 +96,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: '1372548773013032966',
               options: [
                 {
                   winner: 'Karyn Kusama',
