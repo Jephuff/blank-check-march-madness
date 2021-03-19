@@ -31,7 +31,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: 'Final Destination',
               poll: 'https://www.patreon.com/posts/march-madness-2-48907036',
               options: [
                 {
@@ -56,7 +56,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-3-48948535',
               options: [
                 {
                   winner: 'Rugrats',
