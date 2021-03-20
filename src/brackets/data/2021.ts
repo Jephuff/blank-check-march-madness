@@ -51,7 +51,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'John Carpenter',
               poll: '1372911451464200195',
               options: [
                 {
@@ -134,7 +134,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: '1373273814407254019',
               options: [
                 {
                   winner: 'Gore Verbinski',
