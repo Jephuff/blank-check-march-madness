@@ -73,7 +73,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: 'Superman',
               poll: 'https://www.patreon.com/posts/march-madness-4-48985180',
               options: [
                 {
@@ -104,7 +104,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-5-49019704',
               options: [
                 {
                   winner: 'The Mummy',
