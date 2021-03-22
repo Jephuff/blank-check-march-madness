@@ -29,7 +29,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: '70S Altman',
               poll: '1373636001634078725',
               options: [
                 {
@@ -112,7 +112,7 @@ const data: Data<0> = {
             },
             {
               winner: undefined,
-              poll: undefined,
+              poll: '1373998460760907776',
               options: [
                 {
                   winner: 'Wong Kar Wai',
