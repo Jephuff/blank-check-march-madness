@@ -145,7 +145,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'Resident Evil',
               poll: 'https://www.patreon.com/posts/march-madness-7-49104942',
               options: [
                 {

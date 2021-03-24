@@ -67,8 +67,8 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
-              poll: '1374360293015388160',
+              winner: 'Ernest Dickerson',
+              poll: '1374360980638031872',
               options: [
                 {
                   winner: 'Ernest Dickerson',
