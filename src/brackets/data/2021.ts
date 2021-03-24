@@ -68,7 +68,7 @@ const data: Data<0> = {
             },
             {
               winner: undefined,
-              poll: undefined,
+              poll: '1374360293015388160',
               options: [
                 {
                   winner: 'Ernest Dickerson',
@@ -111,7 +111,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: 'Wong Kar Wai',
               poll: '1373998460760907776',
               options: [
                 {
@@ -150,7 +150,7 @@ const data: Data<0> = {
             },
             {
               winner: undefined,
-              poll: undefined,
+              poll: '1374723270994497537',
               options: [
                 {
                   winner: 'Jackie Chan',

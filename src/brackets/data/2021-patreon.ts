@@ -121,7 +121,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: 'Austin Powers',
               poll: 'https://www.patreon.com/posts/march-madness-6-49061118',
               options: [
                 {
@@ -146,7 +146,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-7-49104942',
               options: [
                 {
                   winner: 'Resident Evil',
@@ -164,7 +164,7 @@ const data: Data<0> = {
             },
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-8-49149687',
               options: [
                 {
                   winner: 'Rocky',
