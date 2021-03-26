@@ -10,7 +10,7 @@ const data: Data<0> = {
       options: [
         {
           winner: undefined,
-          poll: undefined,
+          poll: '1375085984291905537',
           options: [
             {
               winner: 'Terrence Malick',
@@ -149,7 +149,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: 'Alfonso Cuaron',
               poll: '1374723270994497537',
               options: [
                 {
