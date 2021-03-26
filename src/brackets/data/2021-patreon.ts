@@ -9,7 +9,7 @@ const data: Data<0> = {
       poll: undefined,
       options: [
         {
-          winner: undefined,
+          winner: 'Twilight',
           poll: 'https://www.patreon.com/posts/march-madness-1-49175124',
           options: [
             {
@@ -52,7 +52,7 @@ const data: Data<0> = {
         },
         {
           winner: undefined,
-          poll: undefined,
+          poll: 'https://www.patreon.com/posts/march-madness-2-49237727',
           options: [
             {
               winner: 'Men in Black',
