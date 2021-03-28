@@ -99,7 +99,7 @@ const data: Data<0> = {
       poll: undefined,
       options: [
         {
-          winner: undefined,
+          winner: 'The Mummy',
           poll: 'https://www.patreon.com/posts/march-madness-3-49269772',
           options: [
             {
@@ -142,7 +142,7 @@ const data: Data<0> = {
         },
         {
           winner: undefined,
-          poll: undefined,
+          poll: 'https://www.patreon.com/posts/march-madness-4-49305103',
           options: [
             {
               winner: 'Resident Evil',
