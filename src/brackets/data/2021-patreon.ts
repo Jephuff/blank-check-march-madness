@@ -6,7 +6,7 @@ const data: Data<0> = {
   options: [
     {
       winner: undefined,
-      poll: undefined,
+      poll: 'https://www.patreon.com/posts/march-madness-1-49351042',
       options: [
         {
           winner: 'Twilight',
@@ -141,7 +141,7 @@ const data: Data<0> = {
           ],
         },
         {
-          winner: undefined,
+          winner: 'Resident Evil',
           poll: 'https://www.patreon.com/posts/march-madness-4-49305103',
           options: [
             {
