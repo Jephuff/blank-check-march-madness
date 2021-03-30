@@ -5,7 +5,7 @@ const data: Data<0> = {
   poll: undefined,
   options: [
     {
-      winner: undefined,
+      winner: 'John Carpenter',
       poll: '1376535681451884547',
       options: [
         {
@@ -88,7 +88,7 @@ const data: Data<0> = {
     },
     {
       winner: undefined,
-      poll: undefined,
+      poll: '1376897415022850053',
       options: [
         {
           winner: 'Wong Kar Wai',
