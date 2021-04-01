@@ -1,7 +1,7 @@
 import { Data } from 'brackets/types';
 
 const data: Data<0> = {
-  winner: undefined,
+  winner: 'Gore Verbinski',
   poll: '1377259680704180229',
   options: [
     {
