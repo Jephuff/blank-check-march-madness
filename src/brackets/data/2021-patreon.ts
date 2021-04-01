@@ -2,7 +2,7 @@ import { Data } from 'brackets/types';
 
 const data: Data<0> = {
   winner: undefined,
-  poll: undefined,
+  poll: 'https://www.patreon.com/posts/march-madness-49416825',
   options: [
     {
       winner: 'Twilight',
@@ -95,7 +95,7 @@ const data: Data<0> = {
       ],
     },
     {
-      winner: undefined,
+      winner: 'The Mummy',
       poll: 'https://www.patreon.com/posts/march-madness-2-49393494',
       options: [
         {
