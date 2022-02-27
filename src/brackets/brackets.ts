@@ -10,6 +10,8 @@ export enum Bracket {
   'Bracket 2020 Patreon',
   'Bracket 2021',
   'Bracket 2021 Patreon',
+  'Bracket 2022',
+  'Bracket 2022 Patreon',
 }
 
 export const useBracketData = createUseAsync(
@@ -25,6 +27,10 @@ export const useBracketData = createUseAsync(
         return import('./data/2021').then((r) => r.default);
       case Bracket['Bracket 2021 Patreon']:
         return import('./data/2021-patreon').then((r) => r.default);
+      case Bracket['Bracket 2022']:
+        return import('./data/2022').then((r) => r.default);
+      case Bracket['Bracket 2022 Patreon']:
+        return import('./data/2022-patreon').then((r) => r.default);
       default:
         throw new Unreachable(bracketKey);
     }
@@ -49,7 +55,7 @@ const bracketKeyMigration = (value: unknown): Bracket => {
 export const useBracketKey = (): [Bracket, (key: Bracket) => void] => {
   const [bracketKey, setBracketKey] = useLocalStorage<Bracket>(
     'bracket-key',
-    Bracket['Bracket 2021'],
+    Bracket['Bracket 2022'],
     undefined,
     bracketKeyMigration
   );
