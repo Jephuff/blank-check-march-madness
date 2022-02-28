@@ -24,7 +24,7 @@ const data: Data<0> = {
                 {
                   winner: undefined,
                   poll: undefined,
-                  options: ['Carl TH. Dreyer', 'Dorothy, Arzner'],
+                  options: ['Carl Th. Dreyer', 'Dorothy Arzner'],
                 },
               ],
             },
@@ -139,7 +139,7 @@ const data: Data<0> = {
                 {
                   winner: undefined,
                   poll: undefined,
-                  options: ['Early Speilberg', 'Dutch Verhoeven'],
+                  options: ['Early Spielberg', 'Dutch Verhoeven'],
                 },
                 {
                   winner: undefined,
