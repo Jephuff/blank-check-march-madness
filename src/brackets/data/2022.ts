@@ -17,7 +17,7 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Charlie Chaplin',
                   poll: undefined,
                   options: ['Charlie Chaplin', 'F. W. Murnau'],
                 },
@@ -55,7 +55,7 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Stanley Kubrick',
                   poll: undefined,
                   options: ['Stanley Kubrick', 'Jacques Tati'],
                 },
@@ -99,7 +99,7 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Hitchcock II (1942 - 1976)',
                   poll: undefined,
                   options: ['Hitchcock II (1942 - 1976)', 'Jean Cocteau'],
                 },
@@ -137,7 +137,7 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Early Spielberg',
                   poll: undefined,
                   options: ['Early Spielberg', 'Dutch Verhoeven'],
                 },

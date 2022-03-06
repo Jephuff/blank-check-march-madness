@@ -17,13 +17,15 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Moore Bond',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-1-63195710 ',
                   options: ['James Bond: Connery', 'Moore Bond'],
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-5-63409322',
                   options: ['Bruce Lee', 'Police Story'],
                 },
               ],
@@ -55,8 +57,9 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Monty Python',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-3-63305357',
                   options: ['Monty Python', 'The Beatles'],
                 },
                 {
@@ -99,8 +102,9 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Frankenstein',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-2-63278412',
                   options: ['Frankenstein', 'Classic Mummy'],
                 },
                 {
@@ -137,8 +141,9 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Rocky',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-4-63351009',
                   options: ['Lethal Weapon', 'Rocky'],
                 },
                 {
