@@ -23,7 +23,7 @@ const data: Data<0> = {
                   options: ['James Bond: Connery', 'Moore Bond'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Police Story',
                   poll:
                     'https://www.patreon.com/posts/march-madness-5-63409322',
                   options: ['Bruce Lee', 'Police Story'],
@@ -109,7 +109,8 @@ const data: Data<0> = {
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-6-63446391',
                   options: ['The Exorcist', 'Hellraiser'],
                 },
               ],
