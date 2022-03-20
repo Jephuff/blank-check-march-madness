@@ -13,8 +13,8 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'Moore Bond',
+              poll: 'https://www.patreon.com/posts/march-madness-17-63915199',
               options: [
                 {
                   winner: 'Moore Bond',
@@ -35,13 +35,15 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Dollars Trilogy',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-9-63581050',
                   options: ['Dollars Trilogy', 'Dirty Harry'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Robocop',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-13-63741559',
                   options: ['Robocop', 'Shaft'],
                 },
               ],
@@ -53,8 +55,8 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'Monty Python',
+              poll: 'https://www.patreon.com/posts/march-madness-19-63996370',
               options: [
                 {
                   winner: 'Monty Python',
@@ -63,8 +65,9 @@ const data: Data<0> = {
                   options: ['Monty Python', 'The Beatles'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Marx Brothers',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-7-63491208',
                   options: ['Marx Brothers', 'Cheech & Chong'],
                 },
               ],
@@ -74,13 +77,15 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Naked Gun',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-11-63667774',
                   options: ['Airport', 'Naked Gun'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Day & Hudson',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-15-63827872',
                   options: ['Oh, God!', 'Day & Hudson'],
                 },
               ],
@@ -98,8 +103,8 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'The Exorcist',
+              poll: 'https://www.patreon.com/posts/march-madness-18-63959326',
               options: [
                 {
                   winner: 'Frankenstein',
@@ -108,7 +113,7 @@ const data: Data<0> = {
                   options: ['Frankenstein', 'Classic Mummy'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'The Exorcist',
                   poll:
                     'https://www.patreon.com/posts/march-madness-6-63446391',
                   options: ['The Exorcist', 'Hellraiser'],
@@ -120,13 +125,15 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Psycho',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-10-63624945',
                   options: ['Halloween', 'Psycho'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Jaws',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-14-63782673',
                   options: ['Jaws', 'The Fly'],
                 },
               ],
@@ -139,7 +146,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-20-64034573',
               options: [
                 {
                   winner: 'Rocky',
@@ -148,8 +155,9 @@ const data: Data<0> = {
                   options: ['Lethal Weapon', 'Rocky'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Oz',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-8-63534733',
                   options: ['Gold Diggers', 'Oz'],
                 },
               ],
@@ -159,13 +167,15 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Planet of the Apes: Originals',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-12-63708731',
                   options: ['Planet of the Apes: Originals', 'Superman'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Qatsi Trilogy',
+                  poll:
+                    'https://www.patreon.com/posts/march-madness-16-63872215',
                   options: ['Qatsi Trilogy', 'The Apu Trilogy'],
                 },
               ],

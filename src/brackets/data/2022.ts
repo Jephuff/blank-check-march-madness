@@ -13,17 +13,14 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'Charlie Chaplin',
               options: [
                 {
                   winner: 'Charlie Chaplin',
-                  poll: undefined,
                   options: ['Charlie Chaplin', 'F. W. Murnau'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Dorothy Arzner',
                   options: ['Carl Th. Dreyer', 'Dorothy Arzner'],
                 },
               ],
@@ -33,13 +30,11 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Fritz Lang',
                   options: ['Hitchcock I (1929 - 1941)', 'Fritz Lang'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Buster Keaton',
                   options: ['Buster Keaton', 'Sergei Eisenstein'],
                 },
               ],
@@ -51,8 +46,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'Stanley Kubrick',
               options: [
                 {
                   winner: 'Stanley Kubrick',
@@ -60,8 +54,7 @@ const data: Data<0> = {
                   options: ['Stanley Kubrick', 'Jacques Tati'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'John Cassavetes',
                   options: ['John Cassavetes', 'Luchino Visconti'],
                 },
               ],
@@ -71,13 +64,11 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: '70S Altman',
                   options: ['70S Altman', 'Andrei Tarkovsky'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Melvin Van Peebles',
                   options: ['Francois Truffaut', 'Melvin Van Peebles'],
                 },
               ],
@@ -95,17 +86,14 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'David Lean',
               options: [
                 {
                   winner: 'Hitchcock II (1942 - 1976)',
-                  poll: undefined,
                   options: ['Hitchcock II (1942 - 1976)', 'Jean Cocteau'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'David Lean',
                   options: ['David Lean', 'Ernst Lubitsch'],
                 },
               ],
@@ -115,13 +103,11 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'The Archers',
                   options: ['The Archers', 'Ida Lupino'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Orson Welles',
                   options: ['Orson Welles', 'Preston Sturges'],
                 },
               ],
@@ -138,12 +124,10 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'Early Spielberg',
-                  poll: undefined,
                   options: ['Early Spielberg', 'Dutch Verhoeven'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Albert Brooks',
                   options: ['Barbra Streisand', 'Albert Brooks'],
                 },
               ],
@@ -153,13 +137,11 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Don Bluth',
                   options: ['Don Bluth', 'Edward Yang'],
                 },
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'Mel Brooks',
                   options: ['Michael Cimino', 'Mel Brooks'],
                 },
               ],
