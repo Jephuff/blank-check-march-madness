@@ -10,7 +10,7 @@ const data: Data<0> = {
       options: [
         {
           winner: undefined,
-          poll: undefined,
+          poll: 'https://www.patreon.com/posts/march-madness-25-64249595',
           options: [
             {
               winner: 'Moore Bond',
@@ -31,8 +31,8 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'Robocop',
+              poll: 'https://www.patreon.com/posts/march-madness-21-64076605',
               options: [
                 {
                   winner: 'Dollars Trilogy',
@@ -73,8 +73,8 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'Naked Gun',
+              poll: 'https://www.patreon.com/posts/march-madness-23-64167526',
               options: [
                 {
                   winner: 'Naked Gun',
@@ -121,8 +121,8 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'Psycho',
+              poll: 'https://www.patreon.com/posts/march-madness-22-64123188',
               options: [
                 {
                   winner: 'Psycho',
@@ -145,7 +145,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'Oz',
               poll: 'https://www.patreon.com/posts/march-madness-20-64034573',
               options: [
                 {
@@ -163,8 +163,8 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'Planet of the Apes: Originals',
+              poll: 'https://www.patreon.com/posts/march-madness-24-64210763',
               options: [
                 {
                   winner: 'Planet of the Apes: Originals',

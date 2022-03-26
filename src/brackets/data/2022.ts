@@ -9,8 +9,7 @@ const data: Data<0> = {
       poll: undefined,
       options: [
         {
-          winner: undefined,
-          poll: undefined,
+          winner: 'Fritz Lang',
           options: [
             {
               winner: 'Charlie Chaplin',
@@ -26,8 +25,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'Fritz Lang',
               options: [
                 {
                   winner: 'Fritz Lang',
@@ -99,8 +97,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'Orson Welles',
               options: [
                 {
                   winner: 'The Archers',
@@ -119,8 +116,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'Early Spielberg',
               options: [
                 {
                   winner: 'Early Spielberg',
@@ -133,8 +129,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'Mel Brooks',
               options: [
                 {
                   winner: 'Don Bluth',
