@@ -58,8 +58,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
-              poll: undefined,
+              winner: '70S Altman',
               options: [
                 {
                   winner: '70S Altman',
@@ -80,8 +79,7 @@ const data: Data<0> = {
       poll: undefined,
       options: [
         {
-          winner: undefined,
-          poll: undefined,
+          winner: 'Orson Welles',
           options: [
             {
               winner: 'David Lean',

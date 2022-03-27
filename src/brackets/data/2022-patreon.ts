@@ -9,7 +9,7 @@ const data: Data<0> = {
       poll: undefined,
       options: [
         {
-          winner: undefined,
+          winner: 'Moore Bond',
           poll: 'https://www.patreon.com/posts/march-madness-25-64249595',
           options: [
             {
@@ -52,7 +52,7 @@ const data: Data<0> = {
         },
         {
           winner: undefined,
-          poll: undefined,
+          poll: 'https://www.patreon.com/posts/march-madness-27-64332453',
           options: [
             {
               winner: 'Monty Python',
@@ -99,8 +99,8 @@ const data: Data<0> = {
       poll: undefined,
       options: [
         {
-          winner: undefined,
-          poll: undefined,
+          winner: 'The Exorcist',
+          poll: 'https://www.patreon.com/posts/march-madness-26-64295531',
           options: [
             {
               winner: 'The Exorcist',
