@@ -6,7 +6,8 @@ const data: Data<0> = {
   options: [
     {
       winner: undefined,
-      poll: undefined,
+      poll:
+        'https://www.patreon.com/posts/march-madness-29-64424958?utm_medium=clipboard_copy',
       options: [
         {
           winner: 'Moore Bond',
@@ -141,7 +142,7 @@ const data: Data<0> = {
           ],
         },
         {
-          winner: undefined,
+          winner: 'Planet of the Apes: Originals',
           poll: 'https://www.patreon.com/posts/march-madness-28-64377684',
           options: [
             {

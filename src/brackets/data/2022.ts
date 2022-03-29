@@ -109,8 +109,7 @@ const data: Data<0> = {
           ],
         },
         {
-          winner: undefined,
-          poll: undefined,
+          winner: 'Early Spielberg',
           options: [
             {
               winner: 'Early Spielberg',
