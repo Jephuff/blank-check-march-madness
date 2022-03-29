@@ -51,7 +51,7 @@ const data: Data<0> = {
           ],
         },
         {
-          winner: undefined,
+          winner: 'Monty Python',
           poll: 'https://www.patreon.com/posts/march-madness-27-64332453',
           options: [
             {
@@ -142,7 +142,7 @@ const data: Data<0> = {
         },
         {
           winner: undefined,
-          poll: undefined,
+          poll: 'https://www.patreon.com/posts/march-madness-28-64377684',
           options: [
             {
               winner: 'Oz',
