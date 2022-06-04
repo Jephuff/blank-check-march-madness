@@ -1,12 +1,10 @@
 import { Data } from 'brackets/types';
 
 const data: Data<0> = {
-  winner: undefined,
-  poll: undefined,
+  winner: 'Stanley Kubrick',
   options: [
     {
-      winner: undefined,
-      poll: undefined,
+      winner: 'Stanley Kubrick',
       options: [
         {
           winner: 'Fritz Lang',
@@ -74,8 +72,7 @@ const data: Data<0> = {
       ],
     },
     {
-      winner: undefined,
-      poll: undefined,
+      winner: 'Orson Welles',
       options: [
         {
           winner: 'Orson Welles',

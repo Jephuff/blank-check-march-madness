@@ -1,11 +1,11 @@
 import { Data } from 'brackets/types';
 
 const data: Data<0> = {
-  winner: undefined,
-  poll: undefined,
+  winner: 'Moore Bond',
+  poll: 'https://www.patreon.com/posts/march-madness-64522356',
   options: [
     {
-      winner: undefined,
+      winner: 'Moore Bond',
       poll:
         'https://www.patreon.com/posts/march-madness-29-64424958?utm_medium=clipboard_copy',
       options: [
@@ -96,8 +96,8 @@ const data: Data<0> = {
       ],
     },
     {
-      winner: undefined,
-      poll: undefined,
+      winner: 'Planet of the Apes: Originals',
+      poll: 'https://www.patreon.com/posts/march-madness-30-64472152',
       options: [
         {
           winner: 'The Exorcist',
