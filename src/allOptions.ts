@@ -78,6 +78,22 @@ const allDirectors = {
   'Oliver Stone': { imdb: 'nm0000231' },
   'Jackie Chan': { imdb: 'nm0000329' },
   'Kelly Reichardt': { imdb: 'nm0716980' },
+  'Pablo Larrain': { imdb: 'nm1883257' },
+  'Park Chan-wook': { imdb: 'nm0661791' },
+  'Sergio Leone': { imdb: 'nm0001466' },
+  'Mira Nair': { imdb: 'nm0619762' },
+  'Francois Truffaut': { imdb: 'nm0000076' },
+  'Jia Zhangke': { imdb: 'nm0422605' },
+  'Ousmane Sembene': { imdb: 'nm0783733' },
+  'Satoshi Kon': { imdb: 'nm0464804' },
+  'Lars Von Trier': { imdb: 'nm0001885' },
+  'Baz Luhrmann': { imdb: 'nm0525303' },
+  'Lucrecia Martel': { imdb: 'nm0551506' },
+  'Stephen Chow': { imdb: 'nm0159507' },
+  'Abbas Kiarostami': { imdb: 'nm0452102' },
+  'Claire Denis': { imdb: 'nm0219136' },
+  'Pedro Almodovar': { imdb: 'nm0000264' },
+  'Agnes Varda': { imdb: 'nm0889513' },
 };
 
 const allSeries = {
@@ -184,7 +200,6 @@ const allSeries = {
   'Stanley Kubrick': { imdb: 'nm0000040' },
   'Luchino Visconti': { imdb: 'nm0899581' },
   'Andrei Tarkovsky': { imdb: 'nm0001789' },
-  'Francois Truffaut': { imdb: 'nm0000076' },
   'Melvin Van Peebles': { imdb: 'nm0887708' },
   'Hitchcock II (1942 - 1976)': { imdb: 'nm0000033' },
   'Jean Cocteau': { imdb: 'nm0168413' },
@@ -197,6 +212,38 @@ const allSeries = {
   'Albert Brooks': { imdb: 'nm0000983' },
   'Don Bluth': { imdb: 'nm0089940' },
   'Edward Yang': { imdb: 'nm0945981' },
+  'Magic Mike': { imdb: '' },
+  'Philip K. Dick': {
+    imdb: 'https://en.wikipedia.org/wiki/List_of_adaptations_of_works_by_Philip_K._Dick',
+  },
+  'Godzilla Millennium Series': {
+    imdb: 'https://godzilla.fandom.com/wiki/Millennium_series#:~:text=The%20Millennium%20series%20(%E3%83%9F%E3%83%AC%E3%83%8B%E3%82%A2%E3%83%A0%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA,released%20from%201999%20to%202004.',
+  },
+  "Ocean's": { imdb: 'https://en.wikipedia.org/wiki/Ocean%27s_(film_series)' },
+  'Universal Soldier': {
+    imdb: 'https://en.wikipedia.org/wiki/Universal_Soldier_(film_series)',
+  },
+  Purge: { imdb: 'https://en.wikipedia.org/wiki/The_Purge' },
+  'The Ring': { imdb: 'https://en.wikipedia.org/wiki/The_Ring_(franchise)' },
+  'Jelly Trilogy': { imdb: '' },
+  'Bogie & Bacall': { imdb: '' },
+  'John Grisham': { imdb: 'https://www.imdb.com/list/ls003773787/' },
+  'Elmore Leonard': {
+    imdb: 'https://en.wikipedia.org/wiki/Category:Films_based_on_works_by_Elmore_Leonard',
+  },
+  SNL: {
+    imdb: 'https://en.wikipedia.org/wiki/List_of_Saturday_Night_Live_feature_films',
+  },
+  'Teen Shakespeare': { imdb: '' },
+  'Star Trek: Next Gen': { imdb: '' },
+  'Mortal Kombat': {
+    imdb: 'https://en.wikipedia.org/wiki/Mortal_Kombat_(film_series)',
+  },
+  Asterisk: { imdb: 'https://en.wikipedia.org/wiki/List_of_Asterix_films' },
+  Cars: { imdb: 'https://en.wikipedia.org/wiki/Cars_(franchise)' },
+  Arthur: { imdb: '' },
+  Scream: { imdb: 'https://en.wikipedia.org/wiki/Scream_(franchise)' },
+  'Liam neeson/Collet-serra': { imdb: '' },
 };
 
 export const allOptions = {
@@ -204,4 +251,4 @@ export const allOptions = {
   ...allSeries,
 };
 
-export type Options = keyof typeof allOptions;
+export type Options = keyof typeof allOptions | '';
