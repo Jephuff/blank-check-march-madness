@@ -18,14 +18,12 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'The Muppets',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-1-48183389',
+                  poll: 'https://www.patreon.com/posts/march-madness-1-48183389',
                   options: ['The Muppets', 'TMNT'],
                 },
                 {
                   winner: 'Twilight',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-2-48204836',
+                  poll: 'https://www.patreon.com/posts/march-madness-2-48204836',
                   options: ['Hunger Games', 'Twilight'],
                 },
               ],
@@ -36,14 +34,12 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'Final Destination',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-3-48282213',
+                  poll: 'https://www.patreon.com/posts/march-madness-3-48282213',
                   options: ['Freddy/Elm St.', 'Final Destination'],
                 },
                 {
                   winner: 'Analyze This',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-4-48335349',
+                  poll: 'https://www.patreon.com/posts/march-madness-4-48335349',
                   options: ['Analyze This', 'Vacation'],
                 },
               ],
@@ -60,14 +56,12 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'Rugrats',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-5-48375810',
+                  poll: 'https://www.patreon.com/posts/march-madness-5-48375810',
                   options: ['H.S. Musical', 'Rugrats'],
                 },
                 {
                   winner: 'Men in Black',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-6-48411726',
+                  poll: 'https://www.patreon.com/posts/march-madness-6-48411726',
                   options: ['Robocop', 'Men in Black'],
                 },
               ],
@@ -78,14 +72,12 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'Superman',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-7-48461392',
+                  poll: 'https://www.patreon.com/posts/march-madness-7-48461392',
                   options: ['Toxic Avengers', 'Superman'],
                 },
                 {
                   winner: 'Lego',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-8-48498169',
+                  poll: 'https://www.patreon.com/posts/march-madness-8-48498169',
                   options: ['Chucky', 'Lego'],
                 },
               ],
@@ -108,14 +100,12 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'The Mummy',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-9-48546121',
+                  poll: 'https://www.patreon.com/posts/march-madness-9-48546121',
                   options: ['Planet of the Apes: Originals', 'The Mummy'],
                 },
                 {
                   winner: 'Bill & Ted',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-10-48583274',
+                  poll: 'https://www.patreon.com/posts/march-madness-10-48583274',
                   options: ['Bill & Ted', 'Barbershop'],
                 },
               ],
@@ -126,14 +116,12 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'Austin Powers',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-11-48629535',
+                  poll: 'https://www.patreon.com/posts/march-madness-11-48629535',
                   options: ['Bourne', 'Austin Powers'],
                 },
                 {
                   winner: 'Monty Python',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-12-48675661',
+                  poll: 'https://www.patreon.com/posts/march-madness-12-48675661',
                   options: ['Monty Python', 'Cheech & Chong'],
                 },
               ],
@@ -150,14 +138,12 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'Resident Evil',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-13-48707149',
+                  poll: 'https://www.patreon.com/posts/march-madness-13-48707149',
                   options: ['Resident Evil', 'Riddick'],
                 },
                 {
                   winner: 'The Mighty Ducks',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-14-48738945',
+                  poll: 'https://www.patreon.com/posts/march-madness-14-48738945',
                   options: ['The Mighty Ducks', 'The Karate Kid'],
                 },
               ],
@@ -168,14 +154,12 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'Rocky',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-15-48780588',
+                  poll: 'https://www.patreon.com/posts/march-madness-15-48780588',
                   options: ['Rocky', 'Dirty Harry'],
                 },
                 {
                   winner: 'Saw',
-                  poll:
-                    'https://www.patreon.com/posts/march-madness-16-48822337',
+                  poll: 'https://www.patreon.com/posts/march-madness-16-48822337',
                   options: ['Saw', 'Blair Witch'],
                 },
               ],

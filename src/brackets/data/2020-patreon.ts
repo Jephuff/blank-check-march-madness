@@ -23,8 +23,7 @@ const data: Data<0> = {
                 },
                 {
                   winner: 'Terminator',
-                  poll:
-                    'https://www.patreon.com/posts/day-3-ill-be-for-34551833',
+                  poll: 'https://www.patreon.com/posts/day-3-ill-be-for-34551833',
                   options: ['Terminator', 'Robocop'],
                 },
               ],
@@ -40,8 +39,7 @@ const data: Data<0> = {
                 },
                 {
                   winner: 'Star Trek: TOS',
-                  poll:
-                    'https://www.patreon.com/posts/day-7-choose-boy-34677461',
+                  poll: 'https://www.patreon.com/posts/day-7-choose-boy-34677461',
                   options: ['Star Trek: TOS', 'Planet of the Apes: Originals'],
                 },
               ],
@@ -58,14 +56,12 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'Resident Evil',
-                  poll:
-                    'https://www.patreon.com/posts/day-9-either-way-34732571',
+                  poll: 'https://www.patreon.com/posts/day-9-either-way-34732571',
                   options: ['The Matrix', 'Resident Evil'],
                 },
                 {
                   winner: 'Wolverine',
-                  poll:
-                    'https://www.patreon.com/posts/day-11-marvel-vs-34795226',
+                  poll: 'https://www.patreon.com/posts/day-11-marvel-vs-34795226',
                   options: ['Superman', 'Wolverine'],
                 },
               ],
@@ -76,14 +72,12 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'Nightmare on Elm St',
-                  poll:
-                    'https://www.patreon.com/posts/day-13-kings-of-34850914',
+                  poll: 'https://www.patreon.com/posts/day-13-kings-of-34850914',
                   options: ['Nightmare on Elm St', 'Halloween'],
                 },
                 {
                   winner: 'Living Dead',
-                  poll:
-                    'https://www.patreon.com/posts/day-15-some-feel-34906288',
+                  poll: 'https://www.patreon.com/posts/day-15-some-feel-34906288',
                   options: ['The Exorcist', 'Living Dead'],
                 },
               ],
@@ -106,8 +100,7 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'Indiana Jones',
-                  poll:
-                    'https://www.patreon.com/posts/day-2-spielberg-34519261',
+                  poll: 'https://www.patreon.com/posts/day-2-spielberg-34519261',
                   options: ['Indiana Jones', 'Jurassic Park'],
                 },
                 {
@@ -145,8 +138,7 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'John wick',
-                  poll:
-                    'https://www.patreon.com/posts/day-10-who-would-34765831',
+                  poll: 'https://www.patreon.com/posts/day-10-who-would-34765831',
                   options: ['Police Story', 'John wick'],
                 },
                 {
@@ -162,14 +154,12 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'Three Colours',
-                  poll:
-                    'https://www.patreon.com/posts/day-14-two-weeks-34878407',
+                  poll: 'https://www.patreon.com/posts/day-14-two-weeks-34878407',
                   options: ['Qatsi Trilogy', 'Three Colours'],
                 },
                 {
                   winner: 'The Apu Trilogy',
-                  poll:
-                    'https://www.patreon.com/posts/day-16-this-more-34938543',
+                  poll: 'https://www.patreon.com/posts/day-16-this-more-34938543',
                   options: ['The Apu Trilogy', 'Anotoine Doniel'],
                 },
               ],

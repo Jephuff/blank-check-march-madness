@@ -21,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext=ts --ext=tsx ."
   },
   "browserslist": [
     ">0.2%",
@@ -31,9 +32,9 @@
   ],
   "devDependencies": {
     "@types/jest": "^26.0.20",
-    "eslint-config-prettier": "8.1.0",
+    "eslint-config-prettier": "8.6.0",
     "eslint-plugin-function-return-assigned-name": "^0.1.1",
-    "eslint-plugin-prettier": "3.3.1",
-    "prettier": "2.2.1"
+    "eslint-plugin-prettier": "4.2.1",
+    "prettier": "2.8.4"
   }
 }

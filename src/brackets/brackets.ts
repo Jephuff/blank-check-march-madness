@@ -44,7 +44,7 @@ const bracketKeyMigration = (value: unknown): Bracket => {
       break;
     case 'string':
       if (typeof Bracket[value as any] === 'number') {
-        return (Bracket[value as any] as unknown) as any;
+        return Bracket[value as any] as unknown as any;
       }
       break;
   }

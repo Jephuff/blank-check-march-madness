@@ -67,8 +67,7 @@ const allDirectors = {
   'Karyn Kusama': { imdb: 'nm0476201' },
   'Jane Campion': { imdb: 'nm0001005' },
   'The Archers': {
-    imdb:
-      'https://en.wikipedia.org/wiki/Powell_and_Pressburger#:~:text=The%20British%20film%2Dmaking%20partnership,in%20the%201940s%20and%201950s.',
+    imdb: 'https://en.wikipedia.org/wiki/Powell_and_Pressburger#:~:text=The%20British%20film%2Dmaking%20partnership,in%20the%201940s%20and%201950s.',
   }, // TODO:nm0696247  nm0003836
   'Wong Kar Wai': { imdb: 'nm0939182' },
   'Steve McQueen': { imdb: 'nm2588606' },
