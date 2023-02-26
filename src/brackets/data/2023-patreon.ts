@@ -122,7 +122,7 @@ const data: Data<0> = {
                 {
                   winner: undefined,
                   poll: undefined,
-                  options: ['Phillip K. Dick', 'Star Trek: Next Gen'],
+                  options: ['Philip K. Dick', 'Star Trek: Next Gen'],
                 },
               ],
             },
@@ -139,7 +139,7 @@ const data: Data<0> = {
                 {
                   winner: undefined,
                   poll: undefined,
-                  options: ['Godzilla Millenium Series', 'Mortal Kombat'],
+                  options: ['Godzilla Millennium Series', 'Mortal Kombat'],
                 },
                 {
                   winner: undefined,
