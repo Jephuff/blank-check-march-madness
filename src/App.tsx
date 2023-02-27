@@ -26,8 +26,10 @@ export const App = () => {
   const segmentWidth = useSegmentWidth();
 
   const bracketSelector = (
-    <div style={{ display: 'flex' }}>
-      <div style={{ padding: 5 }}>bracket:</div>
+    <div style={{ display: 'flex', flexWrap: isSmall ? undefined : 'wrap' }}>
+      <div style={{ padding: 5, width: isSmall ? undefined : '25%' }}>
+        bracket:
+      </div>
       {Object.values(Bracket).map((key) => {
         if (typeof key !== 'number') return null;
         return (
@@ -36,6 +38,7 @@ export const App = () => {
               padding: 5,
               cursor: 'pointer',
               borderRadius: 2,
+              width: isSmall ? undefined : '25%',
               ...(key === bracketKey
                 ? { background: 'white', color: 'black' }
                 : {}),
