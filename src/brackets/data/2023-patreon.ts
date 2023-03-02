@@ -17,13 +17,13 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: "Ocean's",
+                  poll: 'https://www.patreon.com/posts/march-madness-1-79398001',
                   options: ['Magic Mike', "Ocean's"],
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-2-79457676',
                   options: ['Rocky', 'Bruce Lee'],
                 },
               ],

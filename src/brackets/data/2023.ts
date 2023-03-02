@@ -14,7 +14,7 @@ const data: Data<0> = {
               winner: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Peter Jackson',
                   options: ['Peter Jackson', 'Pablo Larrain'],
                 },
                 {
