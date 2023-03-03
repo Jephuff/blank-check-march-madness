@@ -18,7 +18,7 @@ const data: Data<0> = {
                   options: ['Peter Jackson', 'Pablo Larrain'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Park Chan-wook',
                   options: ['Park Chan-wook', 'Steve McQueen'],
                 },
               ],
