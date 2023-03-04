@@ -33,13 +33,13 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'The Exorcist',
                   poll: 'https://www.patreon.com/posts/march-madness-3-79508986',
                   options: ['Psycho', 'The Exorcist'],
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-4-79551433',
                   options: ['Superman', 'TMNT'],
                 },
               ],

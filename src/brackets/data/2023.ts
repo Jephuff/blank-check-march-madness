@@ -27,7 +27,7 @@ const data: Data<0> = {
               winner: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Sergio Leone',
                   options: ['Sergio Leone', 'Mira Nair'],
                 },
                 {
