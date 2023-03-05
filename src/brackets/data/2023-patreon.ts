@@ -38,7 +38,7 @@ const data: Data<0> = {
                   options: ['Psycho', 'The Exorcist'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'TMNT',
                   poll: 'https://www.patreon.com/posts/march-madness-4-79551433',
                   options: ['Superman', 'TMNT'],
                 },
@@ -56,7 +56,7 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-5-79592842',
                   options: ['Universal Soldier', 'Police Story'],
                 },
                 {

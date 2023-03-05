@@ -31,7 +31,7 @@ const data: Data<0> = {
                   options: ['Sergio Leone', 'Mira Nair'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Peter Weir',
                   options: ['Peter Weir', 'Jia Zhangke'],
                 },
               ],
