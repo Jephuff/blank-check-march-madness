@@ -45,8 +45,7 @@ const data: Data<0> = {
               winner: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: 'Guillermo Del Toro',
+                  winner: 'Guillermo Del Toro',
                   options: ['Guillermo Del Toro', 'Ousmane Sembene'],
                 },
                 {
