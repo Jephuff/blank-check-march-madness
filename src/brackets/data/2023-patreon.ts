@@ -55,13 +55,13 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Police Story',
                   poll: 'https://www.patreon.com/posts/march-madness-5-79592842',
                   options: ['Universal Soldier', 'Police Story'],
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-6-79638518',
                   options: ['Final Destination', 'Purge'],
                 },
               ],
