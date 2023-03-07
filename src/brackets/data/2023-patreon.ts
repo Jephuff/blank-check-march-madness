@@ -60,7 +60,7 @@ const data: Data<0> = {
                   options: ['Universal Soldier', 'Police Story'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Final Destination',
                   poll: 'https://www.patreon.com/posts/march-madness-6-79638518',
                   options: ['Final Destination', 'Purge'],
                 },
@@ -72,7 +72,7 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-7-79690273',
                   options: ['The Ring', 'Hellraiser'],
                 },
                 {

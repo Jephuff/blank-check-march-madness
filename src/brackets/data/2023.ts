@@ -49,7 +49,7 @@ const data: Data<0> = {
                   options: ['Guillermo Del Toro', 'Ousmane Sembene'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Satoshi Kon',
                   options: ['Satoshi Kon', 'Lars Von Trier'],
                 },
               ],
