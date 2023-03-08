@@ -71,13 +71,13 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Hellraiser',
                   poll: 'https://www.patreon.com/posts/march-madness-7-79690273',
                   options: ['The Ring', 'Hellraiser'],
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-8-79736140',
                   options: ['Jelly Trilogy', 'The Apu Trilogy'],
                 },
               ],
