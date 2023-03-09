@@ -76,7 +76,7 @@ const data: Data<0> = {
                   options: ['The Ring', 'Hellraiser'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Jelly Trilogy',
                   poll: 'https://www.patreon.com/posts/march-madness-8-79736140',
                   options: ['Jelly Trilogy', 'The Apu Trilogy'],
                 },
@@ -100,7 +100,7 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-9-79782877',
                   options: ['Bill & Ted', 'Bogie & Bacall'],
                 },
                 {
