@@ -85,7 +85,7 @@ const data: Data<0> = {
                   options: ['Wong Kar Wai', 'Lucrecia Martel'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Stephen Chow',
                   options: ['Francois Truffaut', 'Stephen Chow'],
                 },
               ],

@@ -104,7 +104,7 @@ const data: Data<0> = {
                   options: ['Bill & Ted', 'Bogie & Bacall'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Elmore Leonard',
                   poll: 'https://www.patreon.com/posts/march-madness-10-79832737',
                   options: ['John Grisham', 'Elmore Leonard'],
                 },
@@ -116,7 +116,7 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-11-79875996',
                   options: ['SNL', 'Teen Shakespeare'],
                 },
                 {
