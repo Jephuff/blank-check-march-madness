@@ -81,7 +81,7 @@ const data: Data<0> = {
               winner: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Wong Kar Wai',
                   options: ['Wong Kar Wai', 'Lucrecia Martel'],
                 },
                 {

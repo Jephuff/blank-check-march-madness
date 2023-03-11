@@ -99,13 +99,13 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Bill & Ted',
                   poll: 'https://www.patreon.com/posts/march-madness-9-79782877',
                   options: ['Bill & Ted', 'Bogie & Bacall'],
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-10-79832737',
                   options: ['John Grisham', 'Elmore Leonard'],
                 },
               ],
