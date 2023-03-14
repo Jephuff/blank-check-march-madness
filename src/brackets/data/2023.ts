@@ -94,11 +94,11 @@ const data: Data<0> = {
               winner: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Lynne Ramsay',
                   options: ['Fritz Lang', 'Lynne Ramsay'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Cronenberg',
                   options: ['Cronenberg', 'Milos Forman'],
                 },
               ],
