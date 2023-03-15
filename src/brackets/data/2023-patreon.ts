@@ -137,13 +137,13 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Mortal Kombat',
                   poll: 'https://www.patreon.com/posts/march-madness-13-79961497',
                   options: ['Godzilla Millennium Series', 'Mortal Kombat'],
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-14-80012332',
                   options: ['Asterisk', 'Cars'],
                 },
               ],

@@ -112,7 +112,7 @@ const data: Data<0> = {
               winner: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Bong Joon-Ho',
                   options: ['Bong Joon-Ho', 'Abbas Kiarostami'],
                 },
                 {
