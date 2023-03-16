@@ -116,7 +116,7 @@ const data: Data<0> = {
                   options: ['Bong Joon-Ho', 'Abbas Kiarostami'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Claire Denis',
                   options: ['Dutch Verhoeven', 'Claire Denis'],
                 },
               ],
@@ -125,7 +125,7 @@ const data: Data<0> = {
               winner: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Pedro Almodovar',
                   options: ['Pedro Almodovar', 'Mike Leigh'],
                 },
                 {

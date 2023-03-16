@@ -142,7 +142,7 @@ const data: Data<0> = {
                   options: ['Godzilla Millennium Series', 'Mortal Kombat'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Cars',
                   poll: 'https://www.patreon.com/posts/march-madness-14-80012332',
                   options: ['Asterisk', 'Cars'],
                 },
@@ -153,13 +153,13 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
-                  poll: undefined,
+                  winner: 'The Beatles',
+                  poll: 'https://www.patreon.com/posts/march-madness-15-80060799',
                   options: ['Arthur', 'The Beatles'],
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-16-80110287',
                   options: ['Scream', 'Liam neeson/Collet-serra'],
                 },
               ],
