@@ -129,7 +129,7 @@ const data: Data<0> = {
                   options: ['Pedro Almodovar', 'Mike Leigh'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Alfonso Cuaron',
                   options: ['Alfonso Cuaron', 'Agnes Varda'],
                 },
               ],

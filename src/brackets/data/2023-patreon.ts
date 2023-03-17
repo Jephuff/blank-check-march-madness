@@ -14,7 +14,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-17-80156780',
               options: [
                 {
                   winner: "Ocean's",
@@ -158,7 +158,7 @@ const data: Data<0> = {
                   options: ['Arthur', 'The Beatles'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Scream',
                   poll: 'https://www.patreon.com/posts/march-madness-16-80110287',
                   options: ['Scream', 'Liam neeson/Collet-serra'],
                 },
