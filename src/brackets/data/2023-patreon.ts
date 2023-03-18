@@ -13,7 +13,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
+              winner: "Ocean's",
               poll: 'https://www.patreon.com/posts/march-madness-17-80156780',
               options: [
                 {
@@ -30,7 +30,7 @@ const data: Data<0> = {
             },
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-18-80185410',
               options: [
                 {
                   winner: 'The Exorcist',
