@@ -29,7 +29,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: 'TMNT',
               poll: 'https://www.patreon.com/posts/march-madness-18-80185410',
               options: [
                 {
@@ -52,7 +52,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-19-80241604',
               options: [
                 {
                   winner: 'Police Story',
