@@ -51,7 +51,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'Police Story',
               poll: 'https://www.patreon.com/posts/march-madness-19-80241604',
               options: [
                 {
@@ -68,7 +68,7 @@ const data: Data<0> = {
             },
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-20-80286882',
               options: [
                 {
                   winner: 'Hellraiser',

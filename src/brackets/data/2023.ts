@@ -42,7 +42,7 @@ const data: Data<0> = {
           winner: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'Guillermo Del Toro',
               options: [
                 {
                   winner: 'Guillermo Del Toro',
