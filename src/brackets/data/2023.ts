@@ -55,7 +55,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: 'Baz Luhrmann',
               options: [
                 {
                   winner: 'Edward Yang',

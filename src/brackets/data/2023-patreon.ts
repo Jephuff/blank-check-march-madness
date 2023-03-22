@@ -67,7 +67,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: 'Jelly Trilogy',
               poll: 'https://www.patreon.com/posts/march-madness-20-80286882',
               options: [
                 {
@@ -96,7 +96,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-21-80341257',
               options: [
                 {
                   winner: 'Bill & Ted',
