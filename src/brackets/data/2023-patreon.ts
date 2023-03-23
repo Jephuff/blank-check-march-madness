@@ -95,7 +95,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'Elmore Leonard',
               poll: 'https://www.patreon.com/posts/march-madness-21-80341257',
               options: [
                 {
@@ -111,8 +111,8 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
-              poll: undefined,
+              winner: 'Philip K. Dick',
+              poll: 'https://www.patreon.com/posts/march-madness-22-80385480',
               options: [
                 {
                   winner: 'SNL',
@@ -134,7 +134,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-23-80436732',
               options: [
                 {
                   winner: 'Mortal Kombat',
