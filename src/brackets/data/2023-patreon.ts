@@ -133,7 +133,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'Mortal Kombat',
               poll: 'https://www.patreon.com/posts/march-madness-23-80436732',
               options: [
                 {
@@ -150,7 +150,7 @@ const data: Data<0> = {
             },
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-24-80485078',
               options: [
                 {
                   winner: 'The Beatles',
