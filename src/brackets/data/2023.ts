@@ -122,7 +122,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: 'Alfonso Cuaron',
               options: [
                 {
                   winner: 'Pedro Almodovar',

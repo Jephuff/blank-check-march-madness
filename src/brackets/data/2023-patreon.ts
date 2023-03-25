@@ -10,7 +10,7 @@ const data: Data<0> = {
       options: [
         {
           winner: undefined,
-          poll: undefined,
+          poll: 'https://www.patreon.com/posts/march-madness-25-80528969',
           options: [
             {
               winner: "Ocean's",
@@ -149,7 +149,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: 'Scream',
               poll: 'https://www.patreon.com/posts/march-madness-24-80485078',
               options: [
                 {
