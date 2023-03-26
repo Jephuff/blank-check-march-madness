@@ -8,7 +8,7 @@ const data: Data<0> = {
       winner: undefined,
       options: [
         {
-          winner: undefined,
+          winner: 'Park Chan-wook',
           options: [
             {
               winner: 'Park Chan-wook',
