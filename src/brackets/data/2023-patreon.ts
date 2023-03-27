@@ -47,7 +47,7 @@ const data: Data<0> = {
           ],
         },
         {
-          winner: undefined,
+          winner: 'Police Story',
           poll: 'https://www.patreon.com/posts/march-madness-26-80571330',
           options: [
             {
@@ -92,7 +92,7 @@ const data: Data<0> = {
       options: [
         {
           winner: undefined,
-          poll: undefined,
+          poll: 'https://www.patreon.com/posts/march-madness-27-80620797',
           options: [
             {
               winner: 'Elmore Leonard',
