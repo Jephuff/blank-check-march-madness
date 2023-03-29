@@ -72,7 +72,7 @@ const data: Data<0> = {
       ],
     },
     {
-      winner: 'Bong Joon-Ho',
+      winner: undefined,
       options: [
         {
           winner: 'Wong Kar Wai',
@@ -106,7 +106,7 @@ const data: Data<0> = {
           ],
         },
         {
-          winner: undefined,
+          winner: 'Bong Joon-Ho',
           options: [
             {
               winner: 'Bong Joon-Ho',
