@@ -5,7 +5,7 @@ const data: Data<0> = {
   poll: undefined,
   options: [
     {
-      winner: undefined,
+      winner: "Ocean's",
       poll: 'https://www.patreon.com/posts/march-madness-29-80722613',
       options: [
         {
@@ -88,7 +88,7 @@ const data: Data<0> = {
     },
     {
       winner: undefined,
-      poll: undefined,
+      poll: 'https://www.patreon.com/posts/march-madness-30-80774598',
       options: [
         {
           winner: 'Philip K. Dick',
