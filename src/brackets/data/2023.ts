@@ -72,7 +72,7 @@ const data: Data<0> = {
       ],
     },
     {
-      winner: undefined,
+      winner: 'Bong Joon-Ho',
       options: [
         {
           winner: 'Wong Kar Wai',
