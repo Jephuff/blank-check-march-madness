@@ -1,7 +1,7 @@
 import { Data } from 'brackets/types';
 
 const data: Data<0> = {
-  winner: undefined,
+  winner: "Ocean's",
   poll: 'https://www.patreon.com/posts/march-madness-80826178',
   options: [
     {
