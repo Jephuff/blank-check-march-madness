@@ -1,5 +1,36 @@
 {
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
-    }
+    },
+    "cSpell.words": [
+        "Apatow",
+        "Carax",
+        "Céline",
+        "Coen",
+        "Condon",
+        "Cronenberg",
+        "Cuaron",
+        "Dugan",
+        "Guadagnino",
+        "Heckerling",
+        "Holofcener",
+        "imdb",
+        "Isao",
+        "Jarmusch",
+        "Joon",
+        "Levinson",
+        "Linklater",
+        "Luca",
+        "Mangold",
+        "Micklin",
+        "Minghella",
+        "Pakula",
+        "Proyas",
+        "Ramis",
+        "Sciamma",
+        "Soderbergh",
+        "Sonnenfeld",
+        "Takahata",
+        "Tiernan"
+    ]
 }
