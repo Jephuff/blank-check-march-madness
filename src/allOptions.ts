@@ -295,7 +295,7 @@ const allSeries = {
   Ernest: { imdb: 'https://www.imdb.com/list/ls007691427' },
   'Pauly Shore': { imdb: 'nm0001736' },
   'Jack Ryan': { imdb: '' },
-  'Robert Langdon': { imdb: '' },
+  'Robert Langdon': { imdb: 'https://en.wikipedia.org/wiki/Robert_Langdon' },
   'King Arthurs': { imdb: '' },
   'Robin Hoods': { imdb: '' },
   'Clive Barker': { imdb: '' },

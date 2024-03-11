@@ -72,7 +72,7 @@ const data: Data<0> = {
               options: [
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-11-100159355',
                   options: ['Jack Ryan', 'Robert Langdon'],
                 },
                 {
@@ -115,7 +115,7 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Clive Barker',
                   poll: 'https://www.patreon.com/posts/march-madness-10-100097801',
                   options: ['Clive Barker', 'Cube'],
                 },
