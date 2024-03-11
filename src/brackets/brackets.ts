@@ -14,6 +14,8 @@ export enum Bracket {
   'Bracket 2022 Patreon',
   'Bracket 2023',
   'Bracket 2023 Patreon',
+  'Bracket 2024',
+  'Bracket 2024 Patreon',
 }
 
 export const useBracketData = createUseAsync(
@@ -37,6 +39,10 @@ export const useBracketData = createUseAsync(
         return import('./data/2023').then((r) => r.default);
       case Bracket['Bracket 2023 Patreon']:
         return import('./data/2023-patreon').then((r) => r.default);
+      case Bracket['Bracket 2024']:
+        return import('./data/2024').then((r) => r.default);
+      case Bracket['Bracket 2024 Patreon']:
+        return import('./data/2024-patreon').then((r) => r.default);
       default:
         throw new Unreachable(bracketKey);
     }
