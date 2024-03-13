@@ -58,7 +58,7 @@ const data: Data<0> = {
               winner: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Denis Villeneuve',
                   options: ['Denis Villeneuve', 'Curtis Hanson'],
                 },
                 {
