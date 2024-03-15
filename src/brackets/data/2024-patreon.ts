@@ -38,7 +38,7 @@ const data: Data<0> = {
                   options: ['Alvin & The Chipmunks', 'Jay Ward'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Richard Curtis',
                   poll: undefined,
                   options: ['Richard Curtis', 'Bridget Jones'],
                 },
@@ -121,7 +121,7 @@ const data: Data<0> = {
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-14-100357409',
                   options: ['Spy Kids', 'Mexico Trilogy'],
                 },
               ],
@@ -153,7 +153,7 @@ const data: Data<0> = {
               poll: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Poirot',
                   poll: 'https://www.patreon.com/posts/march-madness-12-100227604',
                   options: ['Lara Croft', 'Poirot'],
                 },

@@ -31,7 +31,7 @@ const data: Data<0> = {
                   options: ['Edgar Wright', 'Leos Carax'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Nicole Holofcener',
                   options: ['James Wan', 'Nicole Holofcener'],
                 },
               ],
@@ -125,7 +125,7 @@ const data: Data<0> = {
               winner: undefined,
               options: [
                 {
-                  winner: undefined,
+                  winner: 'Richard Linklater',
                   options: ['Richard Linklater', 'Joan Micklin Silver'],
                 },
                 {
