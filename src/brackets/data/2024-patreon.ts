@@ -159,7 +159,7 @@ const data: Data<0> = {
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-16-100481258',
                   options: ['Pulp Heroes', 'Draculas'],
                 },
               ],
