@@ -76,7 +76,7 @@ const data: Data<0> = {
                   options: ['Jack Ryan', 'Robert Langdon'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Highlander',
                   poll: 'https://www.patreon.com/posts/march-madness-15-100420533',
                   options: ['Conan', 'Highlander'],
                 },
@@ -143,7 +143,7 @@ const data: Data<0> = {
                 },
                 {
                   winner: 'American Pie',
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-8-99990128',
                   options: ['American Pie', 'Major League'],
                 },
               ],

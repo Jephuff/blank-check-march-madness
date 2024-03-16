@@ -62,7 +62,7 @@ const data: Data<0> = {
                   options: ['Denis Villeneuve', 'Curtis Hanson'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Wes Craven',
                   options: ['Wes Craven', 'Jonathan Glazer'],
                 },
               ],
