@@ -23,7 +23,7 @@ const data: Data<0> = {
                 },
                 {
                   winner: 'Tabletop Games',
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-5-99791674',
                   options: ['Jumanji', 'Tabletop Games'],
                 },
               ],
@@ -138,7 +138,7 @@ const data: Data<0> = {
               options: [
                 {
                   winner: 'Happy Madison',
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-4-99721057',
                   options: ['Happy Madison', 'Stand-up Animation'],
                 },
                 {
