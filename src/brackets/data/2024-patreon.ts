@@ -77,7 +77,7 @@ const data: Data<0> = {
                 },
                 {
                   winner: undefined,
-                  poll: undefined,
+                  poll: 'https://www.patreon.com/posts/march-madness-15-100420533',
                   options: ['Conan', 'Highlander'],
                 },
               ],
@@ -120,7 +120,7 @@ const data: Data<0> = {
                   options: ['Clive Barker', 'Cube'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Mexico Trilogy',
                   poll: 'https://www.patreon.com/posts/march-madness-14-100357409',
                   options: ['Spy Kids', 'Mexico Trilogy'],
                 },

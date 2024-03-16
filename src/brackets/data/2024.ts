@@ -98,7 +98,7 @@ const data: Data<0> = {
                   options: ['Todd Haynes', 'James Mangold'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Alex Garland',
                   options: ['Judd Apatow', 'Alex Garland'],
                 },
               ],
