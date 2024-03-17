@@ -14,7 +14,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-17-100534838',
               options: [
                 {
                   winner: 'The Addams Family',
@@ -158,7 +158,7 @@ const data: Data<0> = {
                   options: ['Lara Croft', 'Poirot'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'Pulp Heroes',
                   poll: 'https://www.patreon.com/posts/march-madness-16-100481258',
                   options: ['Pulp Heroes', 'Draculas'],
                 },

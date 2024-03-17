@@ -129,7 +129,7 @@ const data: Data<0> = {
                   options: ['Richard Linklater', 'Joan Micklin Silver'],
                 },
                 {
-                  winner: undefined,
+                  winner: 'OZ/Henson',
                   options: ['OZ/Henson', 'Luca Guadagnino'],
                 },
               ],
