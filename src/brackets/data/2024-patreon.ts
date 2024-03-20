@@ -51,7 +51,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'The Equalizer',
               poll: 'https://www.patreon.com/posts/march-madness-19-100662986',
               options: [
                 {
@@ -134,7 +134,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-20-100727278',
               options: [
                 {
                   winner: 'Happy Madison',
