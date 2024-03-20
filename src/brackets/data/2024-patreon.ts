@@ -13,7 +13,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'Tabletop Games',
               poll: 'https://www.patreon.com/posts/march-madness-17-100534838',
               options: [
                 {
@@ -52,7 +52,7 @@ const data: Data<0> = {
           options: [
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-19-100662986',
               options: [
                 {
                   winner: 'The Equalizer',
@@ -95,7 +95,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'Robin Hoods',
               poll: undefined,
               options: [
                 {

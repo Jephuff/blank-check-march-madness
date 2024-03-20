@@ -11,7 +11,7 @@ const data: Data<0> = {
           winner: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'Steven Soderbergh',
               options: [
                 {
                   winner: 'Steven Soderbergh',
@@ -78,7 +78,7 @@ const data: Data<0> = {
           winner: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'Ridley Scott',
               options: [
                 {
                   winner: 'Ridley Scott',
