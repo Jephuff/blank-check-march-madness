@@ -30,7 +30,7 @@ const data: Data<0> = {
             },
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-21-100792799',
               options: [
                 {
                   winner: 'Jay Ward',
@@ -133,7 +133,7 @@ const data: Data<0> = {
           poll: undefined,
           options: [
             {
-              winner: undefined,
+              winner: 'Happy Madison',
               poll: 'https://www.patreon.com/posts/march-madness-20-100727278',
               options: [
                 {
