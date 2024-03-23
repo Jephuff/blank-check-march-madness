@@ -29,7 +29,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: 'Richard Curtis',
               poll: 'https://www.patreon.com/posts/march-madness-21-100792799',
               options: [
                 {
@@ -112,7 +112,7 @@ const data: Data<0> = {
             },
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-22-100858174',
               options: [
                 {
                   winner: 'Clive Barker',
