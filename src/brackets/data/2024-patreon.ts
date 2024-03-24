@@ -67,7 +67,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: 'Highlander',
               poll: 'https://www.patreon.com/posts/march-madness-23-100917952',
               options: [
                 {
@@ -150,7 +150,7 @@ const data: Data<0> = {
             },
             {
               winner: undefined,
-              poll: undefined,
+              poll: 'https://www.patreon.com/posts/march-madness-24-100973054',
               options: [
                 {
                   winner: 'Poirot',
