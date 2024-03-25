@@ -122,7 +122,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: undefined,
+              winner: 'Richard Linklater',
               options: [
                 {
                   winner: 'Richard Linklater',
