@@ -9,7 +9,7 @@ const data: Data<0> = {
       poll: undefined,
       options: [
         {
-          winner: undefined,
+          winner: 'Tabletop Games',
           poll: 'https://www.patreon.com/posts/march-madness-25-101035058',
           options: [
             {
@@ -92,7 +92,7 @@ const data: Data<0> = {
       options: [
         {
           winner: undefined,
-          poll: undefined,
+          poll: 'https://www.patreon.com/posts/march-madness-26-101101488',
           options: [
             {
               winner: 'Robin Hoods',
