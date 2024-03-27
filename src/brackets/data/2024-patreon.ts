@@ -48,7 +48,7 @@ const data: Data<0> = {
         },
         {
           winner: undefined,
-          poll: undefined,
+          poll: 'https://www.patreon.com/posts/march-madness-27-101167857',
           options: [
             {
               winner: 'The Equalizer',
@@ -91,7 +91,7 @@ const data: Data<0> = {
       poll: undefined,
       options: [
         {
-          winner: undefined,
+          winner: 'Mexico Trilogy',
           poll: 'https://www.patreon.com/posts/march-madness-26-101101488',
           options: [
             {

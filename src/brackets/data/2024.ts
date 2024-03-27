@@ -75,7 +75,7 @@ const data: Data<0> = {
       winner: undefined,
       options: [
         {
-          winner: undefined,
+          winner: 'Ridley Scott',
           options: [
             {
               winner: 'Ridley Scott',
