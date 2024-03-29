@@ -129,7 +129,7 @@ const data: Data<0> = {
           ],
         },
         {
-          winner: undefined,
+          winner: 'Pulp Heroes',
           poll: 'https://www.patreon.com/posts/march-madness-28-101232273',
           options: [
             {
