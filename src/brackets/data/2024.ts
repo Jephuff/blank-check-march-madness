@@ -39,7 +39,7 @@ const data: Data<0> = {
           ],
         },
         {
-          winner: undefined,
+          winner: 'David Lynch',
           options: [
             {
               winner: 'David Lynch',
