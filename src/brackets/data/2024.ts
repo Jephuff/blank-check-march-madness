@@ -5,7 +5,7 @@ const data: Data<0> = {
   winner: undefined,
   options: [
     {
-      winner: undefined,
+      winner: 'David Lynch',
       options: [
         {
           winner: 'Steven Soderbergh',

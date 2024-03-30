@@ -5,7 +5,7 @@ const data: Data<0> = {
   poll: undefined,
   options: [
     {
-      winner: undefined,
+      winner: 'Tabletop Games',
       poll: undefined,
       options: [
         {
@@ -88,7 +88,7 @@ const data: Data<0> = {
     },
     {
       winner: undefined,
-      poll: undefined,
+      poll: 'https://www.patreon.com/posts/march-madness-30-101359610',
       options: [
         {
           winner: 'Mexico Trilogy',
