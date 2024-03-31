@@ -72,7 +72,7 @@ const data: Data<0> = {
       ],
     },
     {
-      winner: undefined,
+      winner: 'Spike Lee',
       options: [
         {
           winner: 'Ridley Scott',
