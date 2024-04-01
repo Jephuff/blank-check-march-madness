@@ -2,7 +2,7 @@ import { Data } from 'brackets/types';
 
 // polls https://www.blankcheckpod.com/march-madness
 const data: Data<0> = {
-  winner: undefined,
+  winner: 'David Lynch',
   options: [
     {
       winner: 'David Lynch',
