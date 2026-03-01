@@ -25,31 +25,68 @@ export const App = () => {
   const isSmall = useIsSmall();
   const segmentWidth = useSegmentWidth();
 
+  const bracketName = Bracket[bracketKey];
+  const isPatreon = bracketName.includes('Patreon');
+  const currentYear = bracketName.match(/\d{4}/)?.[0] ?? '';
+
+  const years = [
+    ...new Set(
+      (Object.values(Bracket) as Array<string | number>)
+        .filter((k): k is number => typeof k === 'number')
+        .map((k) => (Bracket[k] as string).match(/\d{4}/)?.[0])
+        .filter((y): y is string => Boolean(y))
+    ),
+  ];
+
+  const lookupBracket = (name: string): Bracket | undefined => {
+    const idx = (Bracket as unknown as Record<string, number>)[name];
+    return typeof idx === 'number' ? idx : undefined;
+  };
+
+  const hasPatreon = lookupBracket(`Bracket ${currentYear} Patreon`) !== undefined;
+
   const bracketSelector = (
-    <div style={{ display: 'flex', flexWrap: isSmall ? undefined : 'wrap' }}>
-      <div style={{ padding: 5, width: isSmall ? undefined : '25%' }}>
-        bracket:
-      </div>
-      {Object.values(Bracket).map((key) => {
-        if (typeof key !== 'number') return null;
-        return (
-          <div
-            style={{
-              padding: 5,
-              cursor: 'pointer',
-              borderRadius: 2,
-              width: isSmall ? undefined : '25%',
-              ...(key === bracketKey
-                ? { background: 'white', color: 'black' }
-                : {}),
-            }}
-            key={key}
-            onClick={() => setBracket(key)}
-          >
-            {Bracket[key]}
-          </div>
-        );
-      })}
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <label htmlFor="bracket-year" style={{ padding: 5 }}>
+        bracket
+      </label>
+      <select
+        id="bracket-year"
+        value={currentYear}
+        onChange={(e) => {
+          const newYear = e.target.value;
+          const patreon = lookupBracket(`Bracket ${newYear} Patreon`);
+          const main = lookupBracket(`Bracket ${newYear}`)!;
+          setBracket(isPatreon && patreon !== undefined ? patreon : main);
+        }}
+      >
+        {years.map((y) => (
+          <option key={y} value={y}>
+            {y}
+          </option>
+        ))}
+      </select>
+      {hasPatreon && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginLeft: 8 }}>
+          {(['main', 'patreon'] as const).map((mode) => (
+            <label key={mode} style={{ display: 'flex', alignItems: 'center', gap: 3, cursor: 'pointer', userSelect: 'none' }}>
+              <input
+                type="radio"
+                name="bracket-mode"
+                checked={mode === 'patreon' ? isPatreon : !isPatreon}
+                onChange={() => {
+                  const key =
+                    mode === 'patreon'
+                      ? lookupBracket(`Bracket ${currentYear} Patreon`)!
+                      : lookupBracket(`Bracket ${currentYear}`)!;
+                  setBracket(key);
+                }}
+              />
+              {mode}
+            </label>
+          ))}
+        </div>
+      )}
     </div>
   );
   const controls = (
