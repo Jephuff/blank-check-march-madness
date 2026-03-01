@@ -43,7 +43,8 @@ export const App = () => {
     return typeof idx === 'number' ? idx : undefined;
   };
 
-  const hasPatreon = lookupBracket(`Bracket ${currentYear} Patreon`) !== undefined;
+  const hasPatreon =
+    lookupBracket(`Bracket ${currentYear} Patreon`) !== undefined;
 
   const bracketSelector = (
     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -67,9 +68,25 @@ export const App = () => {
         ))}
       </select>
       {hasPatreon && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginLeft: 8 }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+            marginLeft: 8,
+          }}
+        >
           {(['main', 'patreon'] as const).map((mode) => (
-            <label key={mode} style={{ display: 'flex', alignItems: 'center', gap: 3, cursor: 'pointer', userSelect: 'none' }}>
+            <label
+              key={mode}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 3,
+                cursor: 'pointer',
+                userSelect: 'none',
+              }}
+            >
               <input
                 type="radio"
                 name="bracket-mode"
