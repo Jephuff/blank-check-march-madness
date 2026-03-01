@@ -317,7 +317,7 @@ const allSeries = {
   'Stand-up Animation': { imdb: '' },
   'Major League': { imdb: '' },
   'Pulp Heroes': { imdb: '' },
-  'Godzilla': { imdb: 'https://en.wikipedia.org/wiki/Godzilla_(franchise)' },
+  Godzilla: { imdb: 'https://en.wikipedia.org/wiki/Godzilla_(franchise)' },
   'Neeson/Collet-Serra': { imdb: '' },
 };
 
