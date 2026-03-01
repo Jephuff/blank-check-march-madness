@@ -25,7 +25,8 @@
     "lint": "eslint --ext=ts --ext=tsx .",
     "fetch-polls": "node scripts/fetch-polls.mjs",
     "fetch-patreon-polls": "node scripts/fetch-patreon-polls.mjs",
-    "watch-polls": "node scripts/watch-polls.mjs"
+    "watch-polls": "node scripts/watch-polls.mjs",
+    "patreon-auth": "node scripts/patreon-auth.mjs"
   },
   "browserslist": [
     ">0.2%",

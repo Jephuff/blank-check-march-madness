@@ -57,6 +57,13 @@ const trackers = [
     count: () => countMatches(['2026.ts'], /winner: '/g),
     foundToday: false,
   },
+  {
+    label: 'patreon winners',
+    script: 'fetch-patreon-polls.mjs',
+    args: [],
+    count: () => countMatches(['2026-patreon.ts'], /winner: '/g),
+    foundToday: false,
+  },
 ];
 
 function msUntilMidnight() {

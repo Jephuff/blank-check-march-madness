@@ -1,7 +1,5 @@
 import { Data } from 'brackets/types';
 
-// polls https://www.blankcheckpod.com/march-madness
-// 2026 - LOSERS ONLY bracket (Patreon / Special Features)
 const data: Data<0> = {
   options: [
     {
