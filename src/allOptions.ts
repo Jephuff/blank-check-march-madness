@@ -173,12 +173,16 @@ const allSeries = {
   Wolverine: { imdb: '' },
 
   TMNT: { imdb: '' },
-  'Hunger Games': { imdb: 'https://en.wikipedia.org/wiki/The_Hunger_Games_(film_series)' },
+  'Hunger Games': {
+    imdb: 'https://en.wikipedia.org/wiki/The_Hunger_Games_(film_series)',
+  },
   'Freddy/Elm St.': { imdb: '' },
   'Final Destination': { imdb: '' },
   'Analyze This': { imdb: 'tt0122933' },
   Vacation: { imdb: 'tt1524930' },
-  'H.S. Musical': { imdb: 'https://en.wikipedia.org/wiki/High_School_Musical_(franchise)' },
+  'H.S. Musical': {
+    imdb: 'https://en.wikipedia.org/wiki/High_School_Musical_(franchise)',
+  },
   Rugrats: { imdb: '' },
   'Men in Black': { imdb: '' },
   'Toxic Avengers': { imdb: 'tt0090190' },
@@ -201,7 +205,9 @@ const allSeries = {
   },
 
   Saw: { imdb: '' },
-  'Blair Witch': { imdb: 'https://en.wikipedia.org/wiki/Blair_Witch_(franchise)' },
+  'Blair Witch': {
+    imdb: 'https://en.wikipedia.org/wiki/Blair_Witch_(franchise)',
+  },
 
   'Moore Bond': {
     imdb: 'https://jamesbond.fandom.com/wiki/James_Bond_(Roger_Moore)',
@@ -222,7 +228,9 @@ const allSeries = {
   Psycho: { imdb: '' },
   Jaws: { imdb: '' },
   'The Fly': { imdb: '' },
-  'Lethal Weapon': { imdb: 'https://en.wikipedia.org/wiki/Lethal_Weapon_(franchise)' },
+  'Lethal Weapon': {
+    imdb: 'https://en.wikipedia.org/wiki/Lethal_Weapon_(franchise)',
+  },
   'Gold Diggers': { imdb: '' },
   Oz: { imdb: '' },
 
@@ -248,7 +256,9 @@ const allSeries = {
   'Albert Brooks': { imdb: 'nm0000983' },
   'Don Bluth': { imdb: 'nm0089940' },
   'Edward Yang': { imdb: 'nm0945981' },
-  'Magic Mike': { imdb: 'https://en.wikipedia.org/wiki/Magic_Mike_(film_series)' },
+  'Magic Mike': {
+    imdb: 'https://en.wikipedia.org/wiki/Magic_Mike_(film_series)',
+  },
   'Philip K. Dick': {
     imdb: 'https://en.wikipedia.org/wiki/List_of_adaptations_of_works_by_Philip_K._Dick',
   },
@@ -292,7 +302,9 @@ const allSeries = {
     imdb: 'https://en.wikipedia.org/wiki/Bridget_Jones_(film_series)',
   },
   'The Equalizer': { imdb: 'https://en.wikipedia.org/wiki/The_Equalizer' },
-  'Body Snatchers': { imdb: 'https://en.wikipedia.org/wiki/Invasion_of_the_Body_Snatchers' },
+  'Body Snatchers': {
+    imdb: 'https://en.wikipedia.org/wiki/Invasion_of_the_Body_Snatchers',
+  },
   Rambo: { imdb: 'https://en.wikipedia.org/wiki/Rambo_(franchise)' },
   Ernest: { imdb: 'https://www.imdb.com/list/ls007691427' },
   'Pauly Shore': { imdb: 'nm0001736' },
@@ -311,14 +323,20 @@ const allSeries = {
   Poirot: { imdb: '' },
   'OZ/Henson': { imdb: '' }, // frank oz, jim henson.
   'Tabletop Games': { imdb: '' },
-  'Alvin & The Chipmunks': { imdb: 'https://en.wikipedia.org/wiki/Alvin_and_the_Chipmunks_in_film' },
+  'Alvin & The Chipmunks': {
+    imdb: 'https://en.wikipedia.org/wiki/Alvin_and_the_Chipmunks_in_film',
+  },
   Conan: { imdb: '' },
   Highlander: { imdb: '' },
   'Stand-up Animation': { imdb: '' },
-  'Major League': { imdb: 'https://en.wikipedia.org/wiki/Major_League_(franchise)' },
+  'Major League': {
+    imdb: 'https://en.wikipedia.org/wiki/Major_League_(franchise)',
+  },
   'Pulp Heroes': { imdb: '' },
   Godzilla: { imdb: 'https://en.wikipedia.org/wiki/Godzilla_(franchise)' },
-  'Neeson/Collet-Serra': { imdb: 'https://en.wikipedia.org/wiki/Jaume_Collet-Serra' },
+  'Neeson/Collet-Serra': {
+    imdb: 'https://en.wikipedia.org/wiki/Jaume_Collet-Serra',
+  },
 };
 
 export const allOptions = {

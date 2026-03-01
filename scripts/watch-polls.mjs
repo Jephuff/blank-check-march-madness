@@ -86,6 +86,10 @@ function commitAndPush(updates) {
     const msg = `chore: ${updates
       .map(({ label, count }) => `${label} (${count} new)`)
       .join(', ')}`;
+    execFileSync('npm', ['run', 'lint', '--', '--fix'], {
+      cwd: ROOT,
+      stdio: 'inherit',
+    });
     execFileSync('git', ['add', 'src/brackets/data/'], {
       cwd: ROOT,
       stdio: 'inherit',
