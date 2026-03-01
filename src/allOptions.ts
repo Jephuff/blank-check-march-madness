@@ -128,6 +128,8 @@ const allDirectors = {
   'Luca Guadagnino': { imdb: 'nm0345174' },
   'Jay Ward': { imdb: 'nm0911599' },
   'Richard Curtis': { imdb: 'nm0193485' },
+  'Hal Ashby': { imdb: 'nm0000313' },
+  'Wes Anderson': { imdb: 'nm0027001' },
 };
 
 const allSeries = {
@@ -315,6 +317,8 @@ const allSeries = {
   'Stand-up Animation': { imdb: '' },
   'Major League': { imdb: '' },
   'Pulp Heroes': { imdb: '' },
+  'Godzilla': { imdb: 'https://en.wikipedia.org/wiki/Godzilla_(franchise)' },
+  'Neeson/Collet-Serra': { imdb: '' },
 };
 
 export const allOptions = {
