@@ -22,7 +22,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext=ts --ext=tsx ."
+    "lint": "eslint --ext=ts --ext=tsx .",
+    "fetch-polls": "node scripts/fetch-polls.mjs",
+    "fetch-patreon-polls": "node scripts/fetch-patreon-polls.mjs",
+    "watch-polls": "node scripts/watch-polls.mjs"
   },
   "browserslist": [
     ">0.2%",
