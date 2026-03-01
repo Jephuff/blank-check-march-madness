@@ -11,6 +11,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://www.patreon.com/posts/2026-march-day-1-151931254',
                   options: ['Alvin & The Chipmunks', 'Stand-up Animation'],
                 },
                 {

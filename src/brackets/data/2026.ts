@@ -11,6 +11,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://poll.fm/16667456',
                   options: ['Martin Scorsese', 'Dennis Dugan'],
                 },
                 {
