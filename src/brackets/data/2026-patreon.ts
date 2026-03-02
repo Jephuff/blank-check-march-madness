@@ -9,10 +9,12 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  winner: 'Stand-up Animation',
                   poll: 'https://www.patreon.com/posts/2026-march-day-1-151931254',
                   options: ['Alvin & The Chipmunks', 'Stand-up Animation'],
                 },
                 {
+                  poll: 'https://www.patreon.com/posts/2026-march-day-2-151992757',
                   options: ['Bridget Jones', 'My Big Fat Greek Wedding'],
                 },
               ],
