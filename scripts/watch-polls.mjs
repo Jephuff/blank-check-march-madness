@@ -24,7 +24,24 @@ const ROOT = join(__dirname, '..');
 const DATA_DIR = join(ROOT, 'src', 'brackets', 'data');
 
 const END_DATE = new Date('2026-04-02T00:00:00');
-const HOUR_MS = 60 * 60 * 1000;
+const TEN_MIN_MS = 10 * 60 * 1000;
+
+// Returns ms until the next scheduled check:
+//   9:00–9:59 → every 10 minutes (snapped to :00, :10, :20, …)
+//   all other hours → every hour (snapped to :00)
+// This naturally hits 9:00am since it's an hour boundary.
+function msUntilNextCheck() {
+  const now = new Date();
+  const h = now.getHours();
+  if (h === 9) {
+    const msIntoHour =
+      (now.getMinutes() * 60 + now.getSeconds()) * 1000 + now.getMilliseconds();
+    return TEN_MIN_MS - (msIntoHour % TEN_MIN_MS);
+  }
+  const nextHour = new Date(now);
+  nextHour.setHours(h + 1, 0, 0, 0);
+  return nextHour.getTime() - now.getTime();
+}
 
 function countMatches(files, pattern) {
   let count = 0;
@@ -181,12 +198,11 @@ async function main() {
       const stillPending = trackers
         .filter((t) => !t.foundToday)
         .map((t) => t.label);
+      const wait = msUntilNextCheck();
       log(
-        `Still waiting on: ${stillPending.join(
-          ', '
-        )}. Checking again in 1 hour.`
+        `Still waiting on: ${stillPending.join(', ')}. Next check in ${Math.round(wait / 60000)} min.`
       );
-      await sleep(HOUR_MS);
+      await sleep(wait);
     }
   }
 }

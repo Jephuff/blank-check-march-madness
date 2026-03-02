@@ -10,10 +10,12 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  winner: 'Martin Scorsese',
                   poll: 'https://poll.fm/16667456',
                   options: ['Martin Scorsese', 'Dennis Dugan'],
                 },
                 {
+                  poll: 'https://poll.fm/16667603',
                   options: ['F. Gary Gray', 'Francois Truffaut'],
                 },
               ],

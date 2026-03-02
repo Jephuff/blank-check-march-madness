@@ -116,6 +116,27 @@ function escapeRegex(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+// Strip accents for fuzzy name matching (e.g. "François" === "Francois")
+function normalizeName(s) {
+  return s
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+}
+
+// Find the file's actual option names that normalize-match [na, nb]
+function findFileOptions(content, na, nb) {
+  const pairPattern = /options: \['([^']+)', '([^']+)'\]/g;
+  let m;
+  while ((m = pairPattern.exec(content)) !== null) {
+    if (normalizeName(m[1]) === na && normalizeName(m[2]) === nb) {
+      return [m[1], m[2]];
+    }
+  }
+  return null;
+}
+
 function updateDataFile(filename, polls) {
   const filePath = join(DATA_DIR, filename);
   let content = readFileSync(filePath, 'utf-8');
@@ -129,17 +150,34 @@ function updateDataFile(filename, polls) {
       continue;
     }
 
-    // Try both orderings in case they differ between bracket and poll
+    // Try both orderings; fall back to accent-normalized match if exact fails
     let matched = false;
     for (const [opt1, opt2] of [[a, b], [b, a]]) {
-      const pattern = new RegExp(
+      // Exact match
+      let fileOpt1 = opt1, fileOpt2 = opt2;
+      const exactPattern = new RegExp(
         `([ \\t]+)options: \\['${escapeRegex(opt1)}', '${escapeRegex(opt2)}'\\]`,
         'g'
       );
-      const next = content.replace(
-        pattern,
+      let next = content.replace(
+        exactPattern,
         `$1poll: '${poll.url}',\n$1options: ['${opt1}', '${opt2}']`
       );
+      if (next === content) {
+        // Normalized fallback: find file names that match when accents stripped
+        const found = findFileOptions(content, normalizeName(opt1), normalizeName(opt2));
+        if (found) {
+          [fileOpt1, fileOpt2] = found;
+          const normPattern = new RegExp(
+            `([ \\t]+)options: \\['${escapeRegex(fileOpt1)}', '${escapeRegex(fileOpt2)}'\\]`,
+            'g'
+          );
+          next = content.replace(
+            normPattern,
+            `$1poll: '${poll.url}',\n$1options: ['${fileOpt1}', '${fileOpt2}']`
+          );
+        }
+      }
       if (next !== content) {
         content = next;
         matched = true;
@@ -173,7 +211,18 @@ function updateWinnersInFile(filename, pollsWithWinners) {
   let content = readFileSync(filePath, 'utf-8');
   let updated = 0;
 
-  for (const { url, winner } of pollsWithWinners) {
+  for (let { url, winner } of pollsWithWinners) {
+    // Normalize winner to match the exact option name stored in the file
+    const optionsMatch = new RegExp(
+      `poll: '${escapeRegex(url)}',[\\s\\S]*?options: \\['([^']+)', '([^']+)'\\]`
+    ).exec(content);
+    if (optionsMatch) {
+      const [, opt1, opt2] = optionsMatch;
+      const nw = normalizeName(winner);
+      if (normalizeName(opt1) === nw) winner = opt1;
+      else if (normalizeName(opt2) === nw) winner = opt2;
+    }
+
     // Skip if winner already written
     const alreadyPattern = new RegExp(`winner: '${escapeRegex(winner)}',[\\s\\S]*?poll: '${escapeRegex(url)}'`);
     if (alreadyPattern.test(content)) {
@@ -248,8 +297,25 @@ async function main() {
   console.log('\nUpdating 2026-patreon.ts (patreon bracket)…');
   updateDataFile('2026-patreon.ts', validPolls);
 
-  // Fetch winners for closed polls and write them to 2026.ts
+  // Collect closed polls: from current page + any already recorded in file without a winner
   const closedPolls = validPolls.filter((p) => p.closed);
+
+  // Also scan 2026.ts for recorded poll.fm URLs that have no winner yet,
+  // but only add them if the poll is actually closed.
+  const fileContent = readFileSync(join(DATA_DIR, '2026.ts'), 'utf-8');
+  const knownUrls = new Set(closedPolls.map((p) => p.url));
+  for (const m of fileContent.matchAll(/poll: '(https:\/\/poll\.fm\/(\d+))'/g)) {
+    const [, url, pollId] = m;
+    if (knownUrls.has(url)) continue;
+    const hasWinner = new RegExp(`winner: '[^']+',\\s*\\n\\s*poll: '${escapeRegex(url)}'`).test(fileContent);
+    if (hasWinner) continue;
+    const details = await fetchPollDetails(pollId);
+    if (details.closed) {
+      closedPolls.push(details);
+      knownUrls.add(url);
+    }
+  }
+
   if (closedPolls.length > 0) {
     console.log(`\nFetching results for ${closedPolls.length} closed poll(s)…`);
     const pollsWithWinners = [];
