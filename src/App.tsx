@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import ForkWrapper from './ForkWrapper';
 import { useLocalStorageVersion } from './useLocalStorage';
 import _ from 'lodash';
@@ -12,6 +12,13 @@ import {
 } from 'brackets';
 
 const baseKey = '0';
+const LIVE_YEAR = '2026';
+
+// Collect all leaf matchup nodes from the bracket tree
+function collectLeaves(node: any): Array<{ poll?: string; winner?: string }> {
+  if (typeof node.options[0] === 'string') return [node];
+  return [...collectLeaves(node.options[0]), ...collectLeaves(node.options[1])];
+}
 
 export const App = () => {
   const [bracketKey, setBracket] = useBracketKey();
@@ -28,6 +35,40 @@ export const App = () => {
   const bracketName = Bracket[bracketKey];
   const isPatreon = bracketName.includes('Patreon');
   const currentYear = bracketName.match(/\d{4}/)?.[0] ?? '';
+
+  const isLiveBracket = currentYear === LIVE_YEAR;
+  const isAfter9am = new Date().getHours() >= 9;
+  const leaves = isLiveBracket ? collectLeaves(bracket) : [];
+  // Determine today's and yesterday's matchups by calendar day (Day 1 = March 1)
+  const tournamentStart = new Date(`${LIVE_YEAR}-03-01T00:00:00`);
+  const dayIndex = Math.floor(
+    (Date.now() - tournamentStart.getTime()) / 86400000
+  );
+  const todayLeaf = leaves[dayIndex] as
+    | { poll?: string; winner?: string }
+    | undefined;
+  const yesterdayLeaf = leaves[dayIndex - 1] as
+    | { poll?: string; winner?: string }
+    | undefined;
+  const missingPoll = Boolean(todayLeaf && !todayLeaf.poll);
+  const missingWinner = Boolean(yesterdayLeaf && !yesterdayLeaf.winner);
+  const showRefresh =
+    isLiveBracket && isAfter9am && (missingPoll || missingWinner);
+  const refreshTitle = missingPoll
+    ? "Today's poll may be available"
+    : "Yesterday's winner may be available";
+
+  // Auto-reload once per day at/after 9:30am if data is missing
+  useEffect(() => {
+    if (!showRefresh) return;
+    const now = new Date();
+    if (now.getHours() < 9 || (now.getHours() === 9 && now.getMinutes() < 30))
+      return;
+    const todayKey = now.toDateString();
+    if (localStorage.getItem('autoRefreshDate') === todayKey) return;
+    localStorage.setItem('autoRefreshDate', todayKey);
+    window.location.reload();
+  }, [showRefresh]);
 
   const years = [
     ...new Set(
@@ -103,6 +144,15 @@ export const App = () => {
             </label>
           ))}
         </div>
+      )}
+      {showRefresh && (
+        <button
+          onClick={() => window.location.reload()}
+          title={refreshTitle}
+          style={{ marginLeft: 8 }}
+        >
+          ↺
+        </button>
       )}
     </div>
   );
