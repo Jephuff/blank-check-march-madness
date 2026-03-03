@@ -15,6 +15,7 @@ const data: Data<0> = {
                   options: ['Martin Scorsese', 'Dennis Dugan'],
                 },
                 {
+                  winner: 'F. Gary Gray',
                   poll: 'https://poll.fm/16667603',
                   options: ['F. Gary Gray', 'Francois Truffaut'],
                 },
@@ -23,6 +24,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://poll.fm/16667612',
                   options: ['Anthony Minghella', 'Joe Johnston'],
                 },
                 {
