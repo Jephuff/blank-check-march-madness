@@ -14,6 +14,7 @@ const data: Data<0> = {
                   options: ['Alvin & The Chipmunks', 'Stand-up Animation'],
                 },
                 {
+                  winner: 'Bridget Jones',
                   poll: 'https://www.patreon.com/posts/2026-march-day-2-151992757',
                   options: ['Bridget Jones', 'My Big Fat Greek Wedding'],
                 },
@@ -22,6 +23,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://www.patreon.com/posts/2026-march-day-3-152135835',
                   options: ['Pauly Shore', 'Cheech & Chong'],
                 },
                 {
