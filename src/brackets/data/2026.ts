@@ -24,10 +24,12 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  winner: 'Joe Johnston',
                   poll: 'https://poll.fm/16667612',
                   options: ['Anthony Minghella', 'Joe Johnston'],
                 },
                 {
+                  poll: 'https://poll.fm/16667622',
                   options: ['James Wan', 'Hal Ashby'],
                 },
               ],
