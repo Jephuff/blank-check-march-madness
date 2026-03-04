@@ -23,10 +23,12 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  winner: 'Pauly Shore',
                   poll: 'https://www.patreon.com/posts/2026-march-day-3-152135835',
                   options: ['Pauly Shore', 'Cheech & Chong'],
                 },
                 {
+                  poll: 'https://www.patreon.com/posts/2026-march-day-4-152219989',
                   options: ['Purge', 'Hunger Games'],
                 },
               ],
