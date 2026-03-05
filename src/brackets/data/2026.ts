@@ -29,6 +29,7 @@ const data: Data<0> = {
                   options: ['Anthony Minghella', 'Joe Johnston'],
                 },
                 {
+                  winner: 'Hal Ashby',
                   poll: 'https://poll.fm/16667622',
                   options: ['James Wan', 'Hal Ashby'],
                 },
@@ -41,6 +42,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://poll.fm/16667626',
                   options: ['Warren Beatty', 'Andrei Tarkovsky'],
                 },
                 {
