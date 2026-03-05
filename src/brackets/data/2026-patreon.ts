@@ -28,6 +28,7 @@ const data: Data<0> = {
                   options: ['Pauly Shore', 'Cheech & Chong'],
                 },
                 {
+                  winner: 'Hunger Games',
                   poll: 'https://www.patreon.com/posts/2026-march-day-4-152219989',
                   options: ['Purge', 'Hunger Games'],
                 },
@@ -40,6 +41,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://www.patreon.com/posts/2026-march-day-5-152272006',
                   options: ['Rambo', 'Bourne'],
                 },
                 {
