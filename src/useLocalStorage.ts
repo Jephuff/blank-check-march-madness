@@ -5,6 +5,7 @@ import { Bracket, useBracketKey } from 'brackets';
 
 type StorableValue =
   | { [key: string]: any }
+  | boolean
   | undefined
   | string
   | Array<unknown>

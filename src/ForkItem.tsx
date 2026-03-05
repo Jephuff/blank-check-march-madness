@@ -1,15 +1,19 @@
 import React, { CSSProperties } from 'react';
 import {
   FiCheckCircle,
+  FiCheckSquare,
   FiXCircle,
   FiClock,
   FiPauseCircle,
+  FiSquare,
   FiArrowRight,
   FiArrowLeft,
 } from 'react-icons/fi';
 import twitter from './twitter.png';
 import { Data } from 'brackets';
 import { Options, allOptions } from 'allOptions';
+import { useLocalStorage } from './useLocalStorage';
+import { getPollHref, getPollVotedStorageKey } from './pollUtils';
 
 type OnSelect = (v: Options) => void;
 
@@ -47,25 +51,49 @@ const StatusIcon: React.FC<{
   }
 };
 
-const PollLink: React.FC<{ data?: Data }> = ({ data }) => {
+const PollLinkContent: React.FC<{ poll: string }> = ({ poll }) => {
+  const [voted, setVoted] = useLocalStorage<boolean>(
+    getPollVotedStorageKey(poll),
+    false
+  );
+
   return (
-    (data?.poll && (
+    <span style={{ display: 'inline-flex', alignItems: 'center' }}>
       <a
         target="_BLANK"
         rel="noopener noreferrer"
-        href={
-          data.poll.match(/^http/)
-            ? data.poll
-            : `https://twitter.com/blankcheckpod/status/${data.poll}`
-        }
+        href={getPollHref(poll)}
         style={{ padding: 1 }}
       >
         <img src={twitter} style={{ width: '1em' }} alt="twitter poll" />
       </a>
-    )) ||
-    null
+      <button
+        type="button"
+        onClick={() => setVoted((value) => !value)}
+        title={voted ? 'Marked as voted' : 'Mark poll as voted'}
+        aria-label={voted ? 'Marked as voted' : 'Mark poll as voted'}
+        style={{
+          padding: 0,
+          margin: 1,
+          border: 'none',
+          background: 'transparent',
+          cursor: 'pointer',
+          display: 'inline-flex',
+          alignItems: 'center',
+        }}
+      >
+        {voted ? (
+          <FiCheckSquare color="deepskyblue" style={{ margin: 1 }} />
+        ) : (
+          <FiSquare color="white" style={{ margin: 1 }} />
+        )}
+      </button>
+    </span>
   );
 };
+
+const PollLink: React.FC<{ data?: Data }> = ({ data }) =>
+  data?.poll ? <PollLinkContent poll={data.poll} /> : null;
 
 const Select: React.FC<{
   picked: Options;
