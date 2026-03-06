@@ -42,10 +42,12 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  winner: 'Warren Beatty',
                   poll: 'https://poll.fm/16667626',
                   options: ['Warren Beatty', 'Andrei Tarkovsky'],
                 },
                 {
+                  poll: 'https://poll.fm/16667639',
                   options: ['Penelope Spheeris', 'Dutch Verhoeven'],
                 },
               ],
