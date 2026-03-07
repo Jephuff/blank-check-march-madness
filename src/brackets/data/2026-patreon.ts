@@ -46,6 +46,7 @@ const data: Data<0> = {
                   options: ['Rambo', 'Bourne'],
                 },
                 {
+                  winner: 'Teen Shakespeare',
                   poll: 'https://www.patreon.com/posts/2026-march-day-6-152350907',
                   options: ['Teen Shakespeare', 'H.S. Musical'],
                 },
@@ -54,6 +55,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://www.patreon.com/posts/2026-march-day-7-152436234',
                   options: ['Dirty Harry', 'Bruce Lee'],
                 },
                 {
