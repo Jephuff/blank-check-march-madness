@@ -47,6 +47,7 @@ const data: Data<0> = {
                   options: ['Warren Beatty', 'Andrei Tarkovsky'],
                 },
                 {
+                  winner: 'Penelope Spheeris',
                   poll: 'https://poll.fm/16667639',
                   options: ['Penelope Spheeris', 'Dutch Verhoeven'],
                 },
@@ -55,6 +56,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://poll.fm/16667660',
                   options: ['Milos Forman', 'Bill Duke'],
                 },
                 {
