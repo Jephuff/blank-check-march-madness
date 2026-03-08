@@ -56,10 +56,12 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  winner: 'Milos Forman',
                   poll: 'https://poll.fm/16667660',
                   options: ['Milos Forman', 'Bill Duke'],
                 },
                 {
+                  poll: 'https://poll.fm/16667677',
                   options: ['Mira Nair', 'Judd Apatow'],
                 },
               ],
