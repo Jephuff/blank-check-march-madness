@@ -77,6 +77,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://poll.fm/16667680',
                   options: ['Wes Anderson', 'James Gray'],
                 },
                 {
