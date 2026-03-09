@@ -61,6 +61,7 @@ const data: Data<0> = {
                   options: ['Milos Forman', 'Bill Duke'],
                 },
                 {
+                  winner: 'Judd Apatow',
                   poll: 'https://poll.fm/16667677',
                   options: ['Mira Nair', 'Judd Apatow'],
                 },
