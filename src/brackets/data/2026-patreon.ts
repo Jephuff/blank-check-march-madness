@@ -77,10 +77,12 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  winner: 'Toxic Avengers',
                   poll: 'https://www.patreon.com/posts/2026-march-day-9-152583172',
                   options: ['Toxic Avengers', 'Universal Soldier'],
                 },
                 {
+                  poll: 'https://www.patreon.com/posts/2026-march-day-152676430',
                   options: ['Airport', 'Barbershop'],
                 },
               ],
