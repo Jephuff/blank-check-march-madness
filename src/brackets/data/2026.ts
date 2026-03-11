@@ -91,6 +91,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://poll.fm/16667698',
                   options: ['Joe Wright', 'Curtis Hanson'],
                 },
                 {
