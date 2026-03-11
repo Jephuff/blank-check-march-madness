@@ -82,6 +82,7 @@ const data: Data<0> = {
                   options: ['Toxic Avengers', 'Universal Soldier'],
                 },
                 {
+                  winner: 'Barbershop',
                   poll: 'https://www.patreon.com/posts/2026-march-day-152676430',
                   options: ['Airport', 'Barbershop'],
                 },
@@ -90,6 +91,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://www.patreon.com/posts/2026-march-day-152765020',
                   options: ['John Grisham', 'Body Snatchers'],
                 },
                 {
