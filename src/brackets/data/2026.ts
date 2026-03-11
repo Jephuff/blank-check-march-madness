@@ -83,6 +83,7 @@ const data: Data<0> = {
                   options: ['Wes Anderson', 'James Gray'],
                 },
                 {
+                  winner: 'Steve McQueen',
                   poll: 'https://poll.fm/16667692',
                   options: ['Steve McQueen', 'Jacques Tati'],
                 },
