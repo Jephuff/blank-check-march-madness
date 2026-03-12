@@ -91,10 +91,12 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  winner: 'John Grisham',
                   poll: 'https://www.patreon.com/posts/2026-march-day-152765020',
                   options: ['John Grisham', 'Body Snatchers'],
                 },
                 {
+                  poll: 'https://www.patreon.com/posts/2026-march-day-152819704',
                   options: ['Cube', 'Jumanji'],
                 },
               ],
