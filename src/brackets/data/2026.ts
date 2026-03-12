@@ -92,10 +92,12 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  winner: 'Curtis Hanson',
                   poll: 'https://poll.fm/16667698',
                   options: ['Joe Wright', 'Curtis Hanson'],
                 },
                 {
+                  poll: 'https://poll.fm/16667703',
                   options: ['Céline Sciamma', 'Preston Sturges'],
                 },
               ],
