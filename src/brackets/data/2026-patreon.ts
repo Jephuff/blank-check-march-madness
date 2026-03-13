@@ -96,6 +96,7 @@ const data: Data<0> = {
                   options: ['John Grisham', 'Body Snatchers'],
                 },
                 {
+                  winner: 'Jumanji',
                   poll: 'https://www.patreon.com/posts/2026-march-day-152819704',
                   options: ['Cube', 'Jumanji'],
                 },
@@ -108,6 +109,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://www.patreon.com/posts/2026-march-day-152935943',
                   options: ['Lethal Weapon', 'Neeson/Collet-Serra'],
                 },
                 {
