@@ -97,6 +97,7 @@ const data: Data<0> = {
                   options: ['Joe Wright', 'Curtis Hanson'],
                 },
                 {
+                  winner: 'Preston Sturges',
                   poll: 'https://poll.fm/16667703',
                   options: ['Céline Sciamma', 'Preston Sturges'],
                 },
@@ -109,6 +110,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://poll.fm/16667709',
                   options: ['Tony Scott', 'Jia Zhangke'],
                 },
                 {
