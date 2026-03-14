@@ -109,10 +109,12 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  winner: 'Lethal Weapon',
                   poll: 'https://www.patreon.com/posts/2026-march-day-152935943',
                   options: ['Lethal Weapon', 'Neeson/Collet-Serra'],
                 },
                 {
+                  poll: 'https://www.patreon.com/posts/2026-march-day-153009438',
                   options: ['Oh, God!', 'Godzilla'],
                 },
               ],
