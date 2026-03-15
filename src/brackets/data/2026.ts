@@ -115,6 +115,7 @@ const data: Data<0> = {
                   options: ['Tony Scott', 'Jia Zhangke'],
                 },
                 {
+                  winner: 'Karyn Kusama',
                   poll: 'https://poll.fm/16667724',
                   options: ['Mike Leigh', 'Karyn Kusama'],
                 },
