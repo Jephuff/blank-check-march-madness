@@ -123,6 +123,7 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  poll: 'https://poll.fm/16667736',
                   options: ['Kelly Reichardt', 'Gus Van Sant'],
                 },
                 {
