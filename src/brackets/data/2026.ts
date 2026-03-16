@@ -124,10 +124,12 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  winner: 'Gus Van Sant',
                   poll: 'https://poll.fm/16667736',
                   options: ['Kelly Reichardt', 'Gus Van Sant'],
                 },
                 {
+                  poll: 'https://poll.fm/16667741',
                   options: ['Oliver Stone', 'Chris Columbus'],
                 },
               ],
