@@ -123,10 +123,12 @@ const data: Data<0> = {
             {
               options: [
                 {
+                  winner: 'Magic Mike',
                   poll: 'https://www.patreon.com/posts/2026-march-day-153055660',
                   options: ['Major League', 'Magic Mike'],
                 },
                 {
+                  poll: 'https://www.patreon.com/posts/2026-march-day-153181656',
                   options: ['Draculas', 'Blair Witch'],
                 },
               ],
