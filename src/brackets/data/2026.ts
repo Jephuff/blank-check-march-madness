@@ -129,6 +129,7 @@ const data: Data<0> = {
                   options: ['Kelly Reichardt', 'Gus Van Sant'],
                 },
                 {
+                  winner: 'Chris Columbus',
                   poll: 'https://poll.fm/16667741',
                   options: ['Oliver Stone', 'Chris Columbus'],
                 },
