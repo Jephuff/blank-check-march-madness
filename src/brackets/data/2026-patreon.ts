@@ -7,6 +7,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              winner: 'Stand-up Animation',
               poll: 'https://www.patreon.com/posts/2026-march-day-153255136',
               options: [
                 {
@@ -22,6 +23,7 @@ const data: Data<0> = {
               ],
             },
             {
+              poll: 'https://www.patreon.com/posts/2026-march-day-153329595',
               options: [
                 {
                   winner: 'Pauly Shore',
