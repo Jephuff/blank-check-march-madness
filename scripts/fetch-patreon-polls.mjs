@@ -21,9 +21,17 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { applyNextPollUrl } from './bracket-data-updater.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const DATA_FILE = join(__dirname, '..', 'src', 'brackets', 'data', '2026-patreon.ts');
+const DATA_FILE = join(
+  __dirname,
+  '..',
+  'src',
+  'brackets',
+  'data',
+  '2026-patreon.ts'
+);
 const COOKIES_FILE = join(__dirname, '.patreon-cookies.txt');
 const DRY_RUN = process.argv.includes('--dry-run');
 // Treat all polls as closed (fetches live results regardless of closes_at)
@@ -71,7 +79,9 @@ async function fetchMarchMadnessPosts(cookies) {
     };
     if (cookies) headers['Cookie'] = cookies;
 
-    const res = await fetch(`https://www.patreon.com/api/posts?${params}`, { headers });
+    const res = await fetch(`https://www.patreon.com/api/posts?${params}`, {
+      headers,
+    });
     if (!res.ok) throw new Error(`HTTP ${res.status} fetching Patreon posts`);
 
     const data = await res.json();
@@ -79,7 +89,9 @@ async function fetchMarchMadnessPosts(cookies) {
 
     for (const post of pagePosts) {
       const title = post.attributes?.title ?? '';
-      const dayMatch = title.match(/(\d{4})\s+MARCH\s+MADNESS\s*[-–]\s*DAY\s*(\d+)/i);
+      const dayMatch = title.match(
+        /(\d{4})\s+MARCH\s+MADNESS\s*[-–]\s*DAY\s*(\d+)/i
+      );
       if (!dayMatch || dayMatch[1] !== YEAR) continue;
 
       posts.push({
@@ -148,7 +160,9 @@ async function fetchPollWinner(postUrl, cookies) {
     { headers }
   );
   if (postRes.status === 401 || postRes.status === 403) {
-    throw new CookieExpiredError('Patreon cookie has expired. Update scripts/.patreon-cookies.txt.');
+    throw new CookieExpiredError(
+      'Patreon cookie has expired. Update scripts/.patreon-cookies.txt.'
+    );
   }
   if (!postRes.ok) return null;
 
@@ -160,7 +174,8 @@ async function fetchPollWinner(postUrl, cookies) {
     (i) => i.type === 'poll' && i.id === pollRef.id
   );
   const closesAt = pollResource?.attributes?.closes_at;
-  if (!MOCK_CLOSED && (!closesAt || new Date(closesAt) > new Date())) return null; // still open
+  if (!MOCK_CLOSED && (!closesAt || new Date(closesAt) > new Date()))
+    return null; // still open
 
   // Step 2: fetch poll choices
   const pollRes = await fetch(
@@ -170,7 +185,8 @@ async function fetchPollWinner(postUrl, cookies) {
   if (!pollRes.ok) return null;
 
   const pollData = await pollRes.json();
-  const choices = pollData.included?.filter((i) => i.type === 'poll_choice') ?? [];
+  const choices =
+    pollData.included?.filter((i) => i.type === 'poll_choice') ?? [];
 
   if (choices.length === 0) return null;
 
@@ -204,28 +220,24 @@ function updateDataFile(posts) {
       continue;
     }
 
-    // Match the next unpolled leaf matchup:
-    // a "{" immediately followed (next line) by "options: ['X', 'Y']"
-    // (polled matchups have "poll: '...'" between "{" and "options:")
-    const pattern = /([ \t]+)\{\n\1  options: \['([^']+)', '([^']+)'\]/;
-    const match = pattern.exec(content);
+    const result = applyNextPollUrl(content, post.url);
 
-    if (match) {
-      const [fullMatch, indent, opt1, opt2] = match;
-      content = content.replace(
-        fullMatch,
-        `${indent}{\n${indent}  poll: '${post.url}',\n${indent}  options: ['${opt1}', '${opt2}']`
-      );
+    if (result.updated) {
+      content = result.content;
       updated++;
-      console.log(`  ✓ Day ${post.day}: ${opt1} vs ${opt2}  →  ${post.url}`);
+      console.log(`  ✓ Day ${post.day}  →  ${post.url}`);
     } else {
-      console.log(`  ✗ No unpolled matchup found for Day ${post.day}: "${post.title}"`);
+      console.log(
+        `  ✗ No unpolled matchup found for Day ${post.day}: "${post.title}"`
+      );
     }
   }
 
   if (updated > 0) {
     if (DRY_RUN) {
-      console.log(`\n  (dry-run) Would write ${updated} update(s) to 2026-patreon.ts`);
+      console.log(
+        `\n  (dry-run) Would write ${updated} update(s) to 2026-patreon.ts`
+      );
     } else {
       writeFileSync(DATA_FILE, content, 'utf-8');
       console.log(`\n  Saved 2026-patreon.ts (${updated} update(s))`);
@@ -252,15 +264,25 @@ function updateWinnersInFile(pollsWithWinners) {
   for (let { url, winner } of pollsWithWinners) {
     // Normalize winner to the exact option name in the file (API returns ALL CAPS)
     const optionsMatch = new RegExp(
-      `poll: '${escapeRegex(url)}',[\\s\\S]*?options: \\['([^']+)', '([^']+)'\\]`
+      `poll: '${escapeRegex(
+        url
+      )}',[\\s\\S]*?options: \\['([^']+)', '([^']+)'\\]`
     ).exec(content);
     if (optionsMatch) {
       const [, opt1, opt2] = optionsMatch;
       const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
       const nw = norm(winner);
-      if (norm(opt1) === nw || norm(opt1).includes(nw) || nw.includes(norm(opt1))) {
+      if (
+        norm(opt1) === nw ||
+        norm(opt1).includes(nw) ||
+        nw.includes(norm(opt1))
+      ) {
         winner = opt1;
-      } else if (norm(opt2) === nw || norm(opt2).includes(nw) || nw.includes(norm(opt2))) {
+      } else if (
+        norm(opt2) === nw ||
+        norm(opt2).includes(nw) ||
+        nw.includes(norm(opt2))
+      ) {
         winner = opt2;
       }
     }
@@ -272,7 +294,9 @@ function updateWinnersInFile(pollsWithWinners) {
       continue;
     }
 
-    const pattern = new RegExp(`([ \\t]+)\\{\\n\\1  poll: '${escapeRegex(url)}',`);
+    const pattern = new RegExp(
+      `([ \\t]+)\\{\\n\\1  poll: '${escapeRegex(url)}',`
+    );
     const next = content.replace(
       pattern,
       `$1{\n$1  winner: '${winner}',\n$1  poll: '${url}',`
@@ -289,7 +313,9 @@ function updateWinnersInFile(pollsWithWinners) {
 
   if (updated > 0) {
     if (DRY_RUN) {
-      console.log(`\n  (dry-run) Would write ${updated} winner(s) to 2026-patreon.ts`);
+      console.log(
+        `\n  (dry-run) Would write ${updated} winner(s) to 2026-patreon.ts`
+      );
     } else {
       writeFileSync(DATA_FILE, content, 'utf-8');
       console.log(`\n  Saved 2026-patreon.ts (${updated} winner(s))`);
@@ -335,8 +361,12 @@ async function main() {
   if (cookies) {
     const postsWithWinners = posts.filter((p) => p.pollWinner);
     if (postsWithWinners.length > 0) {
-      console.log(`\nWriting ${postsWithWinners.length} winner(s) to 2026-patreon.ts…`);
-      updateWinnersInFile(postsWithWinners.map((p) => ({ url: p.url, winner: p.pollWinner })));
+      console.log(
+        `\nWriting ${postsWithWinners.length} winner(s) to 2026-patreon.ts…`
+      );
+      updateWinnersInFile(
+        postsWithWinners.map((p) => ({ url: p.url, winner: p.pollWinner }))
+      );
     } else {
       console.log('\nNo closed polls with winners found.');
     }

@@ -18,6 +18,7 @@ import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { execFileSync } from 'child_process';
+import { runScript } from './watch-polls-runner.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -94,17 +95,6 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function runScript(name, ...args) {
-  try {
-    execFileSync(process.execPath, [join(__dirname, name), ...args], {
-      stdio: 'inherit',
-      cwd: ROOT,
-    });
-  } catch {
-    // Script errors are already printed via stdio: inherit; keep the watcher alive.
-  }
-}
-
 function commitAndPush(updates) {
   try {
     const msg = `chore: ${updates
@@ -167,7 +157,7 @@ async function main() {
     for (const tracker of pending) {
       const before = tracker.count();
       log(`Running ${tracker.label}…`);
-      runScript(tracker.script, ...tracker.args);
+      const result = runScript(tracker.script, ...tracker.args);
       const after = tracker.count();
 
       if (after > before) {
@@ -175,6 +165,10 @@ async function main() {
         log(`✓ ${tracker.label}: found ${found} new item(s). Done for today.`);
         tracker.foundToday = true;
         updates.push({ label: tracker.label, count: found });
+      } else if (result.blockedByMatchFailure) {
+        log(
+          `${tracker.label}: upstream data was found, but the fetcher could not place it in the bracket file.`
+        );
       } else {
         log(`${tracker.label}: nothing new yet.`);
       }
@@ -200,7 +194,9 @@ async function main() {
         .map((t) => t.label);
       const wait = msUntilNextCheck();
       log(
-        `Still waiting on: ${stillPending.join(', ')}. Next check in ${Math.round(wait / 60000)} min.`
+        `Still waiting on: ${stillPending.join(
+          ', '
+        )}. Next check in ${Math.round(wait / 60000)} min.`
       );
       await sleep(wait);
     }
