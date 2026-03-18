@@ -22,6 +22,7 @@ const data: Data<0> = {
               ],
             },
             {
+              poll: 'https://poll.fm/16734163',
               options: [
                 {
                   winner: 'Joe Johnston',
