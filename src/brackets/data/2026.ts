@@ -8,6 +8,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              poll: 'https://poll.fm/16734155',
               options: [
                 {
                   winner: 'Martin Scorsese',
