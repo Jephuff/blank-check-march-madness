@@ -23,6 +23,7 @@ const data: Data<0> = {
               ],
             },
             {
+              winner: 'HUNGER GAMES',
               poll: 'https://www.patreon.com/posts/2026-march-day-153329595',
               options: [
                 {

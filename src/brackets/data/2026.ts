@@ -24,6 +24,7 @@ const data: Data<0> = {
               ],
             },
             {
+              winner: 'Joe Johnston',
               poll: 'https://poll.fm/16734163',
               options: [
                 {
@@ -43,6 +44,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              poll: 'https://poll.fm/16734181',
               options: [
                 {
                   winner: 'Warren Beatty',
