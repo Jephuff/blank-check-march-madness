@@ -5,6 +5,7 @@ const data: Data<0> = {
     {
       options: [
         {
+          winner: 'TEEN SHAKESPEARE',
           poll: 'https://www.patreon.com/posts/2026-march-day-153424586',
           options: [
             {
@@ -44,6 +45,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              poll: 'https://www.patreon.com/posts/2026-march-day-153497034',
               options: [
                 {
                   winner: 'Bourne',

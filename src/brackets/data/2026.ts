@@ -44,6 +44,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              winner: 'Penelope Spheeris',
               poll: 'https://poll.fm/16734181',
               options: [
                 {
@@ -59,6 +60,7 @@ const data: Data<0> = {
               ],
             },
             {
+              poll: 'https://poll.fm/16734185',
               options: [
                 {
                   winner: 'Milos Forman',
