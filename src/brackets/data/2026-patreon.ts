@@ -45,6 +45,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              winner: 'HALLOWEEN',
               poll: 'https://www.patreon.com/posts/2026-march-day-153497034',
               options: [
                 {
@@ -60,6 +61,7 @@ const data: Data<0> = {
               ],
             },
             {
+              poll: 'https://www.patreon.com/posts/2026-march-day-153573451',
               options: [
                 {
                   winner: 'Bruce Lee',

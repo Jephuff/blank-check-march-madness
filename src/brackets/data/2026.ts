@@ -60,6 +60,7 @@ const data: Data<0> = {
               ],
             },
             {
+              winner: 'Milos Forman',
               poll: 'https://poll.fm/16734185',
               options: [
                 {
