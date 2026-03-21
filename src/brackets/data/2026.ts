@@ -83,6 +83,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              poll: 'https://poll.fm/16734190',
               options: [
                 {
                   winner: 'Wes Anderson',
