@@ -43,6 +43,7 @@ const data: Data<0> = {
           ],
         },
         {
+          poll: 'https://www.patreon.com/posts/2026-march-day-153687561',
           options: [
             {
               winner: 'HALLOWEEN',
@@ -85,6 +86,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              winner: 'JOHN GRISHAM',
               poll: 'https://www.patreon.com/posts/2026-march-day-153619728',
               options: [
                 {

@@ -100,6 +100,7 @@ const data: Data<0> = {
               ],
             },
             {
+              winner: 'Preston Sturges',
               poll: 'https://poll.fm/16780840',
               options: [
                 {
@@ -119,6 +120,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              poll: 'https://poll.fm/16780845',
               options: [
                 {
                   winner: 'Tony Scott',
