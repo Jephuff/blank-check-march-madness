@@ -21,7 +21,12 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { applyNextPollUrl, applyWinnerByUrl } from './bracket-data-updater.mjs';
+import {
+  applyNextPollUrl,
+  applyPollUrlByMatch,
+  applyWinnerByUrl,
+  clearMatchupByPollUrl,
+} from './bracket-data-updater.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_FILE = join(
@@ -98,6 +103,7 @@ async function fetchMarchMadnessPosts(cookies) {
         day: parseInt(dayMatch[2], 10),
         title,
         url: post.attributes.url,
+        options: null,
         pollWinner: null,
       });
     }
@@ -118,7 +124,9 @@ async function fetchMarchMadnessPosts(cookies) {
   if (cookies) {
     for (const post of posts) {
       try {
-        post.pollWinner = await fetchPollWinner(post.url, cookies);
+        const pollDetails = await fetchPatreonPollDetails(post.url, cookies);
+        post.options = pollDetails.options;
+        post.pollWinner = pollDetails.winner;
       } catch (err) {
         if (err instanceof CookieExpiredError) {
           console.error(`\n⚠ ${err.message}\n`);
@@ -143,9 +151,9 @@ function postIdFromUrl(url) {
   return m ? m[1] : null;
 }
 
-async function fetchPollWinner(postUrl, cookies) {
+async function fetchPatreonPollDetails(postUrl, cookies) {
   const postId = postIdFromUrl(postUrl);
-  if (!postId) return null;
+  if (!postId) return { options: null, winner: null };
 
   const headers = {
     Cookie: cookies,
@@ -164,31 +172,39 @@ async function fetchPollWinner(postUrl, cookies) {
       'Patreon cookie has expired. Update scripts/.patreon-cookies.txt.'
     );
   }
-  if (!postRes.ok) return null;
+  if (!postRes.ok) return { options: null, winner: null };
 
   const postData = await postRes.json();
   const pollRef = postData.data?.relationships?.poll?.data;
-  if (!pollRef) return null;
+  if (!pollRef) return { options: null, winner: null };
 
   const pollResource = postData.included?.find(
     (i) => i.type === 'poll' && i.id === pollRef.id
   );
   const closesAt = pollResource?.attributes?.closes_at;
-  if (!MOCK_CLOSED && (!closesAt || new Date(closesAt) > new Date()))
-    return null; // still open
+  const closed = MOCK_CLOSED || (closesAt && new Date(closesAt) <= new Date());
 
   // Step 2: fetch poll choices
   const pollRes = await fetch(
     `https://www.patreon.com/api/polls/${pollRef.id}?include=choices&fields[poll_choice]=text_content,num_responses,position`,
     { headers }
   );
-  if (!pollRes.ok) return null;
+  if (!pollRes.ok) return { options: null, winner: null };
 
   const pollData = await pollRes.json();
   const choices =
     pollData.included?.filter((i) => i.type === 'poll_choice') ?? [];
 
-  if (choices.length === 0) return null;
+  if (choices.length === 0) return { options: null, winner: null };
+
+  const options = choices
+    .sort(
+      (a, b) =>
+        (a.attributes?.position ?? Number.MAX_SAFE_INTEGER) -
+        (b.attributes?.position ?? Number.MAX_SAFE_INTEGER)
+    )
+    .map((choice) => choice.attributes?.text_content ?? '')
+    .filter(Boolean);
 
   let winner = null;
   let highestVotes = -1;
@@ -203,29 +219,67 @@ async function fetchPollWinner(postUrl, cookies) {
     }
   }
 
-  return winner || null;
+  return {
+    options: options.length === 2 ? options : null,
+    winner: closed ? winner || null : null,
+  };
 }
 
 // ---------------------------------------------------------------------------
 // Update 2026-patreon.ts with poll URLs
 // ---------------------------------------------------------------------------
 
+export function applyPatreonPollUrl(content, post) {
+  if (post.options?.length === 2) {
+    const cleared = clearMatchupByPollUrl(content, post.url);
+    const baseContent = cleared.updated ? cleared.content : content;
+    return applyPollUrlByMatch(baseContent, post);
+  }
+  return applyNextPollUrl(content, post.url);
+}
+
+export function applyPatreonPost(content, post) {
+  let nextContent = content;
+  let updated = false;
+  const hasPlacedPoll = nextContent.includes(`poll: '${post.url}'`);
+  if (post.options?.length === 2 || !hasPlacedPoll) {
+    const pollResult = applyPatreonPollUrl(nextContent, post);
+    if (!pollResult.updated) {
+      return pollResult;
+    }
+    nextContent = pollResult.content;
+    updated = true;
+  }
+
+  if (post.pollWinner) {
+    const winnerResult = applyWinnerByUrl(nextContent, post.url, post.pollWinner);
+    if (winnerResult.updated) {
+      nextContent = winnerResult.content;
+      updated = true;
+    }
+  }
+
+  return {
+    content: nextContent,
+    updated,
+    reason: updated ? undefined : 'already-recorded',
+  };
+}
+
 function updateDataFile(posts) {
   let content = readFileSync(DATA_FILE, 'utf-8');
   let updated = 0;
 
   for (const post of posts) {
-    if (content.includes(`poll: '${post.url}'`)) {
-      console.log(`  · Already recorded: Day ${post.day}`);
-      continue;
-    }
-
-    const result = applyNextPollUrl(content, post.url);
+    const hadPoll = content.includes(`poll: '${post.url}'`);
+    const result = applyPatreonPost(content, post);
 
     if (result.updated) {
       content = result.content;
       updated++;
       console.log(`  ✓ Day ${post.day}  →  ${post.url}`);
+    } else if (hadPoll) {
+      console.log(`  · Already recorded: Day ${post.day}`);
     } else {
       console.log(
         `  ✗ No unpolled matchup found for Day ${post.day}: "${post.title}"`
@@ -330,7 +384,16 @@ async function main() {
   console.log('\nDone.');
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+const isMainModule =
+  process.argv[1] &&
+  fileURLToPath(import.meta.url) ===
+    (process.platform === 'win32'
+      ? process.argv[1].replace(/\//g, '\\')
+      : process.argv[1]);
+
+if (isMainModule) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

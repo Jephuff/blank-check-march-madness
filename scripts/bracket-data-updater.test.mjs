@@ -121,3 +121,98 @@ test('applyWinnerByUrl maps later-round API winner text to the child winner valu
     /winner: 'Hunger Games',\n {6}poll: 'https:\/\/www\.patreon\.com\/posts\/2026-march-day-153329595'/
   );
 });
+
+test('applyPollUrlByMatch places a Patreon later-round link on the matching internal matchup', () => {
+  const content = `const data = {
+  options: [
+    {
+      poll: 'https://www.patreon.com/posts/2026-march-day-153424586',
+      options: [
+        {
+          winner: 'Bourne',
+          options: [
+            {
+              winner: 'Bourne',
+              poll: 'https://www.patreon.com/posts/2026-march-day-5-152272006',
+              options: ['Rambo', 'Bourne'],
+            },
+            {
+              winner: 'Teen Shakespeare',
+              poll: 'https://www.patreon.com/posts/2026-march-day-6-152350907',
+              options: ['Teen Shakespeare', 'H.S. Musical'],
+            },
+          ],
+        },
+        {
+          options: [
+            {
+              winner: 'Bruce Lee',
+              poll: 'https://www.patreon.com/posts/2026-march-day-7-152436234',
+              options: ['Dirty Harry', 'Bruce Lee'],
+            },
+            {
+              winner: 'Halloween',
+              poll: 'https://www.patreon.com/posts/2026-march-day-8-152507890',
+              options: ['Chucky', 'Halloween'],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+`;
+
+  const result = applyPollUrlByMatch(content, {
+    url: 'https://www.patreon.com/posts/2026-march-day-153497034',
+    options: ['BRUCE LEE', 'HALLOWEEN'],
+  });
+
+  assert.equal(result.updated, true);
+  assert.match(
+    result.content,
+    /poll: 'https:\/\/www\.patreon\.com\/posts\/2026-march-day-153497034',\n {10}options: \[\n {12}\{\n {14}winner: 'Bruce Lee'/
+  );
+  assert.doesNotMatch(
+    result.content,
+    /poll: 'https:\/\/www\.patreon\.com\/posts\/2026-march-day-153497034',\n {10}options: \[\n {12}\{\n {14}winner: 'Bourne'/
+  );
+});
+
+test('applyPollUrlByMatch tolerates small naming differences in matchup options', () => {
+  const content = `const data = {
+  options: [
+    {
+      options: [
+        {
+          winner: 'Toxic Avengers',
+          options: [
+            {
+              winner: 'Toxic Avengers',
+              poll: 'https://www.patreon.com/posts/2026-march-day-9-152583172',
+              options: ['Toxic Avengers', 'Universal Soldier'],
+            },
+            {
+              winner: 'Barbershop',
+              poll: 'https://www.patreon.com/posts/2026-march-day-152676430',
+              options: ['Airport', 'Barbershop'],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+`;
+
+  const result = applyPollUrlByMatch(content, {
+    url: 'https://www.patreon.com/posts/2026-march-day-153573451',
+    options: ['TOXIC AVENGER', 'BARBERSHOP'],
+  });
+
+  assert.equal(result.updated, true);
+  assert.match(
+    result.content,
+    /winner: 'Toxic Avengers',\n {10}poll: 'https:\/\/www\.patreon\.com\/posts\/2026-march-day-153573451'/
+  );
+});

@@ -5,7 +5,6 @@ const data: Data<0> = {
     {
       options: [
         {
-          poll: 'https://www.patreon.com/posts/2026-march-day-153424586',
           options: [
             {
               winner: 'Stand-up Animation',
@@ -42,10 +41,10 @@ const data: Data<0> = {
           ],
         },
         {
-          poll: 'https://www.patreon.com/posts/2026-march-day-153687561',
           options: [
             {
-              poll: 'https://www.patreon.com/posts/2026-march-day-153497034',
+              winner: 'Teen Shakespeare',
+              poll: 'https://www.patreon.com/posts/2026-march-day-153424586',
               options: [
                 {
                   winner: 'Bourne',
@@ -60,7 +59,8 @@ const data: Data<0> = {
               ],
             },
             {
-              poll: 'https://www.patreon.com/posts/2026-march-day-153573451',
+              winner: 'Halloween',
+              poll: 'https://www.patreon.com/posts/2026-march-day-153497034',
               options: [
                 {
                   winner: 'Bruce Lee',
@@ -83,7 +83,8 @@ const data: Data<0> = {
         {
           options: [
             {
-              poll: 'https://www.patreon.com/posts/2026-march-day-153619728',
+              winner: 'Toxic Avengers',
+              poll: 'https://www.patreon.com/posts/2026-march-day-153573451',
               options: [
                 {
                   winner: 'Toxic Avengers',
@@ -98,6 +99,8 @@ const data: Data<0> = {
               ],
             },
             {
+              winner: 'John Grisham',
+              poll: 'https://www.patreon.com/posts/2026-march-day-153619728',
               options: [
                 {
                   winner: 'John Grisham',
@@ -116,6 +119,8 @@ const data: Data<0> = {
         {
           options: [
             {
+              winner: 'Godzilla',
+              poll: 'https://www.patreon.com/posts/2026-march-day-153687561',
               options: [
                 {
                   winner: 'Lethal Weapon',
