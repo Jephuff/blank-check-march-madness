@@ -169,6 +169,8 @@ async function main() {
         log(
           `${tracker.label}: upstream data was found, but the fetcher could not place it in the bracket file.`
         );
+      } else if (!result.ok) {
+        log(`${tracker.label}: fetcher failed; see script output above.`);
       } else {
         log(`${tracker.label}: nothing new yet.`);
       }

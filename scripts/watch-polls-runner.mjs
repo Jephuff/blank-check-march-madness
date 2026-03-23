@@ -11,7 +11,8 @@ export function summarizeScriptRun(result) {
     ok: result.status === 0,
     blockedByMatchFailure:
       /✗ No match in .* for: /u.test(output) ||
-      /✗ No unpolled matchup found for Day /u.test(output),
+      /✗ No unpolled matchup found for Day /u.test(output) ||
+      /✗ Could not place winner for /u.test(output),
   };
 }
 
