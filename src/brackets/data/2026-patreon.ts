@@ -5,7 +5,6 @@ const data: Data<0> = {
     {
       options: [
         {
-          winner: 'TEEN SHAKESPEARE',
           poll: 'https://www.patreon.com/posts/2026-march-day-153424586',
           options: [
             {
@@ -25,7 +24,7 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: 'HUNGER GAMES',
+              winner: 'Hunger Games',
               poll: 'https://www.patreon.com/posts/2026-march-day-153329595',
               options: [
                 {
@@ -43,11 +42,9 @@ const data: Data<0> = {
           ],
         },
         {
-          winner: 'GODZILLA',
           poll: 'https://www.patreon.com/posts/2026-march-day-153687561',
           options: [
             {
-              winner: 'HALLOWEEN',
               poll: 'https://www.patreon.com/posts/2026-march-day-153497034',
               options: [
                 {
@@ -63,7 +60,6 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: 'TOXIC AVENGER',
               poll: 'https://www.patreon.com/posts/2026-march-day-153573451',
               options: [
                 {
@@ -87,7 +83,6 @@ const data: Data<0> = {
         {
           options: [
             {
-              winner: 'JOHN GRISHAM',
               poll: 'https://www.patreon.com/posts/2026-march-day-153619728',
               options: [
                 {

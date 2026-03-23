@@ -47,6 +47,10 @@ function getPollValue(node) {
   return property ? getStringValue(property.initializer) : null;
 }
 
+function getWinnerProperty(node) {
+  return getObjectProperty(node, 'winner');
+}
+
 function getOptionsProperty(node) {
   const property = getObjectProperty(node, 'options');
   if (!property || !ts.isArrayLiteralExpression(property.initializer)) {
@@ -99,6 +103,43 @@ function applyPollAtObject(content, objectNode, url) {
       content,
       getLineStart(content, optionsProperty),
       getLineStart(content, optionsProperty),
+      insertion
+    ),
+    updated: true,
+  };
+}
+
+function applyWinnerAtObject(content, objectNode, winner) {
+  const winnerProperty = getWinnerProperty(objectNode);
+  if (winnerProperty) {
+    if (getStringValue(winnerProperty.initializer) === winner) {
+      return { content, updated: false, reason: 'already-recorded' };
+    }
+    const indent = getNodeIndent(content, winnerProperty);
+    const replacement = `${indent}winner: '${winner}',`;
+    return {
+      content: replaceRange(
+        content,
+        winnerProperty.getStart(),
+        winnerProperty.getEnd(),
+        replacement
+      ),
+      updated: true,
+    };
+  }
+
+  const pollProperty = getObjectProperty(objectNode, 'poll');
+  if (!pollProperty) {
+    return { content, updated: false, reason: 'missing-poll' };
+  }
+
+  const indent = getNodeIndent(content, pollProperty);
+  const insertion = `${indent}winner: '${winner}',\n`;
+  return {
+    content: replaceRange(
+      content,
+      getLineStart(content, pollProperty),
+      getLineStart(content, pollProperty),
       insertion
     ),
     updated: true,
@@ -179,6 +220,44 @@ export function applyPollUrlByMatch(content, poll) {
   }
 
   return { content, updated: false, reason: 'no-match' };
+}
+
+function getMatchupCandidates(matchup) {
+  return matchup.type === 'leaf' ? matchup.options : matchup.childWinners;
+}
+
+function resolveWinnerValue(content, url, winner) {
+  const matchup = walkMatchupObjects(content).find((item) => item.poll === url);
+  if (!matchup) return winner;
+
+  const candidates = getMatchupCandidates(matchup);
+  if (!candidates || candidates.some((value) => !value)) {
+    return winner;
+  }
+
+  const normalizedWinner = normalizeName(winner);
+  for (const candidate of candidates) {
+    const normalizedCandidate = normalizeName(candidate);
+    if (
+      normalizedCandidate === normalizedWinner ||
+      normalizedCandidate.includes(normalizedWinner) ||
+      normalizedWinner.includes(normalizedCandidate)
+    ) {
+      return candidate;
+    }
+  }
+
+  return winner;
+}
+
+export function applyWinnerByUrl(content, url, winner) {
+  const matchup = walkMatchupObjects(content).find((item) => item.poll === url);
+  if (!matchup) {
+    return { content, updated: false, reason: 'no-match' };
+  }
+
+  const resolvedWinner = resolveWinnerValue(content, url, winner);
+  return applyWinnerAtObject(content, matchup.node, resolvedWinner);
 }
 
 function isReadyForPoll(matchup) {

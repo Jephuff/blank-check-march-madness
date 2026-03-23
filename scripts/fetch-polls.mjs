@@ -11,7 +11,11 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { applyPollUrlByMatch, normalizeName } from './bracket-data-updater.mjs';
+import {
+  applyPollUrlByMatch,
+  applyWinnerByUrl,
+  normalizeName,
+} from './bracket-data-updater.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'src', 'brackets', 'data');
@@ -168,43 +172,14 @@ function updateWinnersInFile(filename, pollsWithWinners) {
   let content = readFileSync(filePath, 'utf-8');
   let updated = 0;
 
-  for (let { url, winner } of pollsWithWinners) {
-    // Normalize winner to match the exact option name stored in the file
-    const optionsMatch = new RegExp(
-      `poll: '${escapeRegex(
-        url
-      )}',[\\s\\S]*?options: \\['([^']+)', '([^']+)'\\]`
-    ).exec(content);
-    if (optionsMatch) {
-      const [, opt1, opt2] = optionsMatch;
-      const nw = normalizeName(winner);
-      if (normalizeName(opt1) === nw) winner = opt1;
-      else if (normalizeName(opt2) === nw) winner = opt2;
-    }
-
-    // Skip if winner already written
-    const alreadyPattern = new RegExp(
-      `winner: '${escapeRegex(winner)}',[\\s\\S]*?poll: '${escapeRegex(url)}'`
-    );
-    if (alreadyPattern.test(content)) {
-      console.log(`  · Winner already recorded for ${url}`);
-      continue;
-    }
-
-    // Find "  poll: 'URL'," not preceded by a winner line in the same block
-    // Pattern: opening "{" on its own line immediately before "poll:" (no winner between them)
-    const pattern = new RegExp(
-      `([ \\t]+)\\{\\n\\1  poll: '${escapeRegex(url)}',`
-    );
-    const next = content.replace(
-      pattern,
-      `$1{\n$1  winner: '${winner}',\n$1  poll: '${url}',`
-    );
-
-    if (next !== content) {
-      content = next;
+  for (const { url, winner } of pollsWithWinners) {
+    const result = applyWinnerByUrl(content, url, winner);
+    if (result.updated) {
+      content = result.content;
       updated++;
       console.log(`  ✓ Winner: ${winner}  (${url})`);
+    } else if (result.reason === 'already-recorded') {
+      console.log(`  · Winner already recorded for ${url}`);
     } else {
       console.log(`  ✗ Could not place winner for ${url} in ${filename}`);
     }

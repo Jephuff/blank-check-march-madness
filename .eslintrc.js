@@ -13,5 +13,5 @@ module.exports = {
       }
     ]
   },
-  extends: ["prettier", "react-app"]
+  extends: ["prettier"]
 };

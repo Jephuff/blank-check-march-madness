@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import {
   applyPollUrlByMatch,
   applyNextPollUrl,
+  applyWinnerByUrl,
 } from './bracket-data-updater.mjs';
 
 test('applyPollUrlByMatch inserts a later-round poll using normalized winner names', () => {
@@ -83,5 +84,40 @@ test('applyNextPollUrl inserts the next Patreon poll into the first ready intern
   assert.match(
     result.content,
     /poll: 'https:\/\/www\.patreon\.com\/posts\/2026-march-day-17-153255136',\n {6}options: \[\n {8}\{\n {10}winner: 'Stand-up Animation'/
+  );
+});
+
+test('applyWinnerByUrl maps later-round API winner text to the child winner value', () => {
+  const content = `const data = {
+  options: [
+    {
+      poll: 'https://www.patreon.com/posts/2026-march-day-153329595',
+      options: [
+        {
+          winner: 'Pauly Shore',
+          poll: 'https://www.patreon.com/posts/2026-march-day-3-152135835',
+          options: ['Pauly Shore', 'Cheech & Chong'],
+        },
+        {
+          winner: 'Hunger Games',
+          poll: 'https://www.patreon.com/posts/2026-march-day-4-152219989',
+          options: ['Purge', 'Hunger Games'],
+        },
+      ],
+    },
+  ],
+};
+`;
+
+  const result = applyWinnerByUrl(
+    content,
+    'https://www.patreon.com/posts/2026-march-day-153329595',
+    'HUNGER GAMES'
+  );
+
+  assert.equal(result.updated, true);
+  assert.match(
+    result.content,
+    /winner: 'Hunger Games',\n {6}poll: 'https:\/\/www\.patreon\.com\/posts\/2026-march-day-153329595'/
   );
 });

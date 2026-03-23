@@ -21,7 +21,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { applyNextPollUrl } from './bracket-data-updater.mjs';
+import { applyNextPollUrl, applyWinnerByUrl } from './bracket-data-updater.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_FILE = join(
@@ -249,63 +249,18 @@ function updateDataFile(posts) {
   return updated;
 }
 
-// ---------------------------------------------------------------------------
-// Update 2026-patreon.ts with winners
-// ---------------------------------------------------------------------------
-
-function escapeRegex(s) {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
 function updateWinnersInFile(pollsWithWinners) {
   let content = readFileSync(DATA_FILE, 'utf-8');
   let updated = 0;
 
-  for (let { url, winner } of pollsWithWinners) {
-    // Normalize winner to the exact option name in the file (API returns ALL CAPS)
-    const optionsMatch = new RegExp(
-      `poll: '${escapeRegex(
-        url
-      )}',[\\s\\S]*?options: \\['([^']+)', '([^']+)'\\]`
-    ).exec(content);
-    if (optionsMatch) {
-      const [, opt1, opt2] = optionsMatch;
-      const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
-      const nw = norm(winner);
-      if (
-        norm(opt1) === nw ||
-        norm(opt1).includes(nw) ||
-        nw.includes(norm(opt1))
-      ) {
-        winner = opt1;
-      } else if (
-        norm(opt2) === nw ||
-        norm(opt2).includes(nw) ||
-        nw.includes(norm(opt2))
-      ) {
-        winner = opt2;
-      }
-    }
-    const alreadyPattern = new RegExp(
-      `winner: '${escapeRegex(winner)}',[\\s\\S]*?poll: '${escapeRegex(url)}'`
-    );
-    if (alreadyPattern.test(content)) {
-      console.log(`  · Winner already recorded for ${url}`);
-      continue;
-    }
-
-    const pattern = new RegExp(
-      `([ \\t]+)\\{\\n\\1  poll: '${escapeRegex(url)}',`
-    );
-    const next = content.replace(
-      pattern,
-      `$1{\n$1  winner: '${winner}',\n$1  poll: '${url}',`
-    );
-
-    if (next !== content) {
-      content = next;
+  for (const { url, winner } of pollsWithWinners) {
+    const result = applyWinnerByUrl(content, url, winner);
+    if (result.updated) {
+      content = result.content;
       updated++;
       console.log(`  ✓ Winner: ${winner}  (${url})`);
+    } else if (result.reason === 'already-recorded') {
+      console.log(`  · Winner already recorded for ${url}`);
     } else {
       console.log(`  ✗ Could not place winner for ${url}`);
     }
