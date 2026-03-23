@@ -43,6 +43,7 @@ const data: Data<0> = {
           ],
         },
         {
+          winner: 'GODZILLA',
           poll: 'https://www.patreon.com/posts/2026-march-day-153687561',
           options: [
             {
