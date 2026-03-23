@@ -71,14 +71,14 @@ const trackers = [
   {
     label: 'winners',
     script: 'fetch-polls.mjs',
-    args: [],
+    args: ['--mock-closed'],
     count: () => countMatches(['2026.ts'], /winner: '/g),
     foundToday: false,
   },
   {
     label: 'patreon winners',
     script: 'fetch-patreon-polls.mjs',
-    args: [],
+    args: ['--mock-closed'],
     count: () => countMatches(['2026-patreon.ts'], /winner: '/g),
     foundToday: false,
   },

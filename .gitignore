@@ -26,3 +26,5 @@ yarn-error.log*
 # Patreon OAuth credentials and session cookies
 scripts/.patreon-credentials.json
 scripts/.patreon-cookies.txt
+
+.playwright-cli/

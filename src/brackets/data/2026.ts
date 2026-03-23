@@ -120,6 +120,7 @@ const data: Data<0> = {
         {
           options: [
             {
+              winner: 'Tony Scott',
               poll: 'https://poll.fm/16780845',
               options: [
                 {
