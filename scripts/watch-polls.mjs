@@ -239,14 +239,25 @@ async function main() {
   }
 }
 
-const isMainModule =
-  process.argv[1] &&
-  fileURLToPath(import.meta.url) ===
-    (process.platform === 'win32'
-      ? process.argv[1].replace(/\//g, '\\')
-      : process.argv[1]);
+function normalizeExecPath(value, platform) {
+  if (!value) return null;
+  return platform === 'win32' ? value.replace(/\//g, '\\') : value;
+}
 
-if (isMainModule) {
+export function isWatchPollsEntrypoint({
+  moduleUrl = import.meta.url,
+  argv1 = process.argv[1],
+  pmExecPath = process.env.pm_exec_path,
+  platform = process.platform,
+} = {}) {
+  const modulePath = fileURLToPath(moduleUrl);
+  return (
+    modulePath === normalizeExecPath(argv1, platform) ||
+    modulePath === normalizeExecPath(pmExecPath, platform)
+  );
+}
+
+if (isWatchPollsEntrypoint()) {
   main().catch((err) => {
     console.error(err);
     process.exit(1);

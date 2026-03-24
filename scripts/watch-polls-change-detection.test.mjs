@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { evaluateTrackerUpdate } from './watch-polls.mjs';
+import { evaluateTrackerUpdate, isWatchPollsEntrypoint } from './watch-polls.mjs';
 
 test('evaluateTrackerUpdate treats file content changes as updates even when counts stay flat', () => {
   const result = evaluateTrackerUpdate({
@@ -29,4 +29,15 @@ test('evaluateTrackerUpdate prefers count deltas when new items were added', () 
     changed: true,
     count: 2,
   });
+});
+
+test('isWatchPollsEntrypoint recognizes pm2 exec path launches', () => {
+  const result = isWatchPollsEntrypoint({
+    moduleUrl: 'file:///Users/jeffrey/projects/blank-check-march-madness/scripts/watch-polls.mjs',
+    argv1: '/Users/jeffrey/.volta/tools/image/packages/pm2/lib/node_modules/pm2/lib/ProcessContainerFork.js',
+    pmExecPath: '/Users/jeffrey/projects/blank-check-march-madness/scripts/watch-polls.mjs',
+    platform: 'darwin',
+  });
+
+  assert.equal(result, true);
 });
