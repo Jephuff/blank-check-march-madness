@@ -136,7 +136,6 @@ const data: Data<0> = {
               ],
             },
             {
-              winner: 'Chris Columbus',
               poll: 'https://poll.fm/16780856',
               options: [
                 {

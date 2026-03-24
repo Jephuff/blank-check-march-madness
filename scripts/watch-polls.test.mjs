@@ -4,12 +4,12 @@ import { readFileSync } from 'fs';
 
 const source = readFileSync(new URL('./watch-polls.mjs', import.meta.url), 'utf8');
 
-test('winner trackers run fetchers in live-results mode', () => {
-  assert.match(
+test('winner trackers do not force open polls to look closed', () => {
+  assert.doesNotMatch(
     source,
     /label:\s*'winners'[\s\S]*?args:\s*\[\s*'--mock-closed'\s*\]/u
   );
-  assert.match(
+  assert.doesNotMatch(
     source,
     /label:\s*'patreon winners'[\s\S]*?args:\s*\[\s*'--mock-closed'\s*\]/u
   );
