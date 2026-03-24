@@ -135,6 +135,7 @@ const data: Data<0> = {
               ],
             },
             {
+              poll: 'https://www.patreon.com/posts/2026-march-day-153810770',
               options: [
                 {
                   winner: 'Magic Mike',

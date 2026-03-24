@@ -53,11 +53,34 @@ function countMatches(files, pattern) {
   return count;
 }
 
+function snapshotFiles(files) {
+  return files.map((file) => readFileSync(join(DATA_DIR, file), 'utf-8')).join('\n');
+}
+
+export function evaluateTrackerUpdate({
+  beforeCount,
+  afterCount,
+  beforeSnapshot,
+  afterSnapshot,
+}) {
+  const delta = afterCount - beforeCount;
+  if (delta > 0) {
+    return { changed: true, count: delta };
+  }
+
+  if (beforeSnapshot !== afterSnapshot) {
+    return { changed: true, count: 1 };
+  }
+
+  return { changed: false, count: 0 };
+}
+
 const trackers = [
   {
     label: 'poll links',
     script: 'fetch-polls.mjs',
     args: [],
+    files: ['2026.ts'],
     count: () => countMatches(['2026.ts'], /poll: 'https?:/g),
     foundToday: false,
   },
@@ -65,6 +88,7 @@ const trackers = [
     label: 'patreon links',
     script: 'fetch-patreon-polls.mjs',
     args: [],
+    files: ['2026-patreon.ts'],
     count: () => countMatches(['2026-patreon.ts'], /poll: 'https?:/g),
     foundToday: false,
   },
@@ -72,6 +96,7 @@ const trackers = [
     label: 'winners',
     script: 'fetch-polls.mjs',
     args: ['--mock-closed'],
+    files: ['2026.ts'],
     count: () => countMatches(['2026.ts'], /winner: '/g),
     foundToday: false,
   },
@@ -79,6 +104,7 @@ const trackers = [
     label: 'patreon winners',
     script: 'fetch-patreon-polls.mjs',
     args: ['--mock-closed'],
+    files: ['2026-patreon.ts'],
     count: () => countMatches(['2026-patreon.ts'], /winner: '/g),
     foundToday: false,
   },
@@ -156,12 +182,20 @@ async function main() {
 
     for (const tracker of pending) {
       const before = tracker.count();
+      const beforeSnapshot = snapshotFiles(tracker.files);
       log(`Running ${tracker.label}…`);
       const result = runScript(tracker.script, ...tracker.args);
       const after = tracker.count();
+      const afterSnapshot = snapshotFiles(tracker.files);
+      const change = evaluateTrackerUpdate({
+        beforeCount: before,
+        afterCount: after,
+        beforeSnapshot,
+        afterSnapshot,
+      });
 
-      if (after > before) {
-        const found = after - before;
+      if (change.changed) {
+        const found = change.count;
         log(`✓ ${tracker.label}: found ${found} new item(s). Done for today.`);
         tracker.foundToday = true;
         updates.push({ label: tracker.label, count: found });
@@ -205,7 +239,16 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+const isMainModule =
+  process.argv[1] &&
+  fileURLToPath(import.meta.url) ===
+    (process.platform === 'win32'
+      ? process.argv[1].replace(/\//g, '\\')
+      : process.argv[1]);
+
+if (isMainModule) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
