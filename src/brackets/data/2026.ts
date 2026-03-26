@@ -43,6 +43,7 @@ const data: Data<0> = {
           ],
         },
         {
+          poll: 'https://poll.fm/16798216',
           options: [
             {
               winner: 'Penelope Spheeris',
