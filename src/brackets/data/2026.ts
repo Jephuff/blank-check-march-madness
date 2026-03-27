@@ -44,6 +44,7 @@ const data: Data<0> = {
           ],
         },
         {
+          winner: 'Milos Forman',
           poll: 'https://poll.fm/16798216',
           options: [
             {
@@ -85,6 +86,7 @@ const data: Data<0> = {
     {
       options: [
         {
+          poll: 'https://poll.fm/16780869',
           options: [
             {
               winner: 'Wes Anderson',
