@@ -43,6 +43,7 @@ const data: Data<0> = {
           ],
         },
         {
+          winner: 'Teen Shakespeare',
           poll: 'https://www.patreon.com/posts/2026-march-day-153951294',
           options: [
             {
@@ -84,6 +85,7 @@ const data: Data<0> = {
     {
       options: [
         {
+          poll: 'https://www.patreon.com/posts/2026-march-day-154064223',
           options: [
             {
               winner: 'Toxic Avengers',
