@@ -65,6 +65,25 @@ export function loadCookies({
   return cookies || null;
 }
 
+export function getPatreonUrlsMissingWinners(content) {
+  const missing = [];
+  for (const m of content.matchAll(
+    /poll: '(https:\/\/www\.patreon\.com\/posts\/[^']+-\d+)'/g
+  )) {
+    const [_, url] = m;
+    const hasWinner = new RegExp(
+      `winner: '[^']+',\\s*\\n\\s*poll: '${url.replace(
+        /[.*+?^${}()|[\]\\]/g,
+        '\\$&'
+      )}'`
+    ).test(content);
+    if (!hasWinner) {
+      missing.push(url);
+    }
+  }
+  return missing;
+}
+
 // ---------------------------------------------------------------------------
 // Fetch Patreon posts via public API
 // ---------------------------------------------------------------------------
@@ -132,7 +151,10 @@ async function fetchMarchMadnessPosts(cookies) {
   posts.sort((a, b) => a.day - b.day);
 
   if (cookies) {
+    const currentContent = readFileSync(DATA_FILE, 'utf-8');
+    const missingWinnerUrls = new Set(getPatreonUrlsMissingWinners(currentContent));
     for (const post of posts) {
+      if (!missingWinnerUrls.has(post.url)) continue;
       try {
         const pollDetails = await fetchPatreonPollDetails(post.url, cookies);
         post.options = pollDetails.options;

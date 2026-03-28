@@ -128,6 +128,24 @@ function escapeRegex(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+export function getPollUrlsMissingWinners(content) {
+  const missing = [];
+  for (const m of content.matchAll(/poll: '(https:\/\/poll\.fm\/(\d+))'/g)) {
+    const [_, url] = m;
+    const hasWinner = new RegExp(
+      `winner: '[^']+',\\s*\\n\\s*poll: '${escapeRegex(url)}'`
+    ).test(content);
+    if (!hasWinner) {
+      missing.push(url);
+    }
+  }
+  return missing;
+}
+
+export function filterPollsMissingWinners(polls, missingWinnerUrls) {
+  return polls.filter((poll) => poll.closed && missingWinnerUrls.has(poll.url));
+}
+
 function updateDataFile(filename, polls) {
   const filePath = join(DATA_DIR, filename);
   let content = readFileSync(filePath, 'utf-8');
@@ -235,22 +253,20 @@ async function main() {
   console.log('\nUpdating 2026.ts (main bracket)…');
   updateDataFile('2026.ts', validPolls);
 
-  // Collect closed polls: from current page + any already recorded in file without a winner
-  const closedPolls = validPolls.filter((p) => p.closed);
+  const filePath = join(DATA_DIR, '2026.ts');
+  const fileContent = readFileSync(filePath, 'utf-8');
+  const missingWinnerUrls = new Set(getPollUrlsMissingWinners(fileContent));
+
+  // Collect closed polls that are still missing winners.
+  const closedPolls = filterPollsMissingWinners(validPolls, missingWinnerUrls);
 
   // Also scan 2026.ts for recorded poll.fm URLs that have no winner yet,
   // but only add them if the poll is actually closed.
-  const fileContent = readFileSync(join(DATA_DIR, '2026.ts'), 'utf-8');
   const knownUrls = new Set(closedPolls.map((p) => p.url));
-  for (const m of fileContent.matchAll(
-    /poll: '(https:\/\/poll\.fm\/(\d+))'/g
-  )) {
-    const [, url, pollId] = m;
+  for (const url of missingWinnerUrls) {
+    const pollId = url.match(/(\d+)$/)?.[1];
+    if (!pollId) continue;
     if (knownUrls.has(url)) continue;
-    const hasWinner = new RegExp(
-      `winner: '[^']+',\\s*\\n\\s*poll: '${escapeRegex(url)}'`
-    ).test(fileContent);
-    if (hasWinner) continue;
     const details = await fetchPollDetails(pollId);
     if (details.closed) {
       closedPolls.push(details);
@@ -281,7 +297,9 @@ async function main() {
   console.log('\nDone.');
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+if (import.meta.url === new URL(process.argv[1], 'file:').href) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

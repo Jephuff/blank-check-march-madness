@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import {
   applyPatreonPollUrl,
   applyPatreonPost,
+  getPatreonUrlsMissingWinners,
   loadCookies,
 } from './fetch-patreon-polls.mjs';
 
@@ -161,4 +162,42 @@ test('loadCookies falls back to the local file when PATREON_COOKIES is unset', (
   });
 
   assert.equal(result, 'session_id=from-file');
+});
+
+test('getPatreonUrlsMissingWinners only returns recorded Patreon poll URLs without a winner', () => {
+  const content = `const data = {
+  options: [
+    {
+      winner: 'Teen Shakespeare',
+      poll: 'https://www.patreon.com/posts/2026-march-day-153424586',
+      options: [
+        {
+          winner: 'Bourne',
+          poll: 'https://www.patreon.com/posts/2026-march-day-5-152272006',
+          options: ['Rambo', 'Bourne'],
+        },
+        {
+          poll: 'https://www.patreon.com/posts/2026-march-day-153497034',
+          options: [
+            {
+              winner: 'Bruce Lee',
+              poll: 'https://www.patreon.com/posts/2026-march-day-7-152436234',
+              options: ['Dirty Harry', 'Bruce Lee'],
+            },
+            {
+              winner: 'Halloween',
+              poll: 'https://www.patreon.com/posts/2026-march-day-8-152507890',
+              options: ['Chucky', 'Halloween'],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+`;
+
+  assert.deepEqual(getPatreonUrlsMissingWinners(content), [
+    'https://www.patreon.com/posts/2026-march-day-153497034',
+  ]);
 });
