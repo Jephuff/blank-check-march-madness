@@ -130,7 +130,11 @@ function commitAndPush(updates) {
       cwd: ROOT,
       stdio: 'inherit',
     });
-    execFileSync('git', ['add', 'src/brackets/data/'], {
+    execFileSync(process.execPath, [join(__dirname, 'update-data-hashes.mjs')], {
+      cwd: ROOT,
+      stdio: 'inherit',
+    });
+    execFileSync('git', ['add', 'src/brackets/data/', 'public/data-hashes.json'], {
       cwd: ROOT,
       stdio: 'inherit',
     });

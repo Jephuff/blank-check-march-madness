@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import ForkWrapper from './ForkWrapper';
 import { useLocalStorageVersion } from './useLocalStorage';
 import _ from 'lodash';
@@ -13,6 +13,11 @@ import {
 
 const baseKey = '0';
 const LIVE_YEAR = '2026';
+const DATA_HASH_POLL_INTERVAL_MS = 60 * 1000;
+const LIVE_HASH_KEYS: Record<string, string> = {
+  'Bracket 2026': '2026',
+  'Bracket 2026 Patreon': '2026-patreon',
+};
 
 // Collect all leaf matchup nodes from the bracket tree
 function collectLeaves(node: any): Array<{ poll?: string; winner?: string }> {
@@ -57,6 +62,8 @@ export const App = () => {
   const refreshTitle = missingPoll
     ? "Today's poll may be available"
     : "Yesterday's winner may be available";
+  const activeHashKey = LIVE_HASH_KEYS[bracketName];
+  const lastSeenHashRef = useRef<string | null>(null);
 
   // Auto-reload once per day at/after 9:30am if data is missing
   useEffect(() => {
@@ -69,6 +76,48 @@ export const App = () => {
     localStorage.setItem('autoRefreshDate', todayKey);
     window.location.reload();
   }, [showRefresh]);
+
+  useEffect(() => {
+    if (!activeHashKey) {
+      lastSeenHashRef.current = null;
+      return;
+    }
+
+    let cancelled = false;
+
+    const checkHashes = async () => {
+      try {
+        const response = await fetch(
+          `/data-hashes.json?t=${Date.now()}`,
+          { cache: 'no-store' }
+        );
+        if (!response.ok) return;
+
+        const hashes = (await response.json()) as Record<string, string>;
+        const nextHash = hashes[activeHashKey];
+        if (!nextHash || cancelled) return;
+
+        if (!lastSeenHashRef.current) {
+          lastSeenHashRef.current = nextHash;
+          return;
+        }
+
+        if (lastSeenHashRef.current !== nextHash) {
+          window.location.reload();
+        }
+      } catch {
+        // Ignore polling failures; a later interval can recover.
+      }
+    };
+
+    void checkHashes();
+    const intervalId = window.setInterval(checkHashes, DATA_HASH_POLL_INTERVAL_MS);
+
+    return () => {
+      cancelled = true;
+      window.clearInterval(intervalId);
+    };
+  }, [activeHashKey]);
 
   const years = [
     ...new Set(

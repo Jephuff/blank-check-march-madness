@@ -41,15 +41,18 @@ jobs:
       - name: Lint fixes
         run: npm run lint -- --fix
 
+      - name: Update data hashes
+        run: node scripts/update-data-hashes.mjs
+
       - name: Commit and push bracket updates
         run: |
-          if git diff --quiet -- src/brackets/data/; then
+          if git diff --quiet -- src/brackets/data/ public/data-hashes.json; then
             echo "No bracket data changes to commit."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/brackets/data/
+          git add src/brackets/data/ public/data-hashes.json
           git commit -m "chore: update march madness brackets"
           git push
