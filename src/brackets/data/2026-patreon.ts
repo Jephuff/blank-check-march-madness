@@ -3,6 +3,7 @@ import { Data } from 'brackets/types';
 const data: Data<0> = {
   options: [
     {
+      poll: 'https://www.patreon.com/posts/2026-march-day-154151721',
       options: [
         {
           winner: 'Stand-up Animation',
