@@ -87,10 +87,9 @@ export const App = () => {
 
     const checkHashes = async () => {
       try {
-        const response = await fetch(
-          `/data-hashes.json?t=${Date.now()}`,
-          { cache: 'no-store' }
-        );
+        const response = await fetch(`/data-hashes.json?t=${Date.now()}`, {
+          cache: 'no-store',
+        });
         if (!response.ok) return;
 
         const hashes = (await response.json()) as Record<string, string>;
@@ -111,7 +110,10 @@ export const App = () => {
     };
 
     void checkHashes();
-    const intervalId = window.setInterval(checkHashes, DATA_HASH_POLL_INTERVAL_MS);
+    const intervalId = window.setInterval(
+      checkHashes,
+      DATA_HASH_POLL_INTERVAL_MS
+    );
 
     return () => {
       cancelled = true;
