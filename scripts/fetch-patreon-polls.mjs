@@ -6,12 +6,15 @@
  * Without cookies: fetches post URLs only (unauthenticated API).
  * With cookies: also detects winners from closed Patreon native polls.
  *
- * Cookie setup (one-time):
+ * Cookie setup (one-time, local fallback):
  *   1. Open patreon.com in Chrome and log in
  *   2. Open DevTools > Network tab, click any patreon.com request
  *   3. In Request Headers, find "Cookie:" and copy the entire value
  *   4. Paste it into a new file: scripts/.patreon-cookies.txt
  *   (Refresh when cookies expire — usually every few weeks)
+ *
+ * CI / GitHub Actions:
+ *   Set PATREON_COOKIES as an environment variable.
  *
  * Usage:
  *   node scripts/fetch-patreon-polls.mjs            # fetch and write
@@ -49,9 +52,16 @@ const YEAR = '2026';
 // Cookies
 // ---------------------------------------------------------------------------
 
-function loadCookies() {
-  if (!existsSync(COOKIES_FILE)) return null;
-  const cookies = readFileSync(COOKIES_FILE, 'utf-8').trim();
+export function loadCookies({
+  envCookies = process.env.PATREON_COOKIES,
+  fileExists = existsSync(COOKIES_FILE),
+  readFile = () => readFileSync(COOKIES_FILE, 'utf-8'),
+} = {}) {
+  const normalizedEnvCookies = envCookies?.trim();
+  if (normalizedEnvCookies) return normalizedEnvCookies;
+
+  if (!fileExists) return null;
+  const cookies = readFile().trim();
   return cookies || null;
 }
 
@@ -169,7 +179,7 @@ async function fetchPatreonPollDetails(postUrl, cookies) {
   );
   if (postRes.status === 401 || postRes.status === 403) {
     throw new CookieExpiredError(
-      'Patreon cookie has expired. Update scripts/.patreon-cookies.txt.'
+      'Patreon cookie has expired. Update PATREON_COOKIES or scripts/.patreon-cookies.txt.'
     );
   }
   if (!postRes.ok) return { options: null, winner: null };

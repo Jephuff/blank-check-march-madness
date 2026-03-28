@@ -1,7 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { applyPatreonPollUrl, applyPatreonPost } from './fetch-patreon-polls.mjs';
+import {
+  applyPatreonPollUrl,
+  applyPatreonPost,
+  loadCookies,
+} from './fetch-patreon-polls.mjs';
 
 test('applyPatreonPollUrl matches later-round posts by live poll choices when available', () => {
   const content = `const data = {
@@ -137,4 +141,24 @@ test('applyPatreonPost writes winners so later-round links can be matched in the
     day23.content,
     /poll: 'https:\/\/www\.patreon\.com\/posts\/2026-march-day-153687561',\n {10}options: \[\n {12}\{\n {14}winner: 'Teen Shakespeare'/
   );
+});
+
+test('loadCookies prefers PATREON_COOKIES env var over the local file', () => {
+  const result = loadCookies({
+    envCookies: 'session_id=from-env',
+    fileExists: true,
+    readFile: () => 'session_id=from-file',
+  });
+
+  assert.equal(result, 'session_id=from-env');
+});
+
+test('loadCookies falls back to the local file when PATREON_COOKIES is unset', () => {
+  const result = loadCookies({
+    envCookies: '',
+    fileExists: true,
+    readFile: () => 'session_id=from-file',
+  });
+
+  assert.equal(result, 'session_id=from-file');
 });
