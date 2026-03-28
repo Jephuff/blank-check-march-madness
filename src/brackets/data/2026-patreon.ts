@@ -85,6 +85,7 @@ const data: Data<0> = {
     {
       options: [
         {
+          winner: 'John Grisham',
           poll: 'https://www.patreon.com/posts/2026-march-day-154064223',
           options: [
             {
