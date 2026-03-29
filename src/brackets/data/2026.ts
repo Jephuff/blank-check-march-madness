@@ -4,6 +4,7 @@ import { Data } from 'brackets/types';
 const data: Data<0> = {
   options: [
     {
+      poll: 'https://poll.fm/16811913',
       options: [
         {
           winner: 'Martin Scorsese',
