@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 import {
   applyPollUrlByMatch,
@@ -215,4 +216,10 @@ test('applyPollUrlByMatch tolerates small naming differences in matchup options'
     result.content,
     /winner: 'Toxic Avengers',\n {10}poll: 'https:\/\/www\.patreon\.com\/posts\/2026-march-day-153573451'/
   );
+});
+
+test('bracket-data-updater has no runtime typescript dependency', () => {
+  const source = readFileSync(new URL('./bracket-data-updater.mjs', import.meta.url), 'utf8');
+  assert.doesNotMatch(source, /from 'typescript'/);
+  assert.doesNotMatch(source, /from "typescript"/);
 });

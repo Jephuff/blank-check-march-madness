@@ -1,4 +1,196 @@
-import ts from 'typescript';
+function skipTrivia(content, index) {
+  let cursor = index;
+
+  while (cursor < content.length) {
+    const char = content[cursor];
+
+    if (/\s/.test(char)) {
+      cursor++;
+      continue;
+    }
+
+    if (content.startsWith('//', cursor)) {
+      const nextLine = content.indexOf('\n', cursor + 2);
+      cursor = nextLine === -1 ? content.length : nextLine + 1;
+      continue;
+    }
+
+    if (content.startsWith('/*', cursor)) {
+      const commentEnd = content.indexOf('*/', cursor + 2);
+      if (commentEnd === -1) {
+        throw new Error('Unterminated block comment in bracket data');
+      }
+      cursor = commentEnd + 2;
+      continue;
+    }
+
+    break;
+  }
+
+  return cursor;
+}
+
+function parseString(content, index) {
+  const quote = content[index];
+  let cursor = index + 1;
+  let value = '';
+
+  while (cursor < content.length) {
+    const char = content[cursor];
+    if (char === '\\') {
+      value += char;
+      cursor++;
+      if (cursor < content.length) {
+        value += content[cursor];
+        cursor++;
+      }
+      continue;
+    }
+
+    if (char === quote) {
+      return {
+        type: 'string',
+        value,
+        start: index,
+        end: cursor + 1,
+      };
+    }
+
+    value += char;
+    cursor++;
+  }
+
+  throw new Error('Unterminated string in bracket data');
+}
+
+function parseIdentifier(content, index) {
+  let cursor = index;
+  while (cursor < content.length && /[A-Za-z0-9_$]/.test(content[cursor])) {
+    cursor++;
+  }
+
+  if (cursor === index) {
+    throw new Error(`Expected identifier at index ${index}`);
+  }
+
+  return {
+    type: 'identifier',
+    value: content.slice(index, cursor),
+    start: index,
+    end: cursor,
+  };
+}
+
+function parseArray(content, index) {
+  let cursor = skipTrivia(content, index + 1);
+  const elements = [];
+
+  while (cursor < content.length && content[cursor] !== ']') {
+    const element = parseValue(content, cursor);
+    elements.push(element);
+    cursor = skipTrivia(content, element.end);
+
+    if (content[cursor] === ',') {
+      cursor = skipTrivia(content, cursor + 1);
+      continue;
+    }
+
+    if (content[cursor] !== ']') {
+      throw new Error(`Expected ',' or ']' at index ${cursor}`);
+    }
+  }
+
+  if (content[cursor] !== ']') {
+    throw new Error('Unterminated array in bracket data');
+  }
+
+  return {
+    type: 'array',
+    elements,
+    start: index,
+    end: cursor + 1,
+  };
+}
+
+function parseObject(content, index) {
+  let cursor = skipTrivia(content, index + 1);
+  const properties = [];
+
+  while (cursor < content.length && content[cursor] !== '}') {
+    const keyNode =
+      content[cursor] === "'" || content[cursor] === '"'
+        ? parseString(content, cursor)
+        : parseIdentifier(content, cursor);
+
+    const key = keyNode.value;
+    cursor = skipTrivia(content, keyNode.end);
+
+    if (content[cursor] !== ':') {
+      throw new Error(`Expected ':' after property ${key} at index ${cursor}`);
+    }
+
+    cursor = skipTrivia(content, cursor + 1);
+    const initializer = parseValue(content, cursor);
+    properties.push({
+      type: 'property',
+      name: key,
+      initializer,
+      start: keyNode.start,
+      end: initializer.end,
+    });
+
+    cursor = skipTrivia(content, initializer.end);
+    if (content[cursor] === ',') {
+      cursor = skipTrivia(content, cursor + 1);
+      continue;
+    }
+
+    if (content[cursor] !== '}') {
+      throw new Error(`Expected ',' or '}' at index ${cursor}`);
+    }
+  }
+
+  if (content[cursor] !== '}') {
+    throw new Error('Unterminated object in bracket data');
+  }
+
+  return {
+    type: 'object',
+    properties,
+    start: index,
+    end: cursor + 1,
+  };
+}
+
+function parseValue(content, index) {
+  const cursor = skipTrivia(content, index);
+  const char = content[cursor];
+
+  if (char === '{') return parseObject(content, cursor);
+  if (char === '[') return parseArray(content, cursor);
+  if (char === "'" || char === '"') return parseString(content, cursor);
+  if (/[A-Za-z_$]/.test(char)) return parseIdentifier(content, cursor);
+
+  throw new Error(`Unsupported value at index ${cursor}`);
+}
+
+function findDataObjectStart(content) {
+  const dataMatch = /const\s+data\b[\s\S]*?=/.exec(content);
+  if (!dataMatch) {
+    throw new Error('Could not find `const data =` in bracket data');
+  }
+
+  const valueStart = skipTrivia(content, dataMatch.index + dataMatch[0].length);
+  if (content[valueStart] !== '{') {
+    throw new Error('Bracket data does not start with an object literal');
+  }
+
+  return valueStart;
+}
+
+function parseSource(content) {
+  return parseObject(content, findDataObjectStart(content));
+}
 
 export function normalizeName(value) {
   return value
@@ -12,33 +204,12 @@ function normalizedNamesMatch(a, b) {
   return a === b || a.includes(b) || b.includes(a);
 }
 
-function parseSource(content) {
-  return ts.createSourceFile(
-    'bracket-data.ts',
-    content,
-    ts.ScriptTarget.Latest,
-    true,
-    ts.ScriptKind.TS
-  );
-}
-
 function getStringValue(expression) {
-  if (
-    ts.isStringLiteral(expression) ||
-    ts.isNoSubstitutionTemplateLiteral(expression)
-  ) {
-    return expression.text;
-  }
-  return null;
+  return expression?.type === 'string' ? expression.value : null;
 }
 
 function getObjectProperty(node, name) {
-  return node.properties.find(
-    (property) =>
-      ts.isPropertyAssignment(property) &&
-      ts.isIdentifier(property.name) &&
-      property.name.text === name
-  );
+  return node.properties.find((property) => property.name === name);
 }
 
 function getWinner(node) {
@@ -57,23 +228,23 @@ function getWinnerProperty(node) {
 
 function getOptionsProperty(node) {
   const property = getObjectProperty(node, 'options');
-  if (!property || !ts.isArrayLiteralExpression(property.initializer)) {
+  if (!property || property.initializer.type !== 'array') {
     return null;
   }
   return property;
 }
 
 function getNodeIndent(content, node) {
-  const lineStart = content.lastIndexOf('\n', node.getStart()) + 1;
-  return content.slice(lineStart, node.getStart());
+  const lineStart = content.lastIndexOf('\n', node.start) + 1;
+  return content.slice(lineStart, node.start);
 }
 
 function getLineStart(content, node) {
-  return content.lastIndexOf('\n', node.getStart()) + 1;
+  return content.lastIndexOf('\n', node.start) + 1;
 }
 
 function getLineEnd(content, node) {
-  const lineEnd = content.indexOf('\n', node.getEnd());
+  const lineEnd = content.indexOf('\n', node.end);
   return lineEnd === -1 ? content.length : lineEnd + 1;
 }
 
@@ -160,51 +331,47 @@ function walkMatchupObjects(content) {
   const matchups = [];
 
   function visit(node) {
-    if (!ts.isObjectLiteralExpression(node)) {
-      ts.forEachChild(node, visit);
+    if (node.type === 'object') {
+      const optionsProperty = getOptionsProperty(node);
+      if (optionsProperty) {
+        const elements = optionsProperty.initializer.elements;
+        if (elements.length === 2) {
+          const poll = getPollValue(node);
+          const winner = getWinner(node);
+          const leafOptions = elements.map(getStringValue);
+
+          if (leafOptions.every(Boolean)) {
+            matchups.push({
+              node,
+              type: 'leaf',
+              poll,
+              winner,
+              options: leafOptions,
+            });
+          } else if (elements.every((element) => element.type === 'object')) {
+            const childWinners = elements.map(getWinner);
+            matchups.push({
+              node,
+              type: 'internal',
+              poll,
+              winner,
+              childWinners,
+            });
+          }
+        }
+      }
+
+      for (const property of node.properties) {
+        visit(property.initializer);
+      }
       return;
     }
 
-    const optionsProperty = getOptionsProperty(node);
-    if (!optionsProperty) {
-      ts.forEachChild(node, visit);
-      return;
+    if (node.type === 'array') {
+      for (const element of node.elements) {
+        visit(element);
+      }
     }
-
-    const elements = optionsProperty.initializer.elements;
-    if (elements.length !== 2) {
-      ts.forEachChild(node, visit);
-      return;
-    }
-
-    const poll = getPollValue(node);
-    const winner = getWinner(node);
-
-    const leafOptions = elements.map(getStringValue);
-    if (leafOptions.every(Boolean)) {
-      matchups.push({
-        node,
-        type: 'leaf',
-        poll,
-        winner,
-        options: leafOptions,
-      });
-      ts.forEachChild(node, visit);
-      return;
-    }
-
-    if (elements.every(ts.isObjectLiteralExpression)) {
-      const childWinners = elements.map(getWinner);
-      matchups.push({
-        node,
-        type: 'internal',
-        poll,
-        winner,
-        childWinners,
-      });
-    }
-
-    ts.forEachChild(node, visit);
   }
 
   visit(source);
@@ -249,9 +416,7 @@ function resolveWinnerValue(content, url, winner) {
   const normalizedWinner = normalizeName(winner);
   for (const candidate of candidates) {
     const normalizedCandidate = normalizeName(candidate);
-    if (
-      normalizedNamesMatch(normalizedCandidate, normalizedWinner)
-    ) {
+    if (normalizedNamesMatch(normalizedCandidate, normalizedWinner)) {
       return candidate;
     }
   }
@@ -295,12 +460,7 @@ export function clearMatchupByPollUrl(content, url) {
 
   let nextContent = content;
   for (const range of ranges) {
-    nextContent = replaceRange(
-      nextContent,
-      range.start,
-      range.end,
-      ''
-    );
+    nextContent = replaceRange(nextContent, range.start, range.end, '');
   }
 
   return { content: nextContent, updated: removals.length > 0 };
