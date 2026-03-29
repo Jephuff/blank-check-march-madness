@@ -1,7 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { evaluateTrackerUpdate, isWatchPollsEntrypoint } from './watch-polls.mjs';
+import {
+  buildWorkflowDispatchRequest,
+  evaluateTrackerUpdate,
+  getWatchPollsMode,
+  isWatchPollsEntrypoint,
+} from './watch-polls.mjs';
 
 test('evaluateTrackerUpdate treats file content changes as updates even when counts stay flat', () => {
   const result = evaluateTrackerUpdate({
@@ -40,4 +45,33 @@ test('isWatchPollsEntrypoint recognizes pm2 exec path launches', () => {
   });
 
   assert.equal(result, true);
+});
+
+test('buildWorkflowDispatchRequest creates the GitHub workflow_dispatch API request', () => {
+  const result = buildWorkflowDispatchRequest({
+    repository: 'jeffrey/blank-check-march-madness',
+    token: 'secret-token',
+    workflowId: 'march-madness.yml',
+    ref: 'main',
+  });
+
+  assert.deepEqual(result, {
+    url: 'https://api.github.com/repos/jeffrey/blank-check-march-madness/actions/workflows/march-madness.yml/dispatches',
+    options: {
+      method: 'POST',
+      headers: {
+        Accept: 'application/vnd.github+json',
+        Authorization: 'Bearer secret-token',
+        'Content-Type': 'application/json',
+        'User-Agent': 'blank-check-march-madness-watch-polls',
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+      body: JSON.stringify({ ref: 'main' }),
+    },
+  });
+});
+
+test('getWatchPollsMode returns github-actions-trigger when the mode flag is enabled', () => {
+  assert.equal(getWatchPollsMode({ useGithubActionsTrigger: true }), 'github-actions-trigger');
+  assert.equal(getWatchPollsMode({ useGithubActionsTrigger: false }), 'local-watch');
 });

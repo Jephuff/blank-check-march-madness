@@ -23,6 +23,11 @@ import { runScript } from './watch-polls-runner.mjs';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const DATA_DIR = join(ROOT, 'src', 'brackets', 'data');
+const USE_GITHUB_ACTIONS_TRIGGER = true;
+const GITHUB_ACTIONS_TRIGGER_INTERVAL_MS = 5 * 60 * 1000;
+const GITHUB_ACTIONS_REPOSITORY = 'Jephuff/blank-check-march-madness';
+const GITHUB_ACTIONS_WORKFLOW_ID = 'march-madness.yml';
+const GITHUB_ACTIONS_REF = 'master';
 
 const END_DATE = new Date('2026-04-02T00:00:00');
 const TEN_MIN_MS = 10 * 60 * 1000;
@@ -54,7 +59,9 @@ function countMatches(files, pattern) {
 }
 
 function snapshotFiles(files) {
-  return files.map((file) => readFileSync(join(DATA_DIR, file), 'utf-8')).join('\n');
+  return files
+    .map((file) => readFileSync(join(DATA_DIR, file), 'utf-8'))
+    .join('\n');
 }
 
 export function evaluateTrackerUpdate({
@@ -73,6 +80,34 @@ export function evaluateTrackerUpdate({
   }
 
   return { changed: false, count: 0 };
+}
+
+export function getWatchPollsMode({
+  useGithubActionsTrigger = USE_GITHUB_ACTIONS_TRIGGER,
+} = {}) {
+  return useGithubActionsTrigger ? 'github-actions-trigger' : 'local-watch';
+}
+
+export function buildWorkflowDispatchRequest({
+  repository,
+  token,
+  workflowId = GITHUB_ACTIONS_WORKFLOW_ID,
+  ref = GITHUB_ACTIONS_REF,
+}) {
+  return {
+    url: `https://api.github.com/repos/${repository}/actions/workflows/${workflowId}/dispatches`,
+    options: {
+      method: 'POST',
+      headers: {
+        Accept: 'application/vnd.github+json',
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'User-Agent': 'blank-check-march-madness-watch-polls',
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+      body: JSON.stringify({ ref }),
+    },
+  };
 }
 
 const trackers = [
@@ -130,14 +165,22 @@ function commitAndPush(updates) {
       cwd: ROOT,
       stdio: 'inherit',
     });
-    execFileSync(process.execPath, [join(__dirname, 'update-data-hashes.mjs')], {
-      cwd: ROOT,
-      stdio: 'inherit',
-    });
-    execFileSync('git', ['add', 'src/brackets/data/', 'public/data-hashes.json'], {
-      cwd: ROOT,
-      stdio: 'inherit',
-    });
+    execFileSync(
+      process.execPath,
+      [join(__dirname, 'update-data-hashes.mjs')],
+      {
+        cwd: ROOT,
+        stdio: 'inherit',
+      }
+    );
+    execFileSync(
+      'git',
+      ['add', 'src/brackets/data/', 'public/data-hashes.json'],
+      {
+        cwd: ROOT,
+        stdio: 'inherit',
+      }
+    );
     execFileSync('git', ['commit', '-m', msg], {
       cwd: ROOT,
       stdio: 'inherit',
@@ -161,6 +204,11 @@ function todayKey() {
 }
 
 async function main() {
+  if (getWatchPollsMode() === 'github-actions-trigger') {
+    await runGithubActionsTriggerLoop();
+    return;
+  }
+
   log('Poll watcher started.');
   let lastDay = null;
 
@@ -240,6 +288,60 @@ async function main() {
       );
       await sleep(wait);
     }
+  }
+}
+
+async function triggerGithubWorkflowDispatch({
+  fetchImpl = fetch,
+  token = process.env.GITHUB_ACTIONS_TRIGGER_TOKEN,
+  repository = GITHUB_ACTIONS_REPOSITORY,
+  workflowId = process.env.GITHUB_ACTIONS_WORKFLOW_ID ||
+    GITHUB_ACTIONS_WORKFLOW_ID,
+  ref = process.env.GITHUB_ACTIONS_REF || GITHUB_ACTIONS_REF,
+} = {}) {
+  if (!token) {
+    throw new Error('Missing GITHUB_ACTIONS_TRIGGER_TOKEN.');
+  }
+  if (!repository) {
+    throw new Error('Missing GitHub repository configuration.');
+  }
+
+  const request = buildWorkflowDispatchRequest({
+    repository,
+    token,
+    workflowId,
+    ref,
+  });
+
+  const response = await fetchImpl(request.url, request.options);
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(
+      `GitHub workflow dispatch failed: HTTP ${response.status} ${body}`
+    );
+  }
+}
+
+async function runGithubActionsTriggerLoop() {
+  log('GitHub Actions trigger mode started.');
+
+  while (true) {
+    const now = new Date();
+
+    if (now >= END_DATE) {
+      log('March Madness is Over');
+      await sleep(msUntilMidnight());
+      continue;
+    }
+
+    try {
+      await triggerGithubWorkflowDispatch();
+      log('Triggered GitHub March Madness workflow.');
+    } catch (err) {
+      log(`GitHub workflow trigger failed: ${err.message}`);
+    }
+
+    await sleep(GITHUB_ACTIONS_TRIGGER_INTERVAL_MS);
   }
 }
 
