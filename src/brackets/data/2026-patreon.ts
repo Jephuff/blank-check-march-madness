@@ -123,6 +123,7 @@ const data: Data<0> = {
           ],
         },
         {
+          winner: 'Draculas',
           poll: 'https://www.patreon.com/posts/2026-march-day-154151721',
           options: [
             {

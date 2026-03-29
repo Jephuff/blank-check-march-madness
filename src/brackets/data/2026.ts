@@ -125,6 +125,7 @@ const data: Data<0> = {
           ],
         },
         {
+          winner: 'Tony Scott',
           poll: 'https://poll.fm/16798241',
           options: [
             {
