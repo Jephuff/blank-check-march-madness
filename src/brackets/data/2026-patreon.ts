@@ -3,6 +3,7 @@ import { Data } from 'brackets/types';
 const data: Data<0> = {
   options: [
     {
+      winner: 'Teen Shakespeare',
       poll: 'https://www.patreon.com/posts/2026-march-day-154220238',
       options: [
         {
@@ -84,6 +85,7 @@ const data: Data<0> = {
       ],
     },
     {
+      poll: 'https://www.patreon.com/posts/2026-march-day-154322212',
       options: [
         {
           winner: 'John Grisham',
